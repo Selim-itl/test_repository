@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--    Ticket types-->
+    <record id="product_chain" model="chain.conf">
+        <field name="name">Demo Product</field>
+    </record>
+    <record id="product_chain_2" model="chain.conf">
+        <field name="name">Demo-Chain</field>
+    </record>
+    <record id="product_chain_3" model="chain.conf">
+        <field name="name">Demo-Chain-2</field>
+    </record>
+    <record id="product_chain_4" model="chain.conf">
+        <field name="name">Demo-Chain-3</field>
+    </record>
+
+</odoo>

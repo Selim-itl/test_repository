@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Import lvorder Wizard View -->
+        <record id="help_tickets_form_view" model="ir.ui.view">
+            <field name="name">import.help.ticket.wizard.view</field>
+            <field name="model">import.help.ticket</field>
+            <field name="arch" type="xml">
+                <form string="CV Work Orders">
+                    <group>
+                        <group>
+                            <field name="file_type"/>
+                        </group>
+                        <group>
+                            <field name="file" placeholder="Upload Your File"/>
+                            <!--						<field name="csv_file_path"/>-->
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="btn_help_ticket_data_func" string="Import" type="object" icon="fa-download"
+                                class="btn btn-primary active"/>
+                        <button string="Cancel" special="cancel" icon="fa-times" class="btn btn-danger"/>
+<!--                        <div style="margin-left: auto;margin-right: 0;">-->
+<!--                            <strong>Download Sample:</strong>-->
+<!--                            <a role="button"-->
+<!--                               href="/itl_finance_module/static/src/sample_xls_csv_file/bd_intake_reprot_sample.csv"-->
+<!--                               class="btn-primary"-->
+<!--                               style="margin: 0 10px; font-size: 12px; line-height: 1.5; border-radius: 3px; padding: 8px 10px; color: #ffffff;">-->
+<!--                                <i class="fa fa-download"/>-->
+<!--                                CSV file-->
+<!--                            </a>-->
+<!--                            <a role="button"-->
+<!--                               href="/itl_finance_module/static/src/sample_xls_csv_file/bd_pending_report_sample.xlsx"-->
+<!--                               class="btn-primary"-->
+<!--                               style="font-size: 12px; line-height: 1.5; border-radius: 3px; padding: 8px 10px; color: #ffffff;">-->
+<!--                                <i class="fa fa-download"/>-->
+<!--                                Excel file-->
+<!--                            </a>-->
+<!--                        </div>-->
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Import lvorder Wizard Action -->
+        <record id="import_help_ticket_wizard_action" model="ir.actions.act_window">
+            <field name="name">Import Ticket Data</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">import.help.ticket</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+
+
+    </data>
+</odoo>

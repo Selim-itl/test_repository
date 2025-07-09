@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="update_multiple_ticket_stage_tree_view">
+        <field name="name">ticket.update.wizard.View</field>
+        <field name="model">ticket.update.wizard</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="updated_by"/>
+                <field name="stage_id"/>
+                <field name="update_reason"/>
+                <field name="update_date"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="update_ticket_stage_form_view">
+        <field name="name">ticket.update.wizard.form.view</field>
+        <field name="model">ticket.update.wizard</field>
+        <field name="arch" type="xml">
+            <form string="tree_string">
+                <sheet>
+                    <group string="Multiple Work Order Form">
+                        <group string="Select Ticket Stage">
+                            <field name="stage_id" widget="selection"/>
+                            <field name="updated_by"/>
+                        </group>
+                        <group string="Update Date &amp; Reason">
+                            <field name="update_date"/>
+                            <field name="update_reason" placeholder="Enter Update Reason"/>
+                        </group>
+                        <group string="Tickets Info">
+                            <field name="ticket_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <br/>
+                    <br/>
+                    <footer>
+                        <button name="btn_update_ticket_stage_action" type="object" string="Apply" class="btn btn-info"/>
+                        - or -
+                        <button string="Cancel" special="cancel" class="btn-danger"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--  This code is used for Action Window-->
+    <record model="ir.actions.act_window" id="update_ticket_stage_action_window">
+        <field name="name">Update Multiple Ticket Stage</field>
+        <field name="res_model">ticket.update.wizard</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+<!--    <menuitem id="update_work_order_wizard_id" name="Update Multiple Ticket Stage" parent="lv_module_conf"-->
+<!--              action="update_work_order_action_window" groups="itl_it_ticketing.update_ticket_stage_action_window"/>-->
+
+</odoo>
