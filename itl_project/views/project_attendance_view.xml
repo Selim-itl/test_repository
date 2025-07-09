@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="form_project_attendance_sheet_view" model="ir.ui.view">
+        <field name="name">project.attendance.sheet.form</field>
+        <field name="model">project.attendance.sheet</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="can_edit_fields" invisible="1"/>
+                        <field name="name" style="font-size: 20px; margin-bottom: 20px;" nolabel="1" colspan="2" attrs="{'readonly': [('can_edit_fields', '=', False)]}"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="attendance_date" attrs="{'readonly': [('can_edit_fields', '=', False)]}"/>
+                        </group>
+                        <group>
+                            <field name="attendance_date_status" attrs="{'readonly': [('can_edit_fields', '=', False)]}"/>
+                        </group>
+                    </group>
+                    <field name="attendance_line_ids" attrs="{'invisible':[('attendance_date_status','in',('cancelled', 'weekend'))], 'readonly': [('can_edit_fields', '=', False)]}">
+                        <tree editable="bottom">
+                            <field name="user_id" widget="many2one_avatar_user"/>
+                            <field name="department_id"/>
+                            <field name="role"/>
+                            <field name="status"/>
+                        </tree>
+                        <form>
+                            <group>
+                                <group>
+                                    <field name="user_id" widget="many2one_avatar_user"/>
+                                    <field name="department_id"/>
+                                    <field name="role"/>
+                                    <field name="status"/>
+                                </group>
+                            </group>
+                        </form>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="tree_project_attendance_sheet_view" model="ir.ui.view">
+        <field name="name">project.attendance.sheet.tree</field>
+        <field name="model">project.attendance.sheet</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="attendance_date" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_project_attendance_view" model="ir.actions.act_window">
+        <field name="name">Attendance</field>
+        <field name="res_model">project.attendance.sheet</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

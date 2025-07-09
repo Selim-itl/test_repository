@@ -1,0 +1,451 @@
+# -*- coding: utf-8 -*-
+from email.policy import default
+
+from odoo import models, fields, api,_
+from odoo.exceptions import ValidationError, AccessError
+from datetime import timedelta
+import logging
+
+class ProjectProject(models.Model):
+    _inherit = 'project.project'
+    _description = 'Project project'
+
+    allow_timesheets = fields.Boolean(default=False)
+    project_progress = fields.Integer(
+        string="Project Progress",
+        compute="_compute_project_progress",
+        help="Average progress of all tasks in this project.",
+    )
+    days_count = fields.Integer("Working Days", compute="_compute_working_days_duration", store=True, help="Duration in working days (excluding Fridays)")
+    completed_task = fields.Integer("Completed Task", compute='_compute_completed_tasks', store=True)
+    in_progress_task = fields.Integer("In-progress Task", compute="_compute_inprogress_tasks", store=True)
+    not_started_task = fields.Integer("Not started Task", compute="_compute_not_started_tasks", store=True)
+    assigned_members = fields.Many2many(
+        "res.users",
+        "project_project_member_rel",  # Changed from project_task to project_project
+        "project_id",  # Changed to match project.project's ID field
+        "user_id",
+        string="Members"
+    )
+    project_stages = fields.Selection([
+        ('not_started', 'Not started'),
+        ('in_progress', 'In progress'),
+        ('completed', 'Completed')], default='not_started', string="Status", compute="_compute_project_stages")
+
+    project_coordinator = fields.Many2one(
+        "res.users",
+        string="Coordinator"
+    )
+
+    project_sponsor = fields.Many2one(
+        "res.partner",
+        string="Sponsor"
+    )
+
+    is_project_leader = fields.Boolean(compute='_compute_is_project_leader')
+    is_project_coordinator = fields.Boolean(compute='_compute_is_project_coordinator')
+    kpi_achievement = fields.Integer("KPI Achievement", compute='_compute_kpi_achievement', store=True)
+    kpi_ids = fields.One2many('project.kpi', 'project_id', string="KPI Records")
+
+    """Fetching kpi achievement"""
+    @api.depends('kpi_ids.achievement_percent')
+    def _compute_kpi_achievement(self):
+        for rec in self:
+            kpi = rec.kpi_ids[:1]
+            rec.kpi_achievement = kpi.achievement_percent if kpi else 0
+
+
+    """Check if current user is the project leader or not. """
+    @api.depends_context('uid')
+    def _compute_is_project_leader(self):
+        for record in self:
+            record.is_project_leader = (record.user_id.id == self.env.uid)
+
+    """Check if current user is the project leader or not. """
+    @api.depends_context('uid')
+    def _compute_is_project_coordinator(self):
+        for record in self:
+            record.is_project_coordinator = (record.project_coordinator.id == self.env.uid)
+
+    """Method to open KPI form and tree views"""
+    def action_view_kpi(self):
+        self.ensure_one()
+        user = self.env.user
+        can_edit = (
+                user.has_group('project.group_project_manager') or
+                (self.user_id and self.user_id.id == user.id) or
+                (self.project_coordinator and self.project_coordinator.id == user.id)
+        )
+        #         can_edit field setting value to can_edit_field form when form is opening for the first time.
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'KPI',
+            'res_model': 'project.kpi',
+            'view_mode': 'tree,form',
+            'domain': [('project_id', '=', self.id)],
+            'context': {
+                'default_project_id': self.id,
+                'default_can_edit_fields': can_edit,
+            },
+        }
+
+    """Method to open 3W form and tree views"""
+    def action_view_3w(self):
+        self.ensure_one()
+        user = self.env.user
+        can_edit = (
+                user.has_group('project.group_project_manager') or
+                (self.user_id and self.user_id.id == user.id) or
+                (self.project_coordinator and self.project_coordinator.id == user.id)
+        )
+        #         can_edit field setting value to can_edit_field form when form is opening for the first time.
+        return {
+            'type': 'ir.actions.act_window',
+            'name': '3W',
+            'res_model': 'project.three.w',
+            'view_mode': 'tree,form',
+            'domain': [('project_id', '=', self.id)],
+            'context': {
+                'default_project_id': self.id,
+                'default_can_edit_fields': can_edit,
+            },
+        }
+
+    """Display all task and sub-task of current project"""
+    def action_stat_button_all_tasks(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'All Tasks',
+            'res_model': 'project.task',
+            'view_mode': 'tree,form',
+            'domain': [
+                ('project_id', '=', self.id)
+            ],
+            'context': {
+                'default_project_id': self.id
+            },
+        }
+
+    """Method to open all parent tasks"""
+    def action_stat_button_parent_tasks(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Parent Tasks',
+            'res_model': 'project.task',
+            'view_mode': 'tree,form',
+            'domain': [
+                ('project_id', '=', self.id),
+                ('parent_id', '=', False)
+            ],
+            'context': {
+                'default_project_id': self.id
+            },
+        }
+
+    """Method to open attendance sheet"""
+    def action_stat_button_attendance(self):
+        self.ensure_one()
+        user = self.env.user
+        can_edit = (
+                user.has_group('project.group_project_manager') or
+                (self.user_id and self.user_id.id == user.id) or
+                (self.project_coordinator and self.project_coordinator.id == user.id)
+        )
+        #         can_edit field setting value to can_edit_field form when form is opening for the first time.
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Attendance',
+            'res_model': 'project.attendance.sheet',
+            'view_mode': 'tree,form',
+            'domain': [('project_id', '=', self.id)],
+            'context': {
+                'default_project_id': self.id,
+                'default_can_edit_fields': can_edit,
+            },
+        }
+
+    """Method to open attendance report tree view"""
+    def action_view_attendance_report(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Attendance Report',
+            'res_model': 'project.attendance.report.line',
+            'view_mode': 'tree',
+            'domain': [('project_id', '=', self.id)],
+            'context': {'default_project_id': self.id, 'search_default_group_by_date': 1},
+        }
+
+
+
+    """Method to prevent error when clicking dummy stat button"""
+    def action_stat_button_method(self):
+        for rec in self:
+            print("Method executed successfully!")
+
+    """compute project stages"""
+    @api.depends('task_ids.task_stages')
+    def _compute_project_stages(self):
+        for rec in self:
+            tasks = rec.task_ids
+            stages = [task.task_stages for task in tasks]
+
+            if all(s == "completed" for s in stages):
+                rec.project_stages = "completed"
+            elif all(s == "not_started" for s in stages):
+                rec.project_stages = "not_started"
+            else:
+                rec.project_stages = "in_progress"
+
+    """compute not started tasks number"""
+    @api.depends('task_ids.task_stages')
+    def _compute_not_started_tasks(self):
+        for rec in self:
+            rec.not_started_task = len(rec.task_ids.filtered(lambda task: task.task_stages == "not_started"))
+
+    """compute in-progress tasks number"""
+    @api.depends('task_ids.task_stages')
+    def _compute_inprogress_tasks(self):
+        for rec in self:
+            rec.in_progress_task = len(rec.task_ids.filtered(lambda task: task.task_stages == "in_progress"))
+
+    """completed tasks count"""
+    @api.depends('task_ids.task_stages')
+    def _compute_completed_tasks(self):
+        for project in self:
+            project.completed_task = len(project.task_ids.filtered(lambda task: task.task_stages == 'completed'))
+
+
+    """counting working days"""
+    @api.depends('date_start', 'date')
+    def _compute_working_days_duration(self):
+        for project in self:
+            if project.date_start and project.date:
+                delta = project.date - project.date_start
+                if delta.days < 0:
+                    project.days_count = 0
+                    continue
+
+                total_days = delta.days + 1  # inclusive of both start and end dates
+                current_date = project.date_start
+                working_days = 0
+
+                for day in range(total_days):
+                    if current_date.weekday() != 4:  # 4 = Friday
+                        working_days += 1
+                    current_date += timedelta(days=1)
+
+                project.days_count = working_days
+            else:
+                project.days_count = 0
+
+    """calculating project progress"""
+    @api.depends('task_ids.task_progress')
+    def _compute_project_progress(self):
+        for project in self:
+            top_tasks = project.task_ids.filtered(lambda t: not t.parent_id and t.task_progress is not None)
+            total = sum(t.task_progress for t in top_tasks)
+            count = len(top_tasks)
+            project.project_progress = round(total / count, 2) if count else 0.0
+
+    """providing button to kanban for open project settings. This is getting triggered by clicking on project display name."""
+    def action_open_form_view(self):
+        self.ensure_one()  # Ensure only one record is processed
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'project.project',
+            'res_id': self.id,
+            'view_mode': 'form',
+            'target': 'self',
+        }
+
+class ProjectTask(models.Model):
+    _inherit = 'project.task'
+    _order = 'sequence, id'
+
+    active = fields.Boolean(default=True, tracking=True)
+    task_start_date = fields.Date(string='Start date')
+    user_ids = fields.Many2many(string='Assigned To')
+    # Works with stage calculation
+    task_stages = fields.Selection([
+        ('not_started', 'Not started'),
+        ('in_progress', 'In progress'),
+        ('completed', 'Completed')], compute="_check_and_change_stage",default='not_started', string="Stage", tracking=True)
+
+    sub_task_progress = fields.Integer("Sub-task progress (%)", group_operator=False, default=0,help="Value must be between 0 and 100")
+
+    task_progress = fields.Integer(
+        string="Task (%)",
+        compute='_onchange_task_progress',
+        # group_operator=False
+    )
+
+    working_days = fields.Integer(string='Allocated Days', compute='_compute_working_days', store=True)
+
+    allowed_user_ids = fields.Many2many(
+        'res.users',
+        compute='_compute_allowed_user_ids',
+        store=False
+    )
+
+    # Block is been using for track who can edit
+    can_edit_fields = fields.Boolean(compute='_compute_can_edit_fields', store=False)
+
+    """This method is ensuring project module's Administrator, project leader and project coordinator can only edit certain field."""
+    @api.depends('project_id')
+    def _compute_can_edit_fields(self):
+        for task in self:
+            user = self.env.user
+            project = task.project_id
+            task.can_edit_fields = bool(project) and (
+                    user.has_group('project.group_project_manager') or
+                    (project.user_id and project.user_id.id == user.id) or
+                    (project.project_coordinator and project.project_coordinator.id == user.id)
+            )
+    # Block is been using for track who can edit
+
+    # Block ensuring proper access right on crud
+    """Conditionally checking whether the user should have permissions to delete, duplicate, edit"""
+    def check_user_role(self):
+        for record in self:
+            if not record.can_edit_fields:
+                raise AccessError("You do not have permission to modify this project.")
+
+
+    """Disable archive button for normal users"""
+    def action_archive(self):
+        for rec in self:
+            if not rec.can_edit_fields:
+                raise AccessError(_("You do not have permission to archive this task."))
+        return super(ProjectTask, self).action_archive()
+
+    """Disable delete button for normal users"""
+    @api.ondelete(at_uninstall=False)
+    def _check_ondelete(self):
+        for rec in self:
+            if not rec.can_edit_fields:
+                raise AccessError("No permission to delete.")
+
+    """Disable duplicate/copy button for normal users"""
+    def copy(self, default=None):
+        self.check_user_role()
+        return super(ProjectTask, self).copy(default)
+
+    # Block ensuring proper access right on crud
+
+
+    """Ensures only project members are appears in task assign to form."""
+    @api.depends('project_id', 'parent_id')
+    def _compute_allowed_user_ids(self):
+        for task in self:
+            if task.project_id and not task.parent_id:
+                task.allowed_user_ids = task.project_id.assigned_members | task.project_id.project_coordinator | task.project_id.user_id
+            else:
+                task.allowed_user_ids = self.env['res.users']
+
+    """Check progress value and change stage if progress is 100"""
+    @api.depends('sub_task_progress')
+    def _check_and_change_stage(self):
+        for rec in self:
+            if rec.parent_id:
+                if rec.sub_task_progress == 100:
+                    rec.task_stages = 'completed'
+                elif rec.sub_task_progress == 0:
+                    rec.task_stages = 'not_started'
+                else:
+                    rec.task_stages = 'in_progress'
+            else:
+                if rec.task_progress == 100:
+                    rec.task_stages = 'completed'
+                elif rec.task_progress == 0:
+                    rec.task_stages = 'not_started'
+                else:
+                    rec.task_stages = 'in_progress'
+
+    """restrict parent task deletion before deleting its sub task/tasks"""
+    def unlink(self):
+        for task in self:
+            if task.child_ids:
+                raise ValidationError(_("You cannot delete a parent task that has child tasks. Please delete its child tasks first."))
+        return super(ProjectTask, self).unlink()
+
+    """setting value to task and sub-task progress based on states"""
+    @api.onchange('task_stages')
+    def _stage_based_progress(self):
+        for rec in self:
+            if rec.task_stages == "not_started":
+                rec.sub_task_progress = 0
+                if not rec.parent_id:
+                    rec.task_progress = 0
+            if rec.task_stages in ["completed","cancelled"]:
+                rec.sub_task_progress = 100
+                if not rec.parent_id:
+                    rec.task_progress = 100
+
+    """validating user input to accept number between 0 and 100"""
+    @api.constrains('sub_task_progress')
+    def _check_sub_task_progress_range(self):
+        for record in self:
+            if not (0 <= record.sub_task_progress <= 100):
+                raise ValidationError("Progress must be between 0 and 100")
+
+    """Ensuring sub-task member who are in parent task (creating time)"""
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('parent_id') and vals.get('user_ids'):
+                parent_users = self.browse(vals['parent_id']).user_ids.ids
+                for user_id in vals['user_ids'][0][2]:  # M2M '[(6, 0, [ids])]
+                    if user_id not in parent_users:
+                        raise ValidationError("Sub-task assignees must be selected from parent task's assignees.")
+        return super().create(vals_list)
+
+
+    """Ensuring sub-task member who are in parent task (editing time)"""
+    def write(self, vals):
+        for task in self:
+            if 'user_ids' in vals and task.parent_id:
+                parent_users = task.parent_id.user_ids.ids
+                for user_id in vals['user_ids'][0][2]:  # M2M write format
+                    if user_id not in parent_users:
+                        raise ValidationError("Sub-task assignees must be selected from parent task's assignees.")
+        return super().write(vals)
+
+    """calculating working days by excluding weekend"""
+    @api.depends('task_start_date', 'date_deadline')
+    def _compute_working_days(self):
+        for task in self:
+            start_date = task.task_start_date
+            end_date = task.date_deadline
+            if start_date and end_date and start_date <= end_date:
+                current_date = start_date
+                count = 0
+                while current_date <= end_date:
+                    # weekday() Monday=0 ... Sunday=6
+                    if current_date.weekday() != 4:  # 4 is Friday
+                        count += 1
+                    current_date += timedelta(days=1)
+                task.working_days = count
+            else:
+                task.working_days = 0
+
+    """calculating task progress from sub-tasks and setting task status based on task progress"""
+    @api.depends('child_ids.sub_task_progress')
+    def _onchange_task_progress(self):
+        for task in self:
+            if task.child_ids:
+                total = len(task.child_ids)
+                total_progress = sum(child.sub_task_progress for child in task.child_ids)
+                task.task_progress = round(total_progress / total, 2) if total else 0.0
+
+                progresses = [child.sub_task_progress for child in task.child_ids]
+                if all(p == 100 for p in progresses):
+                    task.task_stages = 'completed'
+                elif any(p > 0 for p in progresses):
+                    task.task_stages = 'in_progress'
+                else:
+                    task.task_stages = 'not_started'
+            else:
+                task.task_progress = 0.0

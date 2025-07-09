@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_project_attendance_report_line_tree" model="ir.ui.view">
+        <field name="name">project.attendance.report.line.tree</field>
+        <field name="model">project.attendance.report.line</field>
+        <field name="arch" type="xml">
+            <tree string="Attendance Report" create="false" decoration-danger="status == 'absent'" decoration-warning="status == 'late'">
+                <field name="user_id"/>
+                <field name="department_id"/>
+                <field name="attendance_date"/>
+                <field name="status" decoration-success="status == 'present'" decoration-danger="status == 'absent'" decoration-warning="status == 'late'" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_project_attendance_report_line_search" model="ir.ui.view">
+        <field name="name">project.attendance.report.line.search</field>
+        <field name="model">project.attendance.report.line</field>
+        <field name="arch" type="xml">
+            <search string="Attendance">
+
+<!--                Performing default group by. Here for date there is another filter. Here I am setting daya as default filter -->
+                <group expand="0" string="Group By">
+                        <filter string="Group By Date" name="group_by_date" context="{'group_by': 'attendance_date:day'}"/>
+                        <filter string="Group By Member" name="group_by_member" context="{'group_by': 'user_id'}"/>
+                        <filter string="Group By Status" name="group_by_status" context="{'group_by': 'status'}"/>
+                </group>
+
+            </search>
+        </field>
+    </record>
+
+    <record id="action_project_attendance_report_line_view" model="ir.actions.act_window">
+        <field name="name">Attendance Report</field>
+        <field name="res_model">project.attendance.report.line</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+</odoo>
