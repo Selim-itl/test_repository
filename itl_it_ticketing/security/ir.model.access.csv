@@ -1,8 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_help_ticket_user,access.help.ticket.user,model_help_ticket,base.group_user,1,1,1,1
-access_help_ticket_teams_user,access.help.team.user,model_help_team,itl_it_ticketing.helpdesk_user,1,0,0,0
-access_help_ticket_teams_leader,access.help.team.leader,model_help_team,itl_it_ticketing.helpdesk_team_leader,1,0,0,0
-access_help_ticket_teams_manager,access.help.team.manager,model_help_team,itl_it_ticketing.helpdesk_manager,1,1,1,1
+access_it_itl_bd_help_ticket_teams_user,access.it.itl.bd.help.team.user,model_it_itl_bd_help_team,itl_it_ticketing.helpdesk_user,1,0,0,0
+access_it_itl_bd_help_ticket_teams_leader,access.it.itl.bd.help.team.leader,model_it_itl_bd_help_team,itl_it_ticketing.helpdesk_team_leader,1,0,0,0
+access_it_itl_bd_help_ticket_teams_manager,access.it.itl.bd.help.team.manager,model_it_itl_bd_help_team,itl_it_ticketing.helpdesk_manager,1,1,1,1
 
 access_helpdesk_tag_user,access.helpdesk.tag.user,model_helpdesk_tag,itl_it_ticketing.helpdesk_user,1,0,0,0
 access_helpdesk_tag_leader,access.helpdesk.tag.leader,model_helpdesk_tag,itl_it_ticketing.helpdesk_team_leader,1,1,1,1

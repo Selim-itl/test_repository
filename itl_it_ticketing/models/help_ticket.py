@@ -55,7 +55,7 @@ class HelpTicket(models.Model):
                               help='Issue Description')
     email = fields.Char(string='Email', help='Email of the User.')
     phone = fields.Char(string='Phone', help='Phone Number of the user')
-    team_id = fields.Many2one('help.team', string='Helpdesk Team',
+    team_id = fields.Many2one('it.itl.bd.help.team', string='Helpdesk Team',
                               help='The helpdesk team responsible for '
                                    'handling requests related to this '
                                    'record')
@@ -463,7 +463,7 @@ class HelpTicket(models.Model):
             record.assigned_user = [(4, current_user.id)]
 
             # Check if the current user belongs to a helpdesk team
-            team = self.env['help.team'].search([('member_ids', '=', current_user.id)], limit=1)
+            team = self.env['it.itl.bd.help.team'].search([('member_ids', '=', current_user.id)], limit=1)
             if team:
                 record.team_id = team.id
 

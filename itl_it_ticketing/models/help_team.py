@@ -9,7 +9,7 @@ from odoo import api, fields, models
 class HelpTeam(models.Model):
     """ This class represents a Helpdesk Team in the system, providing
      information about the team members, leader, and related project."""
-    _name = 'help.team'
+    _name = 'it.itl.bd.help.team'
     _description = 'Helpdesk Team'
 
     name = fields.Char(string='Name', help='Name of the Helpdesk Team. It '

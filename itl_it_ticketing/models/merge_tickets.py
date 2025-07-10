@@ -20,7 +20,7 @@ class MergeTickets(models.Model):
                               string='Responsible User',
                               help='Responsible user name',
                               default=lambda self: self.env.user.partner_id.id)
-    support_team_id = fields.Many2one('help.team',
+    support_team_id = fields.Many2one('it.itl.bd.help.team',
                                       string='Support Team',
                                       help='Support Team Name')
     customer_id = fields.Many2one('res.partner',
