@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 <!--    Ticket types-->
-    <record id="product_chain" model="it.itl.bd.chain.conf">
+    <record id="it_itl_bd_product_chain" model="it.itl.bd.chain.conf">
         <field name="name">Demo Product</field>
     </record>
-    <record id="product_chain_2" model="it.itl.bd.chain.conf">
+    <record id="it_itl_bd_product_chain_2" model="it.itl.bd.chain.conf">
         <field name="name">Demo-Chain</field>
     </record>
-    <record id="product_chain_3" model="it.itl.bd.chain.conf">
+    <record id="it_itl_bd_product_chain_3" model="it.itl.bd.chain.conf">
         <field name="name">Demo-Chain-2</field>
     </record>
-    <record id="product_chain_4" model="it.itl.bd.chain.conf">
+    <record id="it_itl_bd_product_chain_4" model="it.itl.bd.chain.conf">
         <field name="name">Demo-Chain-3</field>
     </record>
 

@@ -81,7 +81,7 @@ class WebsiteDesk(http.Controller):
                 website=True, sitemap=True)
     def helpdesk_ticket(self):
         """Render the helpdesk ticket form."""
-        types = request.env['helpdesk.types'].sudo().search([])
+        types = request.env['it.itl.bd.helpdesk.types'].sudo().search([])
         categories = request.env['it.itl.bd.helpdesk.categories'].sudo().search([])
         product = request.env['product.template'].sudo().search([])
         values = {}

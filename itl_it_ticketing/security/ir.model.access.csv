@@ -7,9 +7,9 @@ access_it_itl_bd_help_ticket_teams_manager,access.it.itl.bd.help.team.manager,mo
 access_it_itl_bd_helpdesk_tag_user,access.it.itl.bd.helpdesk.tag.user,model_it_itl_bd_helpdesk_tag,itl_it_ticketing.helpdesk_user,1,0,0,0
 access_it_itl_bd_helpdesk_tag_leader,access.helpdesk.tag.leader,model_it_itl_bd_helpdesk_tag,itl_it_ticketing.helpdesk_team_leader,1,1,1,1
 access_it_itl_bd_helpdesk_tag_manager,access.helpdesk.tag.manager,model_it_itl_bd_helpdesk_tag,itl_it_ticketing.helpdesk_manager,1,1,1,1
-access_helpdesk_types_user,access.helpdesk.types.user,model_helpdesk_types,itl_it_ticketing.helpdesk_user,1,0,0,0
-access_helpdesk_types_leader,access.helpdesk.types.leader,model_helpdesk_types,itl_it_ticketing.helpdesk_team_leader,1,1,1,1
-access_helpdesk_types_manager,access.helpdesk.types.manager,model_helpdesk_types,itl_it_ticketing.helpdesk_manager,1,1,1,1
+access_it_itl_bd_helpdesk_types_user,access.it.itl.bd.helpdesk.types.user,model_it_itl_bd_helpdesk_types,itl_it_ticketing.helpdesk_user,1,0,0,0
+access_it_itl_bd_helpdesk_types_leader,access.it.itl.bd.helpdesk.types.leader,model_it_itl_bd_helpdesk_types,itl_it_ticketing.helpdesk_team_leader,1,1,1,1
+access_it_itl_bd_helpdesk_types_manager,access.it.itl.bd.helpdesk.types.manager,model_it_itl_bd_helpdesk_types,itl_it_ticketing.helpdesk_manager,1,1,1,1
 access_it_itl_bd_helpdesk_categories_user,access.it.itl.bd.helpdesk.categories.user,model_it_itl_bd_helpdesk_categories,itl_it_ticketing.helpdesk_user,1,0,0,0
 access_it_itl_bd_helpdesk_categories_leader,access.it.itl.bd.helpdesk.categories.leader,model_it_itl_bd_helpdesk_categories,itl_it_ticketing.helpdesk_team_leader,1,1,1,1
 access_it_itl_bd_helpdesk_categories_manager,access.it.itl.bd.helpdesk.categories.manager,model_it_itl_bd_helpdesk_categories,itl_it_ticketing.helpdesk_manager,1,1,1,1

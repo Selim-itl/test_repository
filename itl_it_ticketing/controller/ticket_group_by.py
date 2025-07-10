@@ -34,7 +34,7 @@ class TicketGroupBy(http.Controller):
                     })
         if group_value == '2':
             context = []
-            type_ids = request.env['helpdesk.types'].search([])
+            type_ids = request.env['it.itl.bd.helpdesk.types'].search([])
             for types in type_ids:
                 ticket_ids_1 = request.env['help.ticket'].search([
                     ('ticket_type', '=', types.id)

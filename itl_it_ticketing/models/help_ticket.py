@@ -117,7 +117,7 @@ class HelpTicket(models.Model):
                                    help='Replied Date of the Ticket')
     last_update_date = fields.Datetime(string='Last Update Date',
                                        help='Last Update Date of Ticket')
-    ticket_type = fields.Many2one('helpdesk.types',
+    ticket_type = fields.Many2one('it.itl.bd.helpdesk.types',
                                   string='Ticket Type', help='Ticket Type')
     team_head = fields.Many2one('res.users', string='Team Leader',
                                 compute='_compute_team_head',

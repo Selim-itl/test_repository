@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 <!--    Ticket types-->
-    <record id="helpdesk_types_question" model="helpdesk.types">
+    <record id="it_itl_bd_helpdesk_types_question" model="it.itl.bd.helpdesk.types">
         <field name="name">Question</field>
     </record>
-    <record id="helpdesk_types_issue" model="helpdesk.types">
+    <record id="it_itl_bd_helpdesk_types_issue" model="it.itl.bd.helpdesk.types">
         <field name="name">Issue</field>
     </record>
-    <record id="helpdesk_types_repair" model="helpdesk.types">
+    <record id="it_itl_bd_helpdesk_types_repair" model="it.itl.bd.helpdesk.types">
         <field name="name">Repair</field>
     </record>
-    <record id="helpdesk_types_maintenance" model="helpdesk.types">
+    <record id="it_itl_bd_helpdesk_types_maintenance" model="it.itl.bd.helpdesk.types">
         <field name="name">Maintenance</field>
     </record>
     <record id="it_itl_bd_helpdesk_categories_internal" model="it.itl.bd.helpdesk.categories">

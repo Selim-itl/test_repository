@@ -21,7 +21,7 @@
         'data/ir_sequence_data.xml',
         'data/ticket_stage_data.xml',
         'data/helpdesk_types_data.xml',
-        # 'data/product_chain_data.xml',
+        'data/product_chain_data.xml',
         'data/ir_cron_data.xml',
         'data/mail_template_data.xml',
         'wizard/ticket_stage_update_wizard_form.xml',
