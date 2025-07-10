@@ -125,7 +125,7 @@
         </field>
     </record>
     <!--        Mail formate to inform the Team to assign a task-->
-        <record id="mail_template_odoo_website_helpdesk_assign"
+        <record id="mail_template_itl_it_ticketing_assign"
                 model="mail.template">
             <field name="name">Ticket Assign</field>
 <!--            <field name="email_from"/>-->
@@ -160,7 +160,7 @@
             </field>
         </record>
 <!--      Mail sending formate to inform the user to assign the task-->
-        <record id="mail_template_odoo_website_helpdesk_assign_user"
+        <record id="mail_template_itl_it_ticketing_assign_user"
                 model="mail.template">
             <field name="name">Ticket Assign to User</field>
 <!--            <field name="email_from"/>-->
@@ -194,7 +194,7 @@
             </field>
         </record>
 <!--       Mail sending to the customer for informing the assigned user-->
-        <record id="mail_template_odoo_website_helpdesk_to_customer"
+        <record id="mail_template_itl_it_ticketing_to_customer"
                 model="mail.template">
             <field name="name">Mail To Customer Assign to User</field>
 <!--            <field name="email_from"/>-->

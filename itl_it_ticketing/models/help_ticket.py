@@ -244,7 +244,8 @@ class HelpTicket(models.Model):
             self.team_head = self.team_id.team_lead_id.id
             mail_template = self.env.ref(
                 'itl_it_ticketing.'
-                'mail_template_odoo_website_helpdesk_assign')
+                'mail_template_itl_it_ticketing_assign')
+                # 'mail_template_odoo_website_helpdesk_assign')
             mail_template.sudo().write({
                 'email_to': self.team_head.email,
                 'subject': self.name
