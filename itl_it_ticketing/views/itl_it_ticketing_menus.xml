@@ -72,7 +72,7 @@
 <!--    This is required for CS ticketing module-->
 <!--    <menuitem id="helpdesk_chain_menu"-->
 <!--              name="Order Chain"-->
-<!--              action="action_helpdesk_chain_conf"-->
+<!--              action="action_helpdesk_it_itl_bd_chain_conf"-->
 <!--              parent="helpdesk_configuration_menu"-->
 <!--              sequence="7"/>-->
 

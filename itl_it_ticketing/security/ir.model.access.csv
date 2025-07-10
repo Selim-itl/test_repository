@@ -19,5 +19,5 @@ access_help_ticket_stage_user,access.ticket.stage.user,model_ticket_stage,base.g
 
 access_it_itl_bd_chain_conf,access.it.itl.bd.chain.conf,model_it_itl_bd_chain_conf,base.group_user,1,1,1,1
 access_ticket_update_wizard,access.ticket.update.wizard,model_ticket_update_wizard,base.group_user,1,1,1,1
-access_ticket_correction,access.ticket.correction,model_ticket_correction,base.group_user,1,1,1,1
+access_it_itl_bd_ticket_correction,accessit.itl.bd.ticket.correction,model_it_itl_bd_ticket_correction,base.group_user,1,1,1,1
 access_import_help_ticket,access.import.help.ticket,model_import_help_ticket,base.group_user,1,1,1,1

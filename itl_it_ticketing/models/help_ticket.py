@@ -339,7 +339,7 @@ class HelpTicket(models.Model):
     correction_datetime = fields.Datetime(string="Correction Date", readonly=True)
     done_datetime = fields.Datetime(string="Done Date", readonly=True)
     # --
-    correction_info = fields.One2many('ticket.correction', 'ticket_id', string="Corrections")
+    correction_info = fields.One2many('it.itl.bd.ticket.correction', 'ticket_id', string="Corrections")
 
 
     #---
@@ -629,7 +629,7 @@ class HelpTicket(models.Model):
             'type': 'ir.actions.act_window',
             'name': 'Ticket Correction',
             'view_mode': 'form',
-            'res_model': 'ticket.correction',
+            'res_model': 'it.itl.bd.ticket.correction',
             'target': 'new',  # Open in a modal
             'context': {
                 'default_ticket_id': self.id,

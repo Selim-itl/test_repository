@@ -8,7 +8,7 @@ from odoo.exceptions import UserError
 
 
 class TicketCorrectionModel(models.Model):
-    _name = 'ticket.correction'
+    _name = 'it.itl.bd.ticket.correction'
     _rec_name = 'name'
     _description = 'All Correction Ticket Records'
 
