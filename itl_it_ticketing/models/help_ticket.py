@@ -46,6 +46,9 @@ class HelpTicket(models.Model):
     customer_id = fields.Many2one('res.partner',
                                   string='Customer Name',
                                   help='Select the Customer Name')
+    employee_id = fields.Many2one('hr.employee',
+                                  string='Employee Name',
+                                  help='Select the Employee Name')
     subject = fields.Text(string='Subject', required=True,
                           help='Subject of the Ticket')
     description = fields.Text(string='Description',
