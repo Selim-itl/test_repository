@@ -129,7 +129,7 @@ class HelpTicket(models.Model):
             'itl_it_ticketing.helpdesk_user').id)],
         help='Choose the Assigned User Name')
 
-    category_id = fields.Many2one('helpdesk.categories',
+    category_id = fields.Many2one('it.itl.bd.helpdesk.categories',
                                   help='Choose the Category', string='Category')
     tags = fields.Many2many('helpdesk.tag', help='Choose the Tags',
                             string='Tag')

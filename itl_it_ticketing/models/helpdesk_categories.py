@@ -10,7 +10,7 @@ class HelpdeskCategories(models.Model):
     """This class represents the Helpdesk Categories, providing information
     about different categories that can be assigned to helpdesk items.
    """
-    _name = 'helpdesk.categories'
+    _name = 'it.itl.bd.helpdesk.categories'
     _description = 'Helpdesk Categories'
 
     name = fields.Char(string='Name', help='Category Name')

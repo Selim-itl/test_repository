@@ -34,7 +34,7 @@
               parent="helpdesk_dashboard_menu_root"/>
     <menuitem id="helpdesk_categories_menu"
               name="Categories"
-              action="helpdesk_categories_action"
+              action="it_itl_bd_helpdesk_categories_action"
               groups="itl_it_ticketing.group_show_category"
               parent="helpdesk_configuration_menu"
               sequence="10"/>

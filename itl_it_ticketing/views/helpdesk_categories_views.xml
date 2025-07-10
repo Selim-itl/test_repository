@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <!--    Helpdesk categories view action-->
-    <record id="helpdesk_categories_action" model="ir.actions.act_window">
-        <field name="name">Categories</field>
-        <field name="res_model">helpdesk.categories</field>
+    <record id="it_itl_bd_helpdesk_categories_action" model="ir.actions.act_window">
+        <field name="name">it.itl.bd.Categories</field>
+        <field name="res_model">it.itl.bd.helpdesk.categories</field>
         <field name="view_mode">tree</field>
     </record>
     <!--    Helpdesk category tree view-->
-    <record id="helpdesk_categories_view_tree" model="ir.ui.view">
-        <field name="name">helpdesk.categories.view.tree</field>
-        <field name="model">helpdesk.categories</field>
+    <record id="it_itl_bd_helpdesk_categories_view_tree" model="ir.ui.view">
+        <field name="name">it.itl.bd.helpdesk.categories.view.tree</field>
+        <field name="model">it.itl.bd.helpdesk.categories</field>
         <field name="arch" type="xml">
             <tree string="Categories" editable="bottom">
                 <field name="sequence" widget="handle"/>

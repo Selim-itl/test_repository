@@ -13,10 +13,10 @@
     <record id="helpdesk_types_maintenance" model="helpdesk.types">
         <field name="name">Maintenance</field>
     </record>
-    <record id="helpdesk_categories_internal" model="helpdesk.categories">
+    <record id="it_itl_bd_helpdesk_categories_internal" model="it.itl.bd.helpdesk.categories">
         <field name="name">Internal</field>
     </record>
-    <record id="helpdesk_categories_technical" model="helpdesk.categories">
+    <record id="it_itl_bd_helpdesk_categories_technical" model="it.itl.bd.helpdesk.categories">
         <field name="name">Technical</field>
     </record>
 </odoo>
