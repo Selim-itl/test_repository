@@ -4,7 +4,7 @@ from odoo.exceptions import UserError
 
 
 class ChainConfigurations(models.Model):
-    _name = 'chain.conf'
+    _name = 'it.itl.bd.chain.conf'
     _description = 'Product Chain'
     _rec_name = 'name'
 

@@ -69,11 +69,12 @@
               sequence="3"
               action="help_ticket_report_action"/>
 
-    <menuitem id="helpdesk_chain_menu"
-              name="Order Chain"
-              action="action_helpdesk_chain_conf"
-              parent="helpdesk_configuration_menu"
-              sequence="7"/>
+<!--    This is required for CS ticketing module-->
+<!--    <menuitem id="helpdesk_chain_menu"-->
+<!--              name="Order Chain"-->
+<!--              action="action_helpdesk_chain_conf"-->
+<!--              parent="helpdesk_configuration_menu"-->
+<!--              sequence="7"/>-->
 
     <menuitem id="import_report_menus" name="Import Ticket Wizard"
                   action="import_help_ticket_wizard_action" parent="helpdesk_configuration_menu" sequence="09"/>

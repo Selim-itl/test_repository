@@ -17,7 +17,7 @@ merge_tickets_manager,merge.tickets.manager,model_merge_tickets,itl_it_ticketing
 support_tickets_manager,support.tickets.manager,model_support_tickets,itl_it_ticketing.helpdesk_manager,1,1,1,1
 access_help_ticket_stage_user,access.ticket.stage.user,model_ticket_stage,base.group_user,1,1,1,1
 
-access_chain_conf,access.chain.conf,model_chain_conf,base.group_user,1,1,1,1
+access_it_itl_bd_chain_conf,access.it.itl.bd.chain.conf,model_it_itl_bd_chain_conf,base.group_user,1,1,1,1
 access_ticket_update_wizard,access.ticket.update.wizard,model_ticket_update_wizard,base.group_user,1,1,1,1
 access_ticket_correction,access.ticket.correction,model_ticket_correction,base.group_user,1,1,1,1
 access_import_help_ticket,access.import.help.ticket,model_import_help_ticket,base.group_user,1,1,1,1

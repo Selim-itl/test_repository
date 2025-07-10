@@ -88,7 +88,7 @@ class ImportHelpTicket(models.TransientModel):
                          self.env['res.partner'].search([('name', 'in', list(customer_names))])}
             stages = {stage.name: stage for stage in
                       self.env['ticket.stage'].search([('name', 'in', list(stage_names))])}
-            chains = {chain.name: chain for chain in self.env['chain.conf'].search([('name', 'in', list(chain_names))])}
+            chains = {chain.name: chain for chain in self.env['it.itl.bd.chain.conf'].search([('name', 'in', list(chain_names))])}
             assigned_users_dict = {user.name: user for user in
                                    self.env['res.users'].search([('name', 'in', list(assigned_users))])}
 
@@ -144,7 +144,7 @@ class ImportHelpTicket(models.TransientModel):
                     if name:
                         chain = chains.get(name)
                         if not chain:
-                            chain = self.env['chain.conf'].create({'name': name})
+                            chain = self.env['it.itl.bd.chain.conf'].create({'name': name})
                             chains[name] = chain
                         chain_ids.append(chain.id)
 

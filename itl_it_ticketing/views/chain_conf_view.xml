@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-        <record model="ir.ui.view" id="helpdesk_chain_form_view">
-            <field name="name">Chain.Conf.Form.View</field>
-            <field name="model">chain.conf</field>
+        <record model="ir.ui.view" id="helpdesk_it_itl_bd_chain_form_view">
+            <field name="name">it.itl.bd.Chain.Conf.Form.View</field>
+            <field name="model">it.itl.bd.chain.conf</field>
             <field name="arch" type="xml">
                 <form string="LV Product Chain">
                     <!--                    <header>-->
@@ -25,9 +25,9 @@
             </field>
         </record>
 
-        <record model="ir.ui.view" id="helpdesk_chain_tree_view">
-            <field name="name">Chain.Conf.Tree View</field>
-            <field name="model">chain.conf</field>
+        <record model="ir.ui.view" id="helpdesk_it_itl_bd_chain_tree_view">
+            <field name="name">it.itl.bd.Chain.Conf.Tree View</field>
+            <field name="model">it.itl.bd.chain.conf</field>
             <field name="arch" type="xml">
                 <tree string="ITL Product Chain">
                     <field name="name"/>
@@ -36,9 +36,9 @@
             </field>
         </record>
 
-        <record model="ir.actions.act_window" id="action_helpdesk_chain_conf">
-            <field name="name">Chain.Configuration</field>
-            <field name="res_model">chain.conf</field>
+        <record model="ir.actions.act_window" id="action_helpdesk_it_itl_bd_chain_conf">
+            <field name="name">it.itl.bd.Chain.Configuration</field>
+            <field name="res_model">it.itl.bd.chain.conf</field>
             <field name="view_mode">tree,form</field>
         </record>
 

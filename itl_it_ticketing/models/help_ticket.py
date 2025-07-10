@@ -145,7 +145,7 @@ class HelpTicket(models.Model):
                                                            'Count')
 
     # customize
-    chain_ids = fields.Many2many('chain.conf',
+    chain_ids = fields.Many2many('it.itl.bd.chain.conf',
                                    string='Select Chain',
                                    help='The Order associated with this '
                                         'record.This field allows you to select'
