@@ -32,7 +32,7 @@
               name="Configuration"
               sequence="50"
               parent="helpdesk_dashboard_menu_root"/>
-    <menuitem id="helpdesk_categories_menu"
+    <menuitem id="it_itl_bd_helpdesk_categories_menu"
               name="Categories"
               action="it_itl_bd_helpdesk_categories_action"
               groups="itl_it_ticketing.group_show_category"
@@ -43,14 +43,14 @@
               action="helpdesk_config_settings_action"
               parent="helpdesk_configuration_menu"
               sequence="1"/>
-    <menuitem id="help_team_menu"
+    <menuitem id="it_itl_bd_help_team_menu"
               name="Teams"
               action="it_itl_bd_help_team_action"
               parent="helpdesk_configuration_menu"
               sequence="3"/>
-    <menuitem id="helpdesk_tag_menu"
+    <menuitem id="it_itl_bd_helpdesk_tag_menu"
               name="Tags"
-              action="helpdesk_tag_action"
+              action="it_itl_bd_helpdesk_tag_action"
               parent="helpdesk_configuration_menu"
               sequence="4"/>
     <menuitem id="ticket_stage_menu"
@@ -70,7 +70,7 @@
               action="help_ticket_report_action"/>
 
 <!--    This is required for CS ticketing module-->
-<!--    <menuitem id="helpdesk_chain_menu"-->
+<!--    <menuitem id="it_itl_bd_helpdesk_chain_menu"-->
 <!--              name="Order Chain"-->
 <!--              action="action_helpdesk_it_itl_bd_chain_conf"-->
 <!--              parent="helpdesk_configuration_menu"-->

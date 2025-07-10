@@ -131,7 +131,7 @@ class HelpTicket(models.Model):
 
     category_id = fields.Many2one('it.itl.bd.helpdesk.categories',
                                   help='Choose the Category', string='Category')
-    tags = fields.Many2many('helpdesk.tag', help='Choose the Tags',
+    tags = fields.Many2many('it.itl.bd.helpdesk.tag', help='Choose the Tags',
                             string='Tag')
     assign_user = fields.Boolean(string='Assigned User', help='Assign User')
     attachment_ids = fields.One2many('ir.attachment',
