@@ -304,9 +304,9 @@ class HelpTicket(models.Model):
         ('outgoing', 'Outgoing'),
         ('mail_create', 'Create From Mail')], default='normal_create')
 
-    stage_id = fields.Many2one('ticket.stage', string='Stage',
+    stage_id = fields.Many2one('it.itl.bd.ticket.stage', string='Stage',
                                default=lambda self: self.env[
-                                   'ticket.stage'].search(
+                                   'it.itl.bd.ticket.stage'].search(
                                    [('name', '=', 'Draft')], limit=1).id,
                                tracking=True,
                                group_expand='_read_group_stage_ids',
@@ -368,14 +368,14 @@ class HelpTicket(models.Model):
             for rec in records:
                 days = (fields.Datetime.today() - rec.create_date).days
                 if days >= int(no_of_days):
-                    close_stage_id = self.env['ticket.stage'].search(
+                    close_stage_id = self.env['it.itl.bd.ticket.stage'].search(
                         [('closing_stage', '=', True)])
                     if close_stage_id:
                         rec.stage_id = close_stage_id
 
     def default_stage_id(self):
         """Search your stage"""
-        return self.env['ticket.stage'].search(
+        return self.env['it.itl.bd.ticket.stage'].search(
             [('name', '=', 'Draft')], limit=1).id
 
     @api.model
@@ -387,7 +387,7 @@ class HelpTicket(models.Model):
         grouping when displaying records in a grouped view.
 
         """
-        stage_ids = self.env['ticket.stage'].search([])
+        stage_ids = self.env['it.itl.bd.ticket.stage'].search([])
         return stage_ids
 
 
@@ -422,7 +422,7 @@ class HelpTicket(models.Model):
 
         # Handle stage-based datetime updates
         if 'stage_id' in vals:
-            new_stage = self.env['ticket.stage'].browse(vals['stage_id'])
+            new_stage = self.env['it.itl.bd.ticket.stage'].browse(vals['stage_id'])
             current_time = fields.Datetime.now()
 
             for record in self:
@@ -443,7 +443,7 @@ class HelpTicket(models.Model):
                     vals['done_by'] = self.env.user.id  # Set current user
         # Handle the correction stage notification
         if 'stage_id' in vals:
-            correction_stage = self.env['ticket.stage'].search([('name', '=', 'Correction')], limit=1)
+            correction_stage = self.env['it.itl.bd.ticket.stage'].search([('name', '=', 'Correction')], limit=1)
             if vals['stage_id'] == correction_stage.id:
                 # Allow stage update only if bypass_correction_notification is set in the context
                 if not self.env.context.get('bypass_correction_notification', False):
@@ -649,7 +649,7 @@ class HelpTicket(models.Model):
             'type': 'ir.actions.act_window',
             'name': 'Multiple Ticket Stage Updates',
             'view_mode': 'form',
-            'view_id': self.env.ref('itl_it_ticketing.update_ticket_stage_form_view').id,
+            'view_id': self.env.ref('itl_it_ticketing.it_itl_bd_update_ticket_stage_form_view').id,
             'res_model': 'ticket.update.wizard',
             'target': 'new',
             'context': {

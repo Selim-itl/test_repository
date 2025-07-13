@@ -12,7 +12,7 @@
             </tree>
         </field>
     </record>
-    <record model="ir.ui.view" id="update_ticket_stage_form_view">
+    <record model="ir.ui.view" id="it_itl_bd_update_ticket_stage_form_view">
         <field name="name">ticket.update.wizard.form.view</field>
         <field name="model">ticket.update.wizard</field>
         <field name="arch" type="xml">
@@ -44,7 +44,7 @@
     </record>
 
     <!--  This code is used for Action Window-->
-    <record model="ir.actions.act_window" id="update_ticket_stage_action_window">
+    <record model="ir.actions.act_window" id="update_it_itl_bd_ticket_stage_action_window">
         <field name="name">Update Multiple Ticket Stage</field>
         <field name="res_model">ticket.update.wizard</field>
         <field name="view_mode">tree,form</field>
@@ -52,6 +52,6 @@
 
 
 <!--    <menuitem id="update_work_order_wizard_id" name="Update Multiple Ticket Stage" parent="lv_module_conf"-->
-<!--              action="update_work_order_action_window" groups="itl_it_ticketing.update_ticket_stage_action_window"/>-->
+<!--              action="update_work_order_action_window" groups="itl_it_ticketing.update_it_itl_bd_ticket_stage_action_window"/>-->
 
 </odoo>

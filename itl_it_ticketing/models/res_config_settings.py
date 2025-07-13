@@ -36,7 +36,7 @@ class ResConfigSettings(models.TransientModel):
         config_parameter='itl_it_ticketing.no_of_days',
         help='After this date the ticket will closing automatically ')
     closed_stage = fields.Many2one(
-        'ticket.stage', string='Closing stage',
+        'it.itl.bd.ticket.stage', string='Closing stage',
         help='Closing Stage',
         config_parameter='itl_it_ticketing.closed_stage')
 
@@ -58,8 +58,8 @@ class ResConfigSettings(models.TransientModel):
          clears it for other stages.
        """
         stage = self.closed_stage.id
-        in_stage = self.env['ticket.stage'].search([('id', '=', stage)])
-        not_in_stage = self.env['ticket.stage'].search([('id', '!=', stage)])
+        in_stage = self.env['it.itl.bd.ticket.stage'].search([('id', '=', stage)])
+        not_in_stage = self.env['it.itl.bd.ticket.stage'].search([('id', '!=', stage)])
         in_stage.closing_stage = True
         for each in not_in_stage:
             each.closing_stage = False

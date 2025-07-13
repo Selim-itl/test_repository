@@ -11,7 +11,7 @@ class SelectedTicketStageUpdate(models.Model):
                                  default=lambda self: self.env.user.partner_id)
     update_date = fields.Datetime(string="Update Time", default=fields.Datetime.now, readonly=True)
     stage_id = fields.Many2one(
-        'ticket.stage',
+        'it.itl.bd.ticket.stage',
         string='Stage',
         required=True,
         help='Stages of the ticket.',

@@ -51,7 +51,7 @@ class TicketCorrectionModel(models.Model):
             raise ValidationError("No associated ticket found for this correction.")
 
         # Get the "Correction" stage
-        correction_stage = self.env['ticket.stage'].search([('name', '=', 'Correction')], limit=1)
+        correction_stage = self.env['it.itl.bd.ticket.stage'].search([('name', '=', 'Correction')], limit=1)
         if not correction_stage:
             raise ValidationError("Correction stage is not configured. Please contact your administrator.")
 

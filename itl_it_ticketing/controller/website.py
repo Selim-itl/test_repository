@@ -33,7 +33,7 @@ class WebsiteFormInherit(WebsiteForm):
         """Website Help Desk Form"""
         customer = request.env.user.partner_id
         if model_name == 'help.ticket':
-            tickets = request.env['ticket.stage'].search([])
+            tickets = request.env['it.itl.bd.ticket.stage'].search([])
             for rec in tickets:
                 sequence = tickets.mapped('sequence')
                 lowest_sequence = tickets.filtered(

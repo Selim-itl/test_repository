@@ -53,9 +53,9 @@
               action="it_itl_bd_helpdesk_tag_action"
               parent="helpdesk_configuration_menu"
               sequence="4"/>
-    <menuitem id="ticket_stage_menu"
+    <menuitem id="it_itl_bd_ticket_stage_menu"
               name="Stages"
-              action="ticket_stage_action"
+              action="it_itl_bd_ticket_stage_action"
               parent="helpdesk_configuration_menu"
               sequence="5"/>
     <menuitem id="it_itl_bd_helpdesk_types_menu"

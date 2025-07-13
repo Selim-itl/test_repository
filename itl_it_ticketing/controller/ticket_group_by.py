@@ -22,7 +22,7 @@ class TicketGroupBy(http.Controller):
             context.append(tickets)
         if group_value == '1':
             context = []
-            stage_ids = request.env['ticket.stage'].search([])
+            stage_ids = request.env['it.itl.bd.ticket.stage'].search([])
             for stage in stage_ids:
                 ticket_ids = request.env['help.ticket'].search([
                     ('stage_id', '=', stage.id)

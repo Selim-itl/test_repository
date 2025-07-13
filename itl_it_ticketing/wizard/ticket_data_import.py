@@ -87,7 +87,7 @@ class ImportHelpTicket(models.TransientModel):
             customers = {customer.name: customer for customer in
                          self.env['res.partner'].search([('name', 'in', list(customer_names))])}
             stages = {stage.name: stage for stage in
-                      self.env['ticket.stage'].search([('name', 'in', list(stage_names))])}
+                      self.env['it.itl.bd.ticket.stage'].search([('name', 'in', list(stage_names))])}
             chains = {chain.name: chain for chain in self.env['it.itl.bd.chain.conf'].search([('name', 'in', list(chain_names))])}
             assigned_users_dict = {user.name: user for user in
                                    self.env['res.users'].search([('name', 'in', list(assigned_users))])}
@@ -131,7 +131,7 @@ class ImportHelpTicket(models.TransientModel):
                 # Get or create Stage safely
                 stage = stages.get(stage_name)
                 if not stage:
-                    stage = self.env['ticket.stage'].create({'name': stage_name})
+                    stage = self.env['it.itl.bd.ticket.stage'].create({'name': stage_name})
                     stages[stage_name] = stage
 
                 # Debugging: Check if we have stage and its id

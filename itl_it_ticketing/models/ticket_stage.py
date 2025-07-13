@@ -13,7 +13,7 @@ class TicketStage(models.Model):
     'Resolved', or 'Closed'. Stages are used to organize and track the
     progress of tickets throughout their lifecycle."""
 
-    _name = 'ticket.stage'
+    _name = 'it.itl.bd.ticket.stage'
     _description = 'Ticket Stage'
     _order = 'sequence, id'
     _fold_name = 'fold'
