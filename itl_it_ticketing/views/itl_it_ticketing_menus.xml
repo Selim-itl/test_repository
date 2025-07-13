@@ -77,5 +77,5 @@
 <!--              sequence="7"/>-->
 
     <menuitem id="import_report_menus" name="Import Ticket Wizard"
-                  action="import_help_ticket_wizard_action" parent="helpdesk_configuration_menu" sequence="09"/>
+                  action="it_itl_bd_import_help_ticket_wizard_action" parent="helpdesk_configuration_menu" sequence="09"/>
 </odoo>

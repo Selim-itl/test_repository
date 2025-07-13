@@ -3,9 +3,9 @@
     <data>
 
         <!-- Import lvorder Wizard View -->
-        <record id="help_tickets_form_view" model="ir.ui.view">
-            <field name="name">import.help.ticket.wizard.view</field>
-            <field name="model">import.help.ticket</field>
+        <record id="it_itl_bd_help_tickets_form_view" model="ir.ui.view">
+            <field name="name">it.itl.bd.import.help.ticket.wizard.view</field>
+            <field name="model">it.itl.bd.import.help.ticket</field>
             <field name="arch" type="xml">
                 <form string="CV Work Orders">
                     <group>
@@ -44,10 +44,10 @@
         </record>
 
         <!-- Import lvorder Wizard Action -->
-        <record id="import_help_ticket_wizard_action" model="ir.actions.act_window">
-            <field name="name">Import Ticket Data</field>
+        <record id="it_itl_bd_import_help_ticket_wizard_action" model="ir.actions.act_window">
+            <field name="name">it_itl_bd Import Ticket Data</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">import.help.ticket</field>
+            <field name="res_model">it.itl.bd.import.help.ticket</field>
             <field name="view_mode">form</field>
             <field name="target">new</field>
         </record>

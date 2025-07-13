@@ -10,7 +10,7 @@ from odoo import models, fields, _
 _logger = logging.getLogger(__name__)
 
 class ImportHelpTicket(models.TransientModel):
-    _name = 'import.help.ticket'
+    _name = 'it.itl.bd.import.help.ticket'
     _description = 'Import Help Ticket Data'
 
     file_type = fields.Selection([('CSV', 'CSV File'), ('XLS', 'XLS File')], string='File Type', default='XLS')
