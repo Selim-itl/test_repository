@@ -14,7 +14,7 @@ access_it_itl_bd_helpdesk_categories_user,access.it.itl.bd.helpdesk.categories.u
 access_it_itl_bd_helpdesk_categories_leader,access.it.itl.bd.helpdesk.categories.leader,model_it_itl_bd_helpdesk_categories,itl_it_ticketing.helpdesk_team_leader,1,1,1,1
 access_it_itl_bd_helpdesk_categories_manager,access.it.itl.bd.helpdesk.categories.manager,model_it_itl_bd_helpdesk_categories,itl_it_ticketing.helpdesk_manager,1,1,1,1
 it_itl_bd_merge_tickets_manager,it.itl.bd.merge.tickets.manager,model_it_itl_bd_merge_tickets,itl_it_ticketing.helpdesk_manager,1,1,1,1
-support_tickets_manager,support.tickets.manager,model_support_tickets,itl_it_ticketing.helpdesk_manager,1,1,1,1
+it_itl_bd_support_tickets_manager,it.itl.bd.support.tickets.manager,model_it_itl_bd_support_tickets,itl_it_ticketing.helpdesk_manager,1,1,1,1
 access_help_ticket_stage_user,access.ticket.stage.user,model_ticket_stage,base.group_user,1,1,1,1
 
 access_it_itl_bd_chain_conf,access.it.itl.bd.chain.conf,model_it_itl_bd_chain_conf,base.group_user,1,1,1,1

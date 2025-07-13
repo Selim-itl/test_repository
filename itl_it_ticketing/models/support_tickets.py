@@ -8,7 +8,7 @@ from odoo import fields, models
 
 class SupportTickets(models.Model):
     """Creating onetoMany model to handle the merging ticket"""
-    _name = 'support.tickets'
+    _name = 'it.itl.bd.support.tickets'
     _description = 'Support Tickets'
 
     subject = fields.Char(string='Subject', help='Subject of the merged '

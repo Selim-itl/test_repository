@@ -34,7 +34,7 @@ class MergeTickets(models.Model):
                                 )
     subject = fields.Char(string='Subject', help='Enter the New Ticket Subject')
     merge_reason = fields.Char(string='Merge Reason', help='Merging Reason')
-    support_ticket_ids = fields.One2many('support.tickets',
+    support_ticket_ids = fields.One2many('it.itl.bd.support.tickets',
                                          'support_ticket_id',
                                          string='Support Tickets')
     active = fields.Boolean(string='Disable Record', help='Disable Record')

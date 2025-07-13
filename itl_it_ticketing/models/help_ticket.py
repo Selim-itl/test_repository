@@ -567,9 +567,9 @@ class HelpTicket(models.Model):
 
     def action_open_merged_tickets(self):
         """ Smart button of the merged tickets"""
-        ticket_ids = self.env['support.tickets'].search(
+        ticket_ids = self.env['it.itl.bd.support.tickets'].search(
             [('merged_ticket', '=', self.id)])
-        # Get the display_name matching records from the support.tickets
+        # Get the display_name matching records from the it.itl.bd.support.tickets
         helpdesk_ticket_ids = ticket_ids.mapped('display_name')
         # Get the IDs of the help.ticket records matching the display names
         help_ticket_records = self.env['help.ticket'].search(
