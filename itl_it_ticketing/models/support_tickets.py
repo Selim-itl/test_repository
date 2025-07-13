@@ -17,7 +17,7 @@ class SupportTickets(models.Model):
                                help='Display name of the merged tickets')
     description = fields.Char(string='Description',
                               help='Description of the tickets')
-    support_ticket_id = fields.Many2one('merge.tickets',
+    support_ticket_id = fields.Many2one('it.itl.bd.merge.tickets',
                                         string='Support Tickets',
                                         help='Support tickets')
     merged_ticket = fields.Integer(string='Merged Ticket ID',

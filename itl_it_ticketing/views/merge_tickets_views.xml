@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 <!--    Merge_tickets form view-->
-    <record id="merge_tickets_view_form" model="ir.ui.view">
-        <field name="name">merge.tickets.view.form</field>
-        <field name="model">merge.tickets</field>
+    <record id="it_itl_bd_merge_tickets_view_form" model="ir.ui.view">
+        <field name="name">it.itl.bd.merge.tickets.view.form</field>
+        <field name="model">it.itl.bd.merge.tickets</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
@@ -44,15 +44,15 @@
         </field>
     </record>
 <!--    Contextual action creation-->
-     <record id="merge_tickets_action" model="ir.actions.act_window">
-        <field name="name">Merge Tickets</field>
-        <field name="res_model">merge.tickets</field>
+     <record id="it_itl_bd_merge_tickets_action" model="ir.actions.act_window">
+        <field name="name">it_itl_bd_Merge Tickets</field>
+        <field name="res_model">it.itl.bd.merge.tickets</field>
         <field name="type">ir.actions.act_window</field>
         <field name="context">{'active_ids': active_ids}</field>
         <field name="view_mode">form</field>
         <field name="binding_model_id" ref="model_help_ticket"/>
         <field name="target">new</field>
         <field name="view_id"
-               ref="itl_it_ticketing.merge_tickets_view_form"/>
+               ref="itl_it_ticketing.it_itl_bd_merge_tickets_view_form"/>
     </record>
 </odoo>

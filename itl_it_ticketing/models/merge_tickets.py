@@ -12,7 +12,7 @@ class MergeTickets(models.Model):
        This class allows users to merge support tickets or create new ones.
     It provides functionality to consolidate information from multiple tickets.
     """
-    _name = 'merge.tickets'
+    _name = 'it.itl.bd.merge.tickets'
     _description = 'Merge Tickets'
     _rec_name = 'support_ticket_id'
 
