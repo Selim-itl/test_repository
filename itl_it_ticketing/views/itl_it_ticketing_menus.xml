@@ -20,12 +20,12 @@
     <menuitem id="help_ticket_menu_my_ticket"
               parent="help_ticket_menu"
               name="My Tickets"
-              action="help_ticket_my_ticket_action"
+              action="it_itl_bd_help_ticket_my_ticket_action"
               sequence="1"/>
     <menuitem id="help_ticket_menu_all_ticket"
               parent="help_ticket_menu"
               name="All IT Tickets"
-              action="help_ticket_action"
+              action="it_itl_bd_help_ticket_action"
               sequence="2"
               groups="itl_it_ticketing.helpdesk_manager"/>
     <menuitem id="helpdesk_configuration_menu"
@@ -67,7 +67,7 @@
               name="Report"
               parent="helpdesk_dashboard_menu_root"
               sequence="3"
-              action="help_ticket_report_action"/>
+              action="it_itl_bd_help_ticket_report_action"/>
 
 <!--    This is required for CS ticketing module-->
 <!--    <menuitem id="it_itl_bd_helpdesk_chain_menu"-->

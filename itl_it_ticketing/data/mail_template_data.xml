@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <!--Ticket mail template-->
-    <record id="mail_template_create_ticket" model="mail.template">
+    <record id="mail_template_create_ticket_it_itl_bd" model="mail.template">
         <field name="name">Create Ticket</field>
         <field name="model_id"
-               ref="itl_it_ticketing.model_help_ticket"/>
+               ref="itl_it_ticketing.model_it_itl_bd_help_ticket"/>
         <field name="auto_delete" eval="True"/>
         <field name="email_from">itlbd.helpdesk@gmail.com</field>
         <field name="email_to">{{object.customer_id.email}}</field>
@@ -25,10 +25,10 @@
         </field>
     </record>
     <!--     Helpdesk ticket Rating template-->
-    <record id="mail_template_ticket_rating" model="mail.template">
+    <record id="mail_template_ticket_rating_it_itl_bd" model="mail.template">
         <field name="name">Close Ticket And Feedback</field>
         <field name="model_id"
-               ref="itl_it_ticketing.model_help_ticket"/>
+               ref="itl_it_ticketing.model_it_itl_bd_help_ticket"/>
         <field name="auto_delete" eval="True"/>
         <field name="email_from">itlbd.helpdesk@gmail.com</field>
         <field name="email_to">{{object.customer_id.email}}</field>
@@ -55,10 +55,10 @@
         </field>
     </record>
     <!--        Ticket response sending formate-->
-    <record id="mail_template_ticket_reopened" model="mail.template">
+    <record id="mail_template_ticket_reopened_it_itl_bd" model="mail.template">
         <field name="name">Reopened Ticket</field>
         <field name="model_id"
-               ref="itl_it_ticketing.model_help_ticket"/>
+               ref="itl_it_ticketing.model_it_itl_bd_help_ticket"/>
         <field name="auto_delete" eval="True"/>
         <field name="email_from">itlbd.helpdesk@gmail.com</field>
         <field name="email_to">{{object.customer_id.email}}</field>
@@ -78,10 +78,10 @@
         </field>
     </record>
     <!--        Ticket approved sending formate-->
-    <record id="mail_template_ticket_approved" model="mail.template">
+    <record id="mail_template_ticket_approved_it_itl_bd" model="mail.template">
         <field name="name">Approve Ticket</field>
         <field name="model_id"
-               ref="itl_it_ticketing.model_help_ticket"/>
+               ref="itl_it_ticketing.model_it_itl_bd_help_ticket"/>
         <field name="auto_delete" eval="True"/>
         <field name="email_from">itlbd.helpdesk@gmail.com</field>
         <field name="email_to">{{object.customer_id.email}}</field>
@@ -102,10 +102,10 @@
         </field>
     </record>
     <!--  Cancelled tickets  formate-->
-    <record id="mail_template_ticket_canceled" model="mail.template">
+    <record id="mail_template_ticket_canceled_it_itl_bd" model="mail.template">
         <field name="name">Cancel Ticket</field>
         <field name="model_id"
-               ref="itl_it_ticketing.model_help_ticket"/>
+               ref="itl_it_ticketing.model_it_itl_bd_help_ticket"/>
         <field name="auto_delete" eval="True"/>
         <field name="email_from">itlbd.helpdesk@gmail.com</field>
         <field name="email_to">{{object.customer_id.email}}</field>
@@ -125,7 +125,7 @@
         </field>
     </record>
     <!--        Mail formate to inform the Team to assign a task-->
-        <record id="mail_template_itl_it_ticketing_assign"
+        <record id="mail_template_itl_it_ticketing_assign_it_itl_bd"
                 model="mail.template">
             <field name="name">Ticket Assign</field>
 <!--            <field name="email_from"/>-->
@@ -133,7 +133,7 @@
             <field name="email_to"/>
             <field name="subject"/>
             <field name="model_id"
-                   ref="itl_it_ticketing.model_help_ticket"/>
+                   ref="itl_it_ticketing.model_it_itl_bd_help_ticket"/>
             <field name="body_html" type="html">
                 <div style="margin: 0px; padding: 0px;">
                     <p>Dear,
@@ -160,7 +160,7 @@
             </field>
         </record>
 <!--      Mail sending formate to inform the user to assign the task-->
-        <record id="mail_template_itl_it_ticketing_assign_user"
+        <record id="mail_template_itl_it_ticketing_assign_user_it_itl_bd"
                 model="mail.template">
             <field name="name">Ticket Assign to User</field>
 <!--            <field name="email_from"/>-->
@@ -168,7 +168,7 @@
             <field name="email_to"/>
             <field name="subject"/>
             <field name="model_id"
-                   ref="itl_it_ticketing.model_help_ticket"/>
+                   ref="itl_it_ticketing.model_it_itl_bd_help_ticket"/>
             <field name="body_html" type="html">
                 <div style="margin: 0px; padding: 0px;">
                     <p>Dear,
@@ -194,7 +194,7 @@
             </field>
         </record>
 <!--       Mail sending to the customer for informing the assigned user-->
-        <record id="mail_template_itl_it_ticketing_to_customer"
+        <record id="mail_template_itl_it_ticketing_to_customer_it_itl_bd"
                 model="mail.template">
             <field name="name">Mail To Customer Assign to User</field>
 <!--            <field name="email_from"/>-->
@@ -202,7 +202,7 @@
             <field name="email_to"/>
             <field name="subject"/>
             <field name="model_id"
-                   ref="itl_it_ticketing.model_help_ticket"/>
+                   ref="itl_it_ticketing.model_it_itl_bd_help_ticket"/>
             <field name="body_html" type="html">
                 <div style="margin: 0px; padding: 0px;">
                     <p>Dear,

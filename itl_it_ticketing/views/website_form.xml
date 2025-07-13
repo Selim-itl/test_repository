@@ -130,7 +130,7 @@
                                               enctype="multipart/form-data"
                                               class="o_mark_required"
                                               data-mark="*"
-                                              data-model_name="help.ticket"
+                                              data-model_name="it.itl.bd.help.ticket"
                                               data-success-mode="redirect"
                                               data-success-page="/helpdesk-thank-you"
                                               data-pre-fill="true">

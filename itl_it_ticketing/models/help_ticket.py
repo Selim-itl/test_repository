@@ -396,8 +396,8 @@ class HelpTicket(models.Model):
     def create(self, vals):
         """Override create to enforce unique subject and handle default values."""
         # Validate uniqueness of subject
-        if 'subject' in vals and self.search([('subject', '=', vals['subject'])]):
-            raise ValidationError("The ticket subject must be unique.")
+        # if 'subject' in vals and self.search([('subject', '=', vals['subject'])]):
+        #     raise ValidationError("The ticket subject must be unique.")
 
         # Handle default values for name and description
         if not vals.get('subject'):
@@ -417,8 +417,8 @@ class HelpTicket(models.Model):
         """Override write to handle unique subject and stage-based datetime updates."""
 
         # Validate uniqueness of subject
-        if 'subject' in vals and self.search([('subject', '=', vals['subject']), ('id', '!=', self.id)]):
-            raise ValidationError("The ticket subject must be unique.")
+        # if 'subject' in vals and self.search([('subject', '=', vals['subject']), ('id', '!=', self.id)]):
+        #     raise ValidationError("The ticket subject must be unique.")
 
         # Handle stage-based datetime updates
         if 'stage_id' in vals:
@@ -490,7 +490,7 @@ class HelpTicket(models.Model):
             raise UserError('No Tasks to Bill')
         total = sum(x.effective_hours for x in tasks if x.effective_hours > 0)
         invoice_no = self.env['ir.sequence'].next_by_code(
-            'ticket.invoice')
+            'it.itl.bd.ticket.invoice')
         self.env['account.move'].create([
             {
                 'name': invoice_no,

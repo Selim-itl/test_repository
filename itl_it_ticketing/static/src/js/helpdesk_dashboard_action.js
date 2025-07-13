@@ -24,7 +24,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'New Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.new_id]],
@@ -35,7 +35,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'In progress Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.in_progress_id]],
@@ -46,7 +46,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'MIS Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.in_mis_id]],
@@ -58,7 +58,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'CS Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.cs_id]],
@@ -70,7 +70,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'Canceled Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.canceled_id]],
@@ -81,7 +81,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'Verification Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.verification_id]],
@@ -92,7 +92,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'Correction Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.correction_id]],
@@ -104,7 +104,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'Done Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.done_id]],
@@ -115,7 +115,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'Closed Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.closed_id]],
@@ -141,7 +141,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'New Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.new_id]],
@@ -152,7 +152,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'In progress Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.in_progress_id]],
@@ -163,7 +163,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'MIS Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.in_mis_id]],
@@ -175,7 +175,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'CS Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.cs_id]],
@@ -187,7 +187,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'Correction Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.correction_id]],
@@ -199,7 +199,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'Canceled Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.canceled_id]],
@@ -210,7 +210,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'Verification Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.verification_id]],
@@ -222,7 +222,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'Done Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.done_id]],
@@ -233,7 +233,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'Closed Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.closed_id]],
@@ -258,7 +258,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'New Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.new_id]],
@@ -269,7 +269,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'In progress Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.in_progress_id]],
@@ -280,7 +280,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'MIS Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.in_mis_id]],
@@ -292,7 +292,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'CS Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.cs_id]],
@@ -303,7 +303,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'Canceled Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.canceled_id]],
@@ -314,7 +314,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'Verification Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.verification_id]],
@@ -326,7 +326,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'Correction Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.correction_id]],
@@ -338,7 +338,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'Done Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.done_id]],
@@ -349,7 +349,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'Closed Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.closed_id]],
@@ -374,7 +374,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'New Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.new_id]],
@@ -385,7 +385,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'In progress Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.in_progress_id]],
@@ -397,7 +397,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'MIS Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.in_mis_id]],
@@ -409,7 +409,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'CS Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.cs_id]],
@@ -420,7 +420,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'Canceled Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.canceled_id]],
@@ -431,7 +431,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'Verification Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.verification_id]],
@@ -443,7 +443,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'Correction Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.correction_id]],
@@ -455,7 +455,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'Done Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.done_id]],
@@ -466,7 +466,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.do_action({
             name:'Closed Tickets',
             type: 'ir.actions.act_window',
-            res_model: 'help.ticket',
+            res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
             views: [[false, 'list'],[false, 'form']],
             domain: [['id', '=', res.closed_id]],

@@ -50,7 +50,7 @@
         <field name="type">ir.actions.act_window</field>
         <field name="context">{'active_ids': active_ids}</field>
         <field name="view_mode">form</field>
-        <field name="binding_model_id" ref="model_help_ticket"/>
+        <field name="binding_model_id" ref="model_it_itl_bd_help_ticket"/>
         <field name="target">new</field>
         <field name="view_id"
                ref="itl_it_ticketing.it_itl_bd_merge_tickets_view_form"/>

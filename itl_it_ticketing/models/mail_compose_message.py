@@ -16,7 +16,7 @@ class MailComposeMessage(models.TransientModel):
         """Override of the base '_action_send_mail' method to include additional
         logic when sending emails related to help tickets.
 
-        If the model associated with the mail is 'help.ticket', update the
+        If the model associated with the mail is 'it.itl.bd.help.ticket', update the
         'replied_date' field of the associated help ticket to the current date.
         """
         if self.model == 'it.itl.bd.help.ticket':

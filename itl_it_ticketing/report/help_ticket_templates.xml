@@ -99,9 +99,9 @@
         </t>
     </template>
 <!--    Pdf report action-->
-     <record id="action_report_helpdesk_ticket" model="ir.actions.report">
+     <record id="action_report_helpdesk_ticket_it_itl_bd" model="ir.actions.report">
             <field name="name">Helpdesk Ticket Report</field>
-            <field name="model">help.ticket</field>
+            <field name="model">it.itl.bd.help.ticket</field>
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">itl_it_ticketing.report_helpdesk_ticket</field>
             <field name="report_file">itl_it_ticketing.report_helpdesk_ticket</field>

@@ -99,13 +99,13 @@
         </t>
     </template>
 <!--    PDF Report template binding action-->
-    <record id="report_ticket" model="ir.actions.report">
+    <record id="report_ticket_it_itl_bd" model="ir.actions.report">
         <field name="name">Support Ticket</field>
-        <field name="model">help.ticket</field>
+        <field name="model">it.itl.bd.help.ticket</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">itl_it_ticketing.report_help_ticket</field>
         <field name="report_file">itl_it_ticketing.report_help_ticket</field>
-        <field name="binding_model_id" ref="model_help_ticket"/>
+        <field name="binding_model_id" ref="model_it_itl_bd_help_ticket"/>
         <field name="binding_view_types"/>
         <field name="binding_type">report</field>
     </record>
