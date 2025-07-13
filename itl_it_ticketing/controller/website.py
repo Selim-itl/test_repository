@@ -32,7 +32,7 @@ class WebsiteFormInherit(WebsiteForm):
     def _handle_website_form(self, model_name, **kwargs):
         """Website Help Desk Form"""
         customer = request.env.user.partner_id
-        if model_name == 'help.ticket':
+        if model_name == 'it.itl.bd.help.ticket':
             tickets = request.env['it.itl.bd.ticket.stage'].search([])
             for rec in tickets:
                 sequence = tickets.mapped('sequence')
@@ -57,7 +57,7 @@ class WebsiteFormInherit(WebsiteForm):
                     'ticket_type': kwargs.get('ticket_type'),
                     'category_id': kwargs.get('category'),
                 }
-                ticket_id = request.env['help.ticket'].sudo().create(rec_val)
+                ticket_id = request.env['it.itl.bd.help.ticket'].sudo().create(rec_val)
                 request.session['ticket_number'] = ticket_id.name
                 request.session['ticket_id'] = ticket_id.id
                 model_record = request.env['ir.model'].sudo().search(
@@ -71,7 +71,7 @@ class WebsiteFormInherit(WebsiteForm):
                         attached_file = attachment.read()
                         request.env['ir.attachment'].sudo().create({
                             'name': attachment.filename,
-                            'res_model': 'help.ticket',
+                            'res_model': 'it.itl.bd.help.ticket',
                             'res_id': ticket_id.id,
                             'type': 'binary',
                             'datas': base64.encodebytes(attached_file),
@@ -94,7 +94,7 @@ class WebsiteFormInherit(WebsiteForm):
                     'ticket_type': kwargs.get('ticket_type'),
                     'category_id': kwargs.get('category'),
                 }
-                ticket_id = request.env['help.ticket'].sudo().create(rec_val)
+                ticket_id = request.env['it.itl.bd.help.ticket'].sudo().create(rec_val)
                 request.session['ticket_number'] = ticket_id.name
                 request.session['ticket_id'] = ticket_id.id
                 model_record = request.env['ir.model'].sudo().search(
@@ -108,7 +108,7 @@ class WebsiteFormInherit(WebsiteForm):
                         attached_file = attachment.read()
                         request.env['ir.attachment'].sudo().create({
                             'name': attachment.filename,
-                            'res_model': 'help.ticket',
+                            'res_model': 'it.itl.bd.help.ticket',
                             'res_id': ticket_id.id,
                             'type': 'binary',
                             'datas': base64.encodebytes(attached_file),

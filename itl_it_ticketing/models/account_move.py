@@ -12,5 +12,5 @@ class AccountMove(models.Model):
     include a reference to a help ticket through the 'ticket_id' field."""
     _inherit = 'account.move'
 
-    ticket_id = fields.Many2one('help.ticket', string='Ticket',
+    ticket_id = fields.Many2one('it.itl.bd.help.ticket', string='Ticket',
                                 help='Choose the tickets')

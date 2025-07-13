@@ -27,7 +27,7 @@ class MergeTickets(models.Model):
                                   string='Customer',
                                   help='Customer Name'
                                   )
-    support_ticket_id = fields.Many2one('help.ticket',
+    support_ticket_id = fields.Many2one('it.itl.bd.help.ticket',
                                         string='Support Ticket')
     new_ticket = fields.Boolean(string='Create New Ticket ?',
                                 help='Creating new tickets or not.',
@@ -43,7 +43,7 @@ class MergeTickets(models.Model):
         """It handles to get the default pre-filled the values """
         defaults = super().default_get(fields_list)
         active_ids = self._context.get('active_ids', [])
-        selected_tickets = self.env['help.ticket'].browse(active_ids)
+        selected_tickets = self.env['it.itl.bd.help.ticket'].browse(active_ids)
         customer_ids = selected_tickets.mapped('customer_id')
         subjects = selected_tickets.mapped('subject')
         display_names = selected_tickets.mapped('display_name')
@@ -74,7 +74,7 @@ class MergeTickets(models.Model):
                 f"{ticket.description}"
                 for ticket in self.support_ticket_ids
             )
-            self.env['help.ticket'].create({
+            self.env['it.itl.bd.help.ticket'].create({
                 'subject': self.subject,
                 'description': description,
                 'customer_id': self.customer_id.id,

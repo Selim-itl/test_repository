@@ -17,9 +17,9 @@ class TicketPortal(portal.CustomerPortal):
         and get their count."""
         values = super()._prepare_home_portal_values(counters)
         if 'ticket_count' in counters:
-            ticket_count = request.env['help.ticket'].search_count(
+            ticket_count = request.env['it.itl.bd.help.ticket'].search_count(
                 self._get_tickets_domain()) if request.env[
-                'help.ticket'].check_access_rights(
+                'it.itl.bd.help.ticket'].check_access_rights(
                 'read', raise_exception=False) else 0
             values['ticket_count'] = ticket_count
         return values
@@ -33,7 +33,7 @@ class TicketPortal(portal.CustomerPortal):
         """Displays a list of tickets for the current user in the user's
         portal."""
         domain = self._get_tickets_domain()
-        tickets = request.env['help.ticket'].search(domain)
+        tickets = request.env['it.itl.bd.help.ticket'].search(domain)
         values = {
             'default_url': "/my/tickets",
             'tickets': tickets,
@@ -47,7 +47,7 @@ class TicketPortal(portal.CustomerPortal):
     def portal_tickets_details(self, id):
         """Displays a list of tickets for the current user in the user's
         portal."""
-        details = request.env['help.ticket'].sudo().search([('id', '=', id)])
+        details = request.env['it.itl.bd.help.ticket'].sudo().search([('id', '=', id)])
         data = {
             'page_name': 'ticket',
             'ticket': True,
@@ -62,7 +62,7 @@ class TicketPortal(portal.CustomerPortal):
         """Download the ticket information in a pdf formate of the current
          event ticket."""
         data = {
-            'help': request.env['help.ticket'].sudo().browse(int(id))}
+            'help': request.env['it.itl.bd.help.ticket'].sudo().browse(int(id))}
         report = request.env.ref(
             'itl_it_ticketing.action_report_helpdesk_ticket')
         pdf, _ = request.env.ref(
@@ -97,7 +97,7 @@ class WebsiteDesk(http.Controller):
                 sitemap=True)
     def rating(self, ticket_id):
         """Render the helpdesk ticket rating form."""
-        ticket = request.env['help.ticket'].browse(ticket_id)
+        ticket = request.env['it.itl.bd.help.ticket'].browse(ticket_id)
         data = {
             'ticket': ticket.id,
         }
@@ -109,7 +109,7 @@ class WebsiteDesk(http.Controller):
                 sitemap=True)
     def rating_backend(self, ticket_id, **post):
         """Render the thanks page after rating the helpdesk ticket."""
-        ticket = request.env['help.ticket'].browse(ticket_id)
+        ticket = request.env['it.itl.bd.help.ticket'].browse(ticket_id)
         ticket.write({
             'customer_rating': post['rating'],
             'review': post['message'],

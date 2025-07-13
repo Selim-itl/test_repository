@@ -20,7 +20,7 @@ class ProjectTask(models.Model):
     ticket_billed = fields.Boolean(string='Billed',
                                    help='Whether the Ticket has been Invoiced'
                                         'or Not')
-    ticket_id = fields.Many2one('help.ticket', string='Ticket',
+    ticket_id = fields.Many2one('it.itl.bd.help.ticket', string='Ticket',
                                 help='The help ticket associated with this '
                                      'recordThis field allows you to link '
                                      'this record to an existing help ticket.')

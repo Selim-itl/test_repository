@@ -94,7 +94,7 @@ class ImportHelpTicket(models.TransientModel):
 
             # Fetch existing tickets by subject and customer
             ticket_subjects = set(str(rec["Subject"]).strip() for rec in batch if rec["Subject"])
-            existing_tickets_db = self.env['help.ticket'].search([('subject', 'in', list(ticket_subjects))])
+            existing_tickets_db = self.env['it.itl.bd.help.ticket'].search([('subject', 'in', list(ticket_subjects))])
             existing_ticket_map = {(ticket.subject, ticket.customer_id.id): ticket for ticket in existing_tickets_db}
 
             # Process each record in the batch
@@ -191,10 +191,10 @@ class ImportHelpTicket(models.TransientModel):
 
             # Update existing tickets
             for ticket_id, values in existing_tickets.items():
-                self.env['help.ticket'].browse(ticket_id).write(values)
+                self.env['it.itl.bd.help.ticket'].browse(ticket_id).write(values)
 
             # Create new tickets
             if new_tickets:
-                self.env['help.ticket'].create(new_tickets)
+                self.env['it.itl.bd.help.ticket'].create(new_tickets)
 
 

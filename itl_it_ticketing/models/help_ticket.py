@@ -34,7 +34,7 @@ class HelpTicket(models.Model):
     requests, associated project, priority level, stage, cost per hour, service
     product, start and end dates, and related tasks and invoices."""
 
-    _name = 'help.ticket'
+    _name = 'it.itl.bd.help.ticket'
     _description = 'Help Ticket'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
@@ -227,7 +227,7 @@ class HelpTicket(models.Model):
         fields accordingly. If a template is associated with the stage, it
         sends an email using that template."""
         rec_id = self._origin.id
-        data = self.env['help.ticket'].search([('id', '=', rec_id)])
+        data = self.env['it.itl.bd.help.ticket'].search([('id', '=', rec_id)])
         data.last_update_date = fields.Datetime.now()
         if self.stage_id.starting_stage:
             data.start_date = fields.Datetime.now()
@@ -364,7 +364,7 @@ class HelpTicket(models.Model):
         if auto_close:
             no_of_days = self.env['ir.config_parameter'].sudo().get_param(
                 'itl_it_ticketing.no_of_days')
-            records = self.env['help.ticket'].search([])
+            records = self.env['it.itl.bd.help.ticket'].search([])
             for rec in records:
                 days = (fields.Datetime.today() - rec.create_date).days
                 if days >= int(no_of_days):
@@ -403,7 +403,7 @@ class HelpTicket(models.Model):
         if not vals.get('subject'):
             vals['subject'] = vals['name']
         if vals.get('subject'):
-            vals['name'] = self.env['ir.sequence'].next_by_code('help.ticket')
+            vals['name'] = self.env['ir.sequence'].next_by_code('it.itl.bd.help.ticket')
         else:
             vals['name'] = ''
 
@@ -571,14 +571,14 @@ class HelpTicket(models.Model):
             [('merged_ticket', '=', self.id)])
         # Get the display_name matching records from the it.itl.bd.support.tickets
         helpdesk_ticket_ids = ticket_ids.mapped('display_name')
-        # Get the IDs of the help.ticket records matching the display names
-        help_ticket_records = self.env['help.ticket'].search(
+        # Get the IDs of the it.itl.bd.help.ticket records matching the display names
+        help_ticket_records = self.env['it.itl.bd.help.ticket'].search(
             [('name', 'in', helpdesk_ticket_ids)])
         return {
             'type': 'ir.actions.act_window',
             'name': 'Helpdesk Ticket',
             'view_mode': 'tree,form',
-            'res_model': 'help.ticket',
+            'res_model': 'it.itl.bd.help.ticket',
             'domain': [('id', 'in', help_ticket_records.ids)],
             'context': self.env.context,
         }
@@ -601,7 +601,7 @@ class HelpTicket(models.Model):
                 'target': 'new',
                 'views': [[False, 'form']],
                 'context': {
-                    'default_model': 'help.ticket',
+                    'default_model': 'it.itl.bd.help.ticket',
                     'default_res_id': self.id,
                     'default_template_id': template_id.id
                 }
@@ -614,7 +614,7 @@ class HelpTicket(models.Model):
             'target': 'new',
             'views': [[False, 'form']],
             'context': {
-                'default_model': 'help.ticket',
+                'default_model': 'it.itl.bd.help.ticket',
                 'default_res_id': self.id,
             }
         }
@@ -663,7 +663,7 @@ class HelpTicket(models.Model):
 
         # Search for attachments related to the current ticket
         attachments = self.env['ir.attachment'].search([
-            ('res_model', '=', 'help.ticket'),
+            ('res_model', '=', 'it.itl.bd.help.ticket'),
             ('res_id', '=', self.id),
             ('mimetype', 'not ilike', 'image/png'),  # Exclude .png
             ('mimetype', 'not ilike', 'image/jpeg'),  # Exclude .jpeg

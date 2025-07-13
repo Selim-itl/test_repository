@@ -16,7 +16,7 @@ class TicketSearch(http.Controller):
         """ Display the list of tickets satisfying the searching condition.
         Searching the ticket  based on name or subject"""
         search_value = kwargs.get("search_value")
-        tickets = request.env["help.ticket"].search(
+        tickets = request.env["it.itl.bd.help.ticket"].search(
             ['|', ('name', 'ilike', search_value),
              ('subject', 'ilike', search_value)])
         values = {

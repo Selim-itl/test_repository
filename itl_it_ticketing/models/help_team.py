@@ -38,14 +38,14 @@ class HelpTeam(models.Model):
         ('cancelled', 'Cancelled')], 'Status', default='created', readonly=True)
 
     ticket_num = fields.Integer(string="Ticket", compute='count_cs_ticket')
-    ticket_info = fields.One2many('help.ticket', 'team_id', 'Tickets')
+    ticket_info = fields.One2many('it.itl.bd.help.ticket', 'team_id', 'Tickets')
 
     @api.depends('ticket_info')  # Count and Show Ticket from smart button
     def count_cs_ticket(self):
         self.ticket_num = len(self.ticket_info)
         return {
             'name': 'Ticket Management',
-            'res_model': 'help.ticket',
+            'res_model': 'it.itl.bd.help.ticket',
             'view_mode': 'tree,form',
             'domain': [('team_id', '=', self.name)],
             'type': 'ir.actions.act_window',

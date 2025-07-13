@@ -18,13 +18,13 @@ class TicketGroupBy(http.Controller):
         group_value = kwargs.get("search_value")
         if group_value == '0':
             context = []
-            tickets = request.env["help.ticket"].search([])
+            tickets = request.env["it.itl.bd.help.ticket"].search([])
             context.append(tickets)
         if group_value == '1':
             context = []
             stage_ids = request.env['it.itl.bd.ticket.stage'].search([])
             for stage in stage_ids:
-                ticket_ids = request.env['help.ticket'].search([
+                ticket_ids = request.env['it.itl.bd.help.ticket'].search([
                     ('stage_id', '=', stage.id)
                 ])
                 if ticket_ids:
@@ -36,7 +36,7 @@ class TicketGroupBy(http.Controller):
             context = []
             type_ids = request.env['it.itl.bd.helpdesk.types'].search([])
             for types in type_ids:
-                ticket_ids_1 = request.env['help.ticket'].search([
+                ticket_ids_1 = request.env['it.itl.bd.help.ticket'].search([
                     ('ticket_type', '=', types.id)
                 ])
                 if ticket_ids_1:

@@ -19,8 +19,8 @@ class MailComposeMessage(models.TransientModel):
         If the model associated with the mail is 'help.ticket', update the
         'replied_date' field of the associated help ticket to the current date.
         """
-        if self.model == 'help.ticket':
-            ticket_id = self.env['help.ticket'].browse(self.res_id)
+        if self.model == 'it.itl.bd.help.ticket':
+            ticket_id = self.env['it.itl.bd.help.ticket'].browse(self.res_id)
             ticket_id.replied_date = fields.Date.today()
         return super(MailComposeMessage, self)._action_send_mail(
             auto_commit=auto_commit)

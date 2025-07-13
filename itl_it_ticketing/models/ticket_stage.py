@@ -59,14 +59,14 @@ class TicketStage(models.Model):
     template_id = fields.Many2one('mail.template',
                                   string='Template',
                                   help='Choose the template',
-                                  domain="[('model', '=', 'help.ticket')]")
+                                  domain="[('model', '=', 'it.itl.bd.help.ticket')]")
     group_ids = fields.Many2many('res.groups',
                                  string='Group',
                                  help='Choose the group ID')
     fold = fields.Boolean(string='Fold', help='When enabling this the ticket '
                                               'stage will folded on the view')
     # Smart button field
-    ticket_info = fields.One2many('help.ticket', 'stage_id', 'Ticket Stage')
+    ticket_info = fields.One2many('it.itl.bd.help.ticket', 'stage_id', 'Ticket Stage')
     ticket_num = fields.Integer(string="Ticket", compute='action_open_ticket')
 
 
@@ -89,7 +89,7 @@ class TicketStage(models.Model):
         self.ticket_num = len(self.ticket_info)
         return {
             'name': 'Ticket Management',
-            'res_model': 'help.ticket',
+            'res_model': 'it.itl.bd.help.ticket',
             'view_mode': 'tree,form',
             'domain': [('stage_id', '=', self.name)],
             'type': 'ir.actions.act_window',

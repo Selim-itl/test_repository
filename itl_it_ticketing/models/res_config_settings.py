@@ -43,7 +43,7 @@ class ResConfigSettings(models.TransientModel):
     reply_template_id = fields.Many2one(
         'mail.template',
         string='Relaid ID',
-        domain="[('model', '=', 'help.ticket')]",
+        domain="[('model', '=', 'it.itl.bd.help.ticket')]",
         config_parameter='itl_it_ticketing.reply_template_id',
         help='Reply Template')
     helpdesk_menu_show = fields.Boolean(

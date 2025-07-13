@@ -6,7 +6,7 @@ class SelectedTicketStageUpdate(models.Model):
     _name = 'it.itl.bd.ticket.update.wizard'
     _description = 'Multiple Ticket Stage Update'
 
-    ticket_ids = fields.Many2many(comodel_name='help.ticket', string='Tickets', readonly=True)
+    ticket_ids = fields.Many2many(comodel_name='it.itl.bd.help.ticket', string='Tickets', readonly=True)
     updated_by = fields.Many2one(comodel_name='res.partner', string="Updated By",readonly=True,
                                  default=lambda self: self.env.user.partner_id)
     update_date = fields.Datetime(string="Update Time", default=fields.Datetime.now, readonly=True)
