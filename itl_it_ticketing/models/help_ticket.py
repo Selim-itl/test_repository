@@ -650,7 +650,7 @@ class HelpTicket(models.Model):
             'name': 'Multiple Ticket Stage Updates',
             'view_mode': 'form',
             'view_id': self.env.ref('itl_it_ticketing.it_itl_bd_update_ticket_stage_form_view').id,
-            'res_model': 'ticket.update.wizard',
+            'res_model': 'it.itl.bd.ticket.update.wizard',
             'target': 'new',
             'context': {
                 'default_ticket_ids': [(6, 0, selected_tickets)],  # Set default selected tickets

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <record model="ir.ui.view" id="update_multiple_ticket_stage_tree_view">
-        <field name="name">ticket.update.wizard.View</field>
-        <field name="model">ticket.update.wizard</field>
+    <record model="ir.ui.view" id="it_itl_bd_update_multiple_ticket_stage_tree_view">
+        <field name="name">it.itl.bd.ticket.update.wizard.View</field>
+        <field name="model">it.itl.bd.ticket.update.wizard</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="updated_by"/>
@@ -13,8 +13,8 @@
         </field>
     </record>
     <record model="ir.ui.view" id="it_itl_bd_update_ticket_stage_form_view">
-        <field name="name">ticket.update.wizard.form.view</field>
-        <field name="model">ticket.update.wizard</field>
+        <field name="name">it.itl.bd.ticket.update.wizard.form.view</field>
+        <field name="model">it.itl.bd.ticket.update.wizard</field>
         <field name="arch" type="xml">
             <form string="tree_string">
                 <sheet>
@@ -45,8 +45,8 @@
 
     <!--  This code is used for Action Window-->
     <record model="ir.actions.act_window" id="update_it_itl_bd_ticket_stage_action_window">
-        <field name="name">Update Multiple Ticket Stage</field>
-        <field name="res_model">ticket.update.wizard</field>
+        <field name="name">it.itl.bd Update Multiple Ticket Stage</field>
+        <field name="res_model">it.itl.bd.ticket.update.wizard</field>
         <field name="view_mode">tree,form</field>
     </record>
 

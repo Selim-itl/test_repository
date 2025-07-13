@@ -3,7 +3,7 @@ from odoo.exceptions import UserError
 
 
 class SelectedTicketStageUpdate(models.Model):
-    _name = 'ticket.update.wizard'
+    _name = 'it.itl.bd.ticket.update.wizard'
     _description = 'Multiple Ticket Stage Update'
 
     ticket_ids = fields.Many2many(comodel_name='help.ticket', string='Tickets', readonly=True)
