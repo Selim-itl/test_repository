@@ -40,7 +40,7 @@
         'views/helpdesk_tag_views.xml',
         'views/helpdesk_types_views.xml',
         'views/ticket_stage_views.xml',
-        # 'views/chain_conf_view.xml',
+        'views/chain_conf_view.xml',
         'views/helpdesk_replay_template.xml',
         'views/itl_it_ticketing_menus.xml',
         'views/correction_ticket_view.xml',
