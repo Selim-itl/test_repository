@@ -18,14 +18,16 @@ class HelpTeam(models.Model):
         'res.users',
         string='Team Leader',
         help='Name of the Helpdesk Team Leader.',
-        domain=lambda self: [('groups_id', 'in', self.env.ref(
-            'itl_it_ticketing.helpdesk_team_leader').id)])
+        # domain=lambda self: [('groups_id', 'in', self.env.ref(
+        #     'itl_it_ticketing.helpdesk_team_leader').id)]
+    )
     member_ids = fields.Many2many(
         'res.users',
         string='Members',
         help='Users who belong to that Helpdesk Team',
-        domain=lambda self: [('groups_id', 'in', self.env.ref(
-            'itl_it_ticketing.helpdesk_user').id)])
+        # domain=lambda self: [('groups_id', 'in', self.env.ref(
+        #     'itl_it_ticketing.helpdesk_user').id)]
+    )
     email = fields.Char(string='Email', help='Email')
     project_id = fields.Many2one('project.project',
                                  string='Project',
@@ -63,8 +65,9 @@ class HelpTeam(models.Model):
         return {'domain': {'member_ids': [
             ('id', '=', filtered_members.ids),
             ('groups_id', 'in', self.env.ref('base.group_user').id),
-            ('groups_id', 'not in', self.env.ref(
-                'itl_it_ticketing.helpdesk_team_leader').id)]}}
+            # ('groups_id', 'not in', self.env.ref(
+            #     'itl_it_ticketing.helpdesk_team_leader').id)
+        ]}}
 
 
     def team_base_ticket(self):

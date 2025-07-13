@@ -125,8 +125,8 @@ class HelpTicket(models.Model):
     assigned_user = fields.Many2many(
         'res.users',
         string='Ticket Owner',
-        domain=lambda self: [('groups_id', 'in', self.env.ref(
-            'itl_it_ticketing.helpdesk_user').id)],
+        # domain=lambda self: [('groups_id', 'in', self.env.ref(
+        #     'itl_it_ticketing.helpdesk_user').id)],
         help='Choose the Assigned User Name')
 
     category_id = fields.Many2one('it.itl.bd.helpdesk.categories',

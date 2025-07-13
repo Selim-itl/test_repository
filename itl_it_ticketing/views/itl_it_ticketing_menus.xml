@@ -10,7 +10,7 @@
               name="IT Ticketing"
               action="action_help_ticket_dashboard"
               sequence="1"
-              groups="itl_it_ticketing.helpdesk_user"/>
+    /> <!--    groups="itl_it_ticketing.helpdesk_user"-->
 
 
     <menuitem id="help_ticket_menu"
@@ -26,8 +26,8 @@
               parent="help_ticket_menu"
               name="All IT Tickets"
               action="it_itl_bd_help_ticket_action"
-              sequence="2"
-              groups="itl_it_ticketing.helpdesk_manager"/>
+              sequence="2"/>
+<!--              groups="itl_it_ticketing.helpdesk_manager"-->
     <menuitem id="helpdesk_configuration_menu"
               name="Configuration"
               sequence="50"
@@ -35,9 +35,9 @@
     <menuitem id="it_itl_bd_helpdesk_categories_menu"
               name="Categories"
               action="it_itl_bd_helpdesk_categories_action"
-              groups="itl_it_ticketing.group_show_category"
               parent="helpdesk_configuration_menu"
               sequence="10"/>
+    <!--              groups="itl_it_ticketing.group_show_category"-->
     <menuitem id="res_config_settings_menu"
               name="Settings"
               action="helpdesk_config_settings_action"

@@ -29,7 +29,7 @@
 
         'views/help_team_views.xml',
         'views/portal_search_templates.xml',
-        'views/res_config_settings_views.xml',
+        # 'views/res_config_settings_views.xml',
         'views/website_form.xml',
         'views/report_templates.xml',
         'views/help_ticket_views.xml',
