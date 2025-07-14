@@ -100,9 +100,9 @@ class HelpTicket(models.Model):
                                              ('detailed_type', '=', 'service')])
     create_date = fields.Datetime(string='Creation Date', help='Created date of'
                                                                'the Ticket')
-    start_date = fields.Datetime(string='Start Date', help='Start Date of the' 'Ticket')
-    end_date = fields.Datetime(string='End Date', help='End Date of the Ticket')
-    required_date = fields.Datetime(string='Required Date', help='Required Date of the Ticket')
+    start_date = fields.Datetime(string='Start Date & Time', help='Start Date & Time of the' 'Ticket')
+    end_date = fields.Datetime(string='End Date & Time', help='End Date & Time of the Ticket')
+    required_date = fields.Char(string='Required Time', help='Required working hours/days')
     public_ticket = fields.Boolean(string="Public Ticket", help='Public Ticket')
     invoice_ids = fields.Many2many('account.move',
                                    string='Invoices',
@@ -115,8 +115,8 @@ class HelpTicket(models.Model):
     color = fields.Integer(string="Color", help='Color')
     replied_date = fields.Datetime(string='Replied date',
                                    help='Replied Date of the Ticket')
-    last_update_date = fields.Datetime(string='Last Update Date',
-                                       help='Last Update Date of Ticket')
+    last_update_date = fields.Datetime(string='Last status Update',
+                                       help='Last Update Date of Ticket', readonly=True)
     ticket_type = fields.Many2one('it.itl.bd.helpdesk.types',
                                   string='Ticket Type', help='Ticket Type')
     team_head = fields.Many2one('res.users', string='Team Leader',
@@ -290,7 +290,8 @@ class HelpTicket(models.Model):
                                    help='Display the default category')
     customer_rating = fields.Selection(RATING, default='0',
                                        string='Customer Rating',
-                                       help='Display the customer rating.')
+                                       help='Display the customer rating.',
+                                       tracking=True)
 
     review = fields.Char(string='Review',
                          help='Customer review of the ticket.')

@@ -70,7 +70,7 @@
                                 attrs="{'invisible':[('billable','=',False)]}">
                         </button>
                     </div>
-                    <field name="kanban_state" widget="state_selection"/>
+<!--                    <field name="kanban_state" widget="state_selection"/>-->
 
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only"/>
@@ -86,8 +86,8 @@
                         <group>
                             <!--                            <field name="customer_id"/>-->
                             <field name="employee_id"/>
-                            <field name="employee_ids" widget="many2many_tags"/>
-                            <field name="job_reference"/>
+<!--                            <field name="employee_ids" widget="many2many_tags"/>-->
+<!--                            <field name="job_reference"/>-->
                             <field name="ticket_type"/>
                             <field name="required_date"/>
                             <field name="email"/>
@@ -102,9 +102,9 @@
                             <field name="create_date"/>
                             <field name="start_date"/>
                             <field name="end_date"/>
-                            <field name="work_orders"/>
+<!--                            <field name="work_orders"/>-->
                             <field name="product_ids" widget="many2many_tags"/>
-                            <field name="chain_ids" widget="many2many_tags"/>
+<!--                            <field name="chain_ids" widget="many2many_tags"/>-->
                             <field name="verified_by"/>
                             <field name="done_by"/>
                             <field name="correction_by"/>
@@ -222,7 +222,7 @@
                 <field name="subject"/>
                 <field name="employee_id"/>
                 <!--                <field name="customer_id"/>-->
-                <field name="chain_ids" widget="many2many_tags"/>
+<!--                <field name="chain_ids" widget="many2many_tags"/>-->
                 <field name="create_date"/>
                 <field name="stage_id"/>
                 <field name="last_update_date"/>
@@ -267,7 +267,7 @@
                 <field name="color"/>
                 <field name="name"/>
                 <field name="stage_id"/>
-                <field name="kanban_state"/>
+<!--                <field name="kanban_state"/>-->
                 <progressbar field="kanban_state"
                              colors="{&quot;done&quot;: &quot;success&quot;, &quot;blocked&quot;: &quot;danger&quot;, &quot;normal&quot;: &quot;200&quot;}"/>
 
@@ -312,9 +312,9 @@
                                     <!--                                    <field name="customer_id"/>-->
                                     <field name="employee_id"/>
                                 </div>
-                                <div class="row">
-                                    <field name="chain_ids"/>
-                                </div>
+<!--                                <div class="row">-->
+<!--                                    <field name="chain_ids"/>-->
+<!--                                </div>-->
                                 <div class="row">
                                     <div class="col">
                                         <field name="ticket_from"
@@ -337,8 +337,8 @@
                                                widget="kanban_activity"/>
                                     </div>
                                     <div class="oe_kanban_bottom_right">
-                                        <field name="kanban_state"
-                                               widget="state_selection"/>
+<!--                                        <field name="kanban_state"-->
+<!--                                               widget="state_selection"/>-->
                                         <field name="user_id"
                                                widget="many2one_avatar_user"/>
                                     </div>
@@ -437,13 +437,13 @@
             <search string="Ticket Search">
                 <field name="name" string="Ticket"/>
                 <field name="subject"/>
-                <field name="chain_ids"/>
-                <field name="job_reference"/>
+<!--                <field name="chain_ids"/>-->
+<!--                <field name="job_reference"/>-->
                 <!--                <field name="customer_id"/>-->
                 <field name="employee_id"/>
                 <field name="user_id"/>
-                <field name="employee_ids"/>
-                <field name="work_orders"/>
+<!--                <field name="employee_ids"/>-->
+<!--                <field name="work_orders"/>-->
                 <field name="done_by"/>
                 <field name="correction_by"/>
                 <filter string="My Tickets" name="My Ticket"
