@@ -164,7 +164,7 @@ class HelpTicket(models.Model):
     last_update_date = fields.Datetime(string='Last status Update',
                                        help='Last Update Date of Ticket', readonly=True)
     ticket_type = fields.Many2one('it.itl.bd.helpdesk.types',
-                                  string='Ticket Type', help='Ticket Type')
+                                  string='Ticket Type', help='Ticket Type', required=True)
     team_head = fields.Many2one('res.users', string='Team Leader',
                                 compute='_compute_team_head',
                                 help='Team Leader Name', store=True)
@@ -372,8 +372,16 @@ class HelpTicket(models.Model):
             record.is_verification_stage = record.stage_id.name == 'Verification'
     # Wizard update trace fields:
     updated_by = fields.Many2one(comodel_name='res.partner', string="Updated By")
-    update_date = fields.Datetime(string="Update Time")
+    update_date = fields.Datetime(string="Update Time", readonly=True)
     update_reason = fields.Text(string="Update Reason")
+
+    """Setting value to updated_by and update_date"""
+    @api.onchange('description')
+    def _onchange_description(self):
+        if self.description:
+            partner = self.env.user.partner_id
+            self.updated_by = partner
+            self.update_date = fields.Datetime.now()
 
     # stage base date field
     mis_datetime = fields.Datetime(string="MIS Date", readonly=True)

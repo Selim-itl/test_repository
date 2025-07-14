@@ -125,11 +125,9 @@
                         <page string="Ticket Owner Info">
                             <group>
                                 <group>
-                                    <field name="team_id"/>
+                                    <field name="team_id" options="{'no_create': 1}"/>
                                     <field name="team_head"/>
-                                    <field name="assigned_user" widget="many2many_tags"/>
-                                    <field name="category_id"
-                                           groups="itl_it_ticketing.group_show_category_it_itl_bd"/>
+                                    <field name="assigned_user" widget="many2many_tags" options="{'no_create': 1}"/>
                                 </group>
                                 <group>
                                     <field name="project_id" invisible="1"/>
@@ -151,9 +149,9 @@
                                        placeholder="Provide the reason in detail"/>
                             </group>
                             <group>
-                                <field name="updated_by" placeholder="Update By Wizard"/>
-                                <field name="update_date" placeholder="Wizard Update Time"/>
                                 <field name="update_reason" placeholder="Update Reason"/>
+                                <field name="updated_by" placeholder="Update By Wizard" force_save="1"/>
+                                <field name="update_date" placeholder="Wizard Update Time" force_save="1"/>
                             </group>
                         </page>
                         <page string="Attachments">
