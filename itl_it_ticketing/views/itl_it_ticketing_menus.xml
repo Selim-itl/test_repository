@@ -32,11 +32,11 @@
               name="Configuration"
               sequence="50"
               parent="helpdesk_dashboard_menu_root"/>
-    <menuitem id="it_itl_bd_helpdesk_categories_menu"
-              name="Categories"
-              action="it_itl_bd_helpdesk_categories_action"
-              parent="helpdesk_configuration_menu"
-              sequence="10"/>
+<!--    <menuitem id="it_itl_bd_helpdesk_categories_menu"-->
+<!--              name="Categories"-->
+<!--              action="it_itl_bd_helpdesk_categories_action"-->
+<!--              parent="helpdesk_configuration_menu"-->
+<!--              sequence="10"/>-->
     <!--              groups="itl_it_ticketing.group_show_category"-->
 
 <!--    Hiding settings of IT Ticketing-->
