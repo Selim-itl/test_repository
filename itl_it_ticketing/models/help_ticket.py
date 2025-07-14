@@ -53,8 +53,21 @@ class HelpTicket(models.Model):
                           help='Subject of the Ticket')
     description = fields.Text(string='Description',
                               help='Issue Description')
-    email = fields.Char(string='Email', help='Email of the User.')
-    phone = fields.Char(string='Phone', help='Phone Number of the user')
+    email = fields.Char(string='Email', help='Email of the User.', readonly=True)
+    phone = fields.Char(string='Phone', help='Phone Number of the user', readonly=True)
+    department = fields.Char(string='Department', help='Department of the user', readonly=True)
+
+    @api.onchange('employee_id')
+    def _onchange_employee_id(self):
+        if self.employee_id:
+            self.email = self.employee_id.work_email
+            self.phone = self.employee_id.work_phone
+            self.department = self.employee_id.department_id.name if self.employee_id.department_id else ''
+        else:
+            self.email = False
+            self.phone = False
+            self.department = False
+
     team_id = fields.Many2one('it.itl.bd.help.team', string='Helpdesk Team',
                               help='The helpdesk team responsible for '
                                    'handling requests related to this '
@@ -409,7 +422,7 @@ class HelpTicket(models.Model):
             vals['name'] = ''
 
         if not vals.get('description'):
-            vals['description'] = 'Give your ticket description'
+            # vals['description'] = 'Give your ticket description'
             vals['ticket_from'] = 'mail_create'
 
         return super(HelpTicket, self).create(vals)
