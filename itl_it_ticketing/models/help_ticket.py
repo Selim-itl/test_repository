@@ -84,8 +84,8 @@ class HelpTicket(models.Model):
             self.department = False
             self.designation = False
 
-    team_id = fields.Many2one('it.itl.bd.help.team', string='Helpdesk Team',
-                              default=lambda self: self.env['it.itl.bd.help.team'].search([], limit=1),
+    team_id = fields.Many2one('it.itl.bd.help.team', string='Helpdesk Team'
+                              ,default=lambda self: self.env['it.itl.bd.help.team'].search([], limit=1),
                               help='The helpdesk team responsible for '
                                    'handling requests related to this '
                                    'record')
