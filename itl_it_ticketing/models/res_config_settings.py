@@ -21,7 +21,7 @@ class ResConfigSettings(models.TransientModel):
         string="Category",
         config_parameter='itl_it_ticketing.show_category',
         help='When enabling this its show the category of ticket',
-        implied_group='itl_it_ticketing.group_show_category')
+        implied_group='itl_it_ticketing.group_show_category_it_itl_bd')
     product_website = fields.Boolean(
         string="Product On Website",
         config_parameter='itl_it_ticketing.product_website',
@@ -67,18 +67,18 @@ class ResConfigSettings(models.TransientModel):
     @api.constrains('show_category')
     def show_category_subcategory(self):
         """ This constraint method is triggered when the 'show_category' field
-        is changed. It updates the users in the 'group_show_category' based on
+        is changed. It updates the users in the 'group_show_category_it_itl_bd' based on
         the 'show_category' value.
        """
         if self.show_category:
             group_cat = self.env.ref(
-                'itl_it_ticketing.group_show_category')
+                'itl_it_ticketing.group_show_category_it_itl_bd')
             group_cat.write({
                 'users': [(4, self.env.user.id)]
             })
         else:
             group_cat = self.env.ref(
-                'itl_it_ticketing.group_show_category')
+                'itl_it_ticketing.group_show_category_it_itl_bd')
             group_cat.write({
                 'users': [(5, False)]
             })

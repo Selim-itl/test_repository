@@ -125,7 +125,7 @@
                                     <field name="team_head"/>
                                     <field name="assigned_user" widget="many2many_tags"/>
                                     <field name="category_id"
-                                           groups="itl_it_ticketing.group_show_category"/>
+                                           groups="itl_it_ticketing.group_show_category_it_itl_bd"/>
                                 </group>
                                 <group>
                                     <field name="project_id" invisible="1"/>

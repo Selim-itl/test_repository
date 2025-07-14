@@ -38,11 +38,13 @@
               parent="helpdesk_configuration_menu"
               sequence="10"/>
     <!--              groups="itl_it_ticketing.group_show_category"-->
-    <menuitem id="res_config_settings_menu"
-              name="Settings"
-              action="helpdesk_config_settings_action"
-              parent="helpdesk_configuration_menu"
-              sequence="1"/>
+
+<!--    Hiding settings of IT Ticketing-->
+<!--    <menuitem id="res_config_settings_menu"-->
+<!--              name="Settings"-->
+<!--              action="helpdesk_config_settings_action"-->
+<!--              parent="helpdesk_configuration_menu"-->
+<!--              sequence="1"/>-->
     <menuitem id="it_itl_bd_help_team_menu"
               name="Teams"
               action="it_itl_bd_help_team_action"

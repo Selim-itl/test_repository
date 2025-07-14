@@ -1,6 +1,6 @@
 <odoo>
 <!--    Pdf report template-->
-    <template id="report_helpdesk_ticket">
+    <template id="report_helpdesk_ticket_it_itl_bd">
         <t t-call="web.html_container">
             <t t-foreach="help" t-as="o">
                 <t t-call="web.external_layout">
@@ -100,11 +100,11 @@
     </template>
 <!--    Pdf report action-->
      <record id="action_report_helpdesk_ticket_it_itl_bd" model="ir.actions.report">
-            <field name="name">Helpdesk Ticket Report</field>
+            <field name="name">IT Ticket Report</field>
             <field name="model">it.itl.bd.help.ticket</field>
             <field name="report_type">qweb-pdf</field>
-            <field name="report_name">itl_it_ticketing.report_helpdesk_ticket</field>
-            <field name="report_file">itl_it_ticketing.report_helpdesk_ticket</field>
+            <field name="report_name">itl_it_ticketing.report_helpdesk_ticket_it_itl_bd</field>
+            <field name="report_file">itl_it_ticketing.report_helpdesk_ticket_it_itl_bd</field>
             <field name="binding_type">report</field>
         </record>
 </odoo>
