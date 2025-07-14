@@ -85,7 +85,9 @@
                     <group>
                         <group>
                             <!--                            <field name="customer_id"/>-->
+                            <field name="ticket_creator_id"/>
                             <field name="employee_id"/>
+                            <field name="designation" force_save="1"/>
 <!--                            <field name="employee_ids" widget="many2many_tags"/>-->
 <!--                            <field name="job_reference"/>-->
                             <field name="department" force_save="1"/>
@@ -109,6 +111,7 @@
                             <field name="verified_by"/>
                             <field name="done_by"/>
                             <field name="correction_by"/>
+                            <field name="total_hours"/>
                             <field name="show_category" invisible="1"/>
                             <field name="merge_count" invisible="1"/>
                             <field name="merge_ticket_invisible" invisible="1"/>

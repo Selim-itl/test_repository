@@ -7,7 +7,7 @@ import logging
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
 from odoo.exceptions import ValidationError
-from datetime import datetime
+from datetime import datetime, timedelta
 _logger = logging.getLogger(__name__)
 
 PRIORITIES = [
@@ -47,15 +47,27 @@ class HelpTicket(models.Model):
                                   string='Customer Name',
                                   help='Select the Customer Name')
     employee_id = fields.Many2one('hr.employee',
-                                  string='Employee Name',
-                                  help='Select the Employee Name')
+                                  string='Ticket Issuer',
+                                  help='Select the Employee Name who has issue')
     subject = fields.Text(string='Subject', required=True,
                           help='Subject of the Ticket')
+    ticket_creator_id = fields.Many2one(
+        'res.users',
+        string='Ticket Creator',
+        default=lambda self: self.env.user,
+        readonly=True,
+        help="The user who created the ticket."
+    )
     description = fields.Text(string='Description',
                               help='Issue Description')
-    email = fields.Char(string='Email', help='Email of the User.', readonly=True)
-    phone = fields.Char(string='Phone', help='Phone Number of the user', readonly=True)
-    department = fields.Char(string='Department', help='Department of the user', readonly=True)
+    email = fields.Char(string='Email', help='Email of the issuer.', readonly=True)
+    phone = fields.Char(string='Phone', help='Phone Number of the issuer', readonly=True)
+    department = fields.Char(string='Department', help='Department of the issuer', readonly=True)
+    designation = fields.Char(string='Designation', help='Designation of the issuer', readonly=True)
+    ticket_creator = fields.Many2one('hr.employee',
+                                  string='Ticket Creator')
+
+    """Setting value to email, phone and department when employee_id got value"""
 
     @api.onchange('employee_id')
     def _onchange_employee_id(self):
@@ -63,10 +75,14 @@ class HelpTicket(models.Model):
             self.email = self.employee_id.work_email
             self.phone = self.employee_id.work_phone
             self.department = self.employee_id.department_id.name if self.employee_id.department_id else ''
+            self.designation = self.employee_id.job_title or (
+                self.employee_id.job_id.name if self.employee_id.job_id else ''
+            )
         else:
             self.email = False
             self.phone = False
             self.department = False
+            self.designation = False
 
     team_id = fields.Many2one('it.itl.bd.help.team', string='Helpdesk Team',
                               help='The helpdesk team responsible for '
@@ -115,7 +131,24 @@ class HelpTicket(models.Model):
                                                                'the Ticket')
     start_date = fields.Datetime(string='Start Date & Time', help='Start Date & Time of the' 'Ticket')
     end_date = fields.Datetime(string='End Date & Time', help='End Date & Time of the Ticket')
-    required_date = fields.Char(string='Required Time', help='Required working hours/days')
+    total_hours = fields.Float(
+        string='Time worked (hrs)',
+        compute='_compute_total_hours',
+        store=True,
+        help='Total hours between start and end date'
+    )
+
+    """Count total hours worked on the ticket based on start and end value"""
+    @api.depends('start_date', 'end_date')
+    def _compute_total_hours(self):
+        for record in self:
+            if record.start_date and record.end_date:
+                duration = record.end_date - record.start_date
+                record.total_hours = duration.total_seconds() / 3600.0
+            else:
+                record.total_hours = 0.0
+
+    required_date = fields.Date(string='Due date', help='Expected due date')
     public_ticket = fields.Boolean(string="Public Ticket", help='Public Ticket')
     invoice_ids = fields.Many2many('account.move',
                                    string='Invoices',
