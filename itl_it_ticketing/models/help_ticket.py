@@ -446,7 +446,13 @@ class HelpTicket(models.Model):
         stage_ids = self.env['it.itl.bd.ticket.stage'].search([])
         return stage_ids
 
-
+    @api.returns('self', lambda value: value.id)
+    def copy(self, default=None):
+        if default is None:
+            default = {}
+        if 'subject' not in default:
+            default['subject'] = _("%s (copy)", self.subject)
+        return super(HelpTicket, self).copy(default)
 
     @api.model
     def create(self, vals):
