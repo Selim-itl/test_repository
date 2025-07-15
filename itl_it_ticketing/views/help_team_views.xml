@@ -1,44 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-<!--    Helpdesk ticket team view action-->
+    <!--    Helpdesk ticket team view action-->
     <record id="it_itl_bd_help_team_action" model="ir.actions.act_window">
-            <field name="name">IT Help Team</field>
-            <field name="res_model">it.itl.bd.help.team</field>
-            <field name="view_mode">tree,form</field>
-        </record>
-<!--    Help_team form view-->
+        <field name="name">IT Help Team</field>
+        <field name="res_model">it.itl.bd.help.team</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!--    Help_team form view-->
     <record id="it_itl_bd_help_team_view_form" model="ir.ui.view">
         <field name="name">it.itl.bd.help.team.view.form</field>
         <field name="model">it.itl.bd.help.team</field>
         <field name="arch" type="xml">
             <form>
-                <header>
-                    <button string="Created" type="object" name="team_base_ticket" class="btn btn-primary"/>
+                <!--                <header>-->
+                <!--                    <button string="Created" type="object" name="team_base_ticket" class="btn btn-primary"/>-->
 
-<!--                    <button string="Send by Email" name="button_patient_card_send_by_email" type="object"-->
-<!--                            class="oe_highlight"/>-->
-                    <button string="Cancel" type="object" name="btn_team_cancel"
-                            confirm="Are you sure you want to do this?" class="btn btn-danger"/>
-                    <field name="state" widget="statusbar" type="object"/>
-                </header>
+                <!--&lt;!&ndash;                    <button string="Send by Email" name="button_patient_card_send_by_email" type="object"&ndash;&gt;-->
+                <!--&lt;!&ndash;                            class="oe_highlight"/>&ndash;&gt;-->
+                <!--                    <button string="Cancel" type="object" name="btn_team_cancel"-->
+                <!--                            confirm="Are you sure you want to do this?" class="btn btn-danger"/>-->
+                <!--                    <field name="state" widget="statusbar" type="object"/>-->
+                <!--                </header>-->
                 <sheet>
-                    <xpath expr="//sheet/group" position="after">
-                        <div class="oe_button_box" name="button_box">
-                            <button type="object" name="count_cs_ticket" class="oe_stat_button" icon="fa-list-alt">
-                                <field name="ticket_num" widget="statinfo"/>
-                            </button>
-<!--                            <button type="object" name="count_admission" class="oe_stat_button" icon="fa-pagelines">-->
-<!--                                <field name="admission_count" widget="statinfo"/>-->
-<!--                            </button>-->
-                        </div>
-                    </xpath>
+<!--                    <div class="oe_button_box" name="button_box">-->
+<!--                        <button type="object" name="count_cs_ticket" class="oe_stat_button" icon="fa-list-alt">-->
+<!--                            <field name="ticket_num" widget="statinfo"/>-->
+<!--                        </button>-->
+<!--                    </div>-->
                     <group>
                         <group>
                             <field name="name"/>
                         </group>
                         <group>
                             <field name="team_lead_id"/>
-<!--                            <field name="project_id"/>-->
+                            <!--                            <field name="project_id"/>-->
                         </group>
                     </group>
                     <notebook>
@@ -49,18 +44,18 @@
                                     <field name="name"/>
                                     <templates>
                                         <t t-name="kanban-box">
-                                        <div t-attf-class="oe_kanban_global_click">
-                                        <div class="o_kanban_image">
-                                            <field name="image_1920" widget='image' class="oe_avatar"/>
-                                        </div>
-                                            <div class="oe_kanban_details ml8">
-                                                <div class="o_kanban_record_headings">
-                                                    <strong>
-                                                        <field name="name"/>
-                                                    </strong>
+                                            <div t-attf-class="oe_kanban_global_click">
+                                                <div class="o_kanban_image">
+                                                    <field name="image_1920" widget='image' class="oe_avatar"/>
+                                                </div>
+                                                <div class="oe_kanban_details ml8">
+                                                    <div class="o_kanban_record_headings">
+                                                        <strong>
+                                                            <field name="name"/>
+                                                        </strong>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         </t>
                                     </templates>
                                 </kanban>
@@ -71,7 +66,7 @@
             </form>
         </field>
     </record>
-<!--    Help_team tree view-->
+    <!--    Help_team tree view-->
     <record id="it_itl_bd_help_team_view_tree" model="ir.ui.view">
         <field name="name">it.itl.bd.help.team.view.tree</field>
         <field name="model">it.itl.bd.help.team</field>
