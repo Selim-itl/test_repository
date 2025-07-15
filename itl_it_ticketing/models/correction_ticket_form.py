@@ -14,7 +14,7 @@ class TicketCorrectionModel(models.Model):
 
 
     name = fields.Char(string="Correction ID.")
-    ticket_id = fields.Many2one('it.itl.bd.help.ticket', string='Ticket NO.')
+    ticket_id = fields.Many2one('it.itl.bd.help.ticket', string='Ticket NO.', ondelete='cascade')
     correction_date = fields.Date(string='Correction Date',readonly=True, default=fields.Date.today())
     correction_reason = fields.Text(string="Correction Description")
     correction_by = fields.Many2one('res.users', 'Checked By',readonly=True, default=lambda self: self.env.user)
