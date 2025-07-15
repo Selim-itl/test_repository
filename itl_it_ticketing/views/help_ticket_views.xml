@@ -11,7 +11,7 @@
         <field name="name">it.itl.bd.My Helpdesk</field>
         <field name="res_model">it.itl.bd.help.ticket</field>
         <field name="domain">[('assigned_user','=',uid), ('team_head','=', uid)]</field>
-        <field name="view_mode">kanban,tree,form,calendar,activity,pivot,graph</field>
+        <field name="view_mode">tree,kanban,form,calendar,activity,pivot,graph</field>
     </record>
     <!--    Ticket report action-->
     <record id="it_itl_bd_help_ticket_report_action" model="ir.actions.act_window">
@@ -27,34 +27,37 @@
             <form string="Ticket" class="o_event_form_view">
                 <header>
                     <button name="action_send_reply" string="Reply"
-                            type="object" class="btn-primary"/>
+                            type="object" class="btn-primary"
+                            groups="itl_it_ticketing.it_ticketing_team_member"/>
                     <!--                    <button name="assign_to_teamleader" string="Confirmed Team Lead by mail"-->
                     <!--                            type="object" class="btn-info"/>-->
                     <button name="btn_assign_me_action" string="Assign Me"
-                            type="object" class="btn btn-info" attrs="{'invisible': [('is_verification_stage', '=', True)]}"/>
+                            type="object" class="btn btn-info" attrs="{'invisible': [('is_verification_stage', '=', True)]}"
+                            groups="itl_it_ticketing.it_ticketing_team_member"/>
                     <button name="btn_correction_ticket"
                             string="Correction Reason Add"
                             type="object"
                             class="btn btn-info"
-                            attrs="{'invisible': [('is_verification_stage', '=', False)]}"/>
+                            attrs="{'invisible': [('is_verification_stage', '=', False)]}"
+                            groups="itl_it_ticketing.it_ticketing_team_member"/>
 
                     <button name="action_download_attachment" string="Download Attachment"
                             type="object" class="btn btn-info"/>
-                    <button name="action_create_tasks" string="Create Task"
-                            type="object" class="btn-primary"
-                            attrs="{'invisible':[('create_task','=',False)]}"/>
-                    <button name="action_create_invoice" string="Create Invoice"
-                            type="object" class="btn-primary"
-                            attrs="{'invisible':[('billable','=',False)]}"/>
+<!--                    <button name="action_create_tasks" string="Create Task"-->
+<!--                            type="object" class="btn-primary"-->
+<!--                            attrs="{'invisible':[('create_task','=',False)]}"/>-->
+<!--                    <button name="action_create_invoice" string="Create Invoice"-->
+<!--                            type="object" class="btn-primary"-->
+<!--                            attrs="{'invisible':[('billable','=',False)]}"/>-->
                     <field name="stage_id" widget="statusbar"
                            options="{'clickable': '1'}"/>
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button class="oe_stat_button" name="action_open_tasks"
-                                string="Tasks" type="object" icon="fa-tasks"
-                                attrs="{'invisible':[('create_task','=',False)]}">
-                        </button>
+<!--                        <button class="oe_stat_button" name="action_open_tasks"-->
+<!--                                string="Tasks" type="object" icon="fa-tasks"-->
+<!--                                attrs="{'invisible':[('create_task','=',False)]}">-->
+<!--                        </button>-->
                         <button class="oe_stat_button"
                                 name="action_open_merged_tickets"
                                 string="Merged Tickets" type="object"
@@ -65,10 +68,10 @@
                                 <span class="o_stat_text">Merged Tickets</span>
                             </div>
                         </button>
-                        <button class="oe_stat_button" name="action_open_invoices"
-                                string="Invoices" type="object" icon="fa-tasks"
-                                attrs="{'invisible':[('billable','=',False)]}">
-                        </button>
+<!--                        <button class="oe_stat_button" name="action_open_invoices"-->
+<!--                                string="Invoices" type="object" icon="fa-tasks"-->
+<!--                                attrs="{'invisible':[('billable','=',False)]}">-->
+<!--                        </button>-->
                     </div>
 <!--                    <field name="kanban_state" widget="state_selection"/>-->
 
