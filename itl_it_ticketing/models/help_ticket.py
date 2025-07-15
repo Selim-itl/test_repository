@@ -213,6 +213,27 @@ class HelpTicket(models.Model):
     pending_days = fields.Integer(
         string="Pending Days", readonly=True)
 
+    # Calculate if logged-in user can edit
+    is_editor_user = fields.Boolean(compute="_compute_is_editor_user", store=False)
+
+    @api.depends('name')
+    def _compute_is_editor_user(self):
+        for rec in self:
+            user = self.env.user
+            rec.is_editor_user = user.has_group('itl_it_ticketing.it_ticketing_manager') or user.has_group('itl_it_ticketing.it_ticketing_team_member')
+
+    @api.onchange('name')
+    def _onchange_can_edit_fields(self):
+        self._compute_is_editor_user()
+
+    @api.model
+    def default_get(self, fields_list):
+        res = super().default_get(fields_list)
+        if 'is_editor_user' in fields_list and 'default_is_editor_user' in self.env.context:
+            res['is_editor_user'] = self.env.context.get('default_is_editor_user')
+        return res
+    # Calculate if logged-in user can edit
+
     @api.depends("create_date", "verification_datetime")
     def _compute_aging_entry_days(self):
         for record in self:

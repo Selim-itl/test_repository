@@ -81,12 +81,14 @@
                         <h1 class="mt0">
                             <field name="subject"/>
                         </h1>
+                        <field name="is_editor_user" invisible="1"/>
                     </div>
                     <group>
                         <group>
                             <!--                            <field name="customer_id"/>-->
                             <field name="ticket_creator_id"/>
                             <field name="employee_id"/>
+<!--                            <field name="employee_id" attrs="{'readonly': [('subject', '=', False)]}"/>-->
                             <field name="designation" force_save="1"/>
 <!--                            <field name="employee_ids" widget="many2many_tags"/>-->
 <!--                            <field name="job_reference"/>-->
