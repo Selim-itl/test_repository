@@ -29,6 +29,7 @@
               sequence="2"/>
 <!--              groups="itl_it_ticketing.helpdesk_manager"-->
     <menuitem id="helpdesk_configuration_menu"
+              groups="itl_it_ticketing.it_ticketing_team_member"
               name="Configuration"
               sequence="50"
               parent="helpdesk_dashboard_menu_root"/>
@@ -57,6 +58,7 @@
               sequence="4"/>
     <menuitem id="it_itl_bd_ticket_stage_menu"
               name="Stages"
+              groups="itl_it_ticketing.it_ticketing_manager"
               action="it_itl_bd_ticket_stage_action"
               parent="helpdesk_configuration_menu"
               sequence="5"/>
