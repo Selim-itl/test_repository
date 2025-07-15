@@ -11,10 +11,12 @@ access_it_itl_bd_chain_conf_user,access.it.itl.bd.chain.conf.user,model_it_itl_b
 access_it_itl_bd_chain_conf_team_member,access.it.itl.bd.chain.conf.team.member,model_it_itl_bd_chain_conf,itl_it_ticketing.it_ticketing_team_member,1,0,0,0
 access_it_itl_bd_chain_conf_manager,access.it.itl.bd.chain.conf.manager,model_it_itl_bd_chain_conf,itl_it_ticketing.it_ticketing_manager,1,1,1,1
 
+access_it_itl_bd_helpdesk_tag_user,access.it.itl.bd.helpdesk.tag.user,model_it_itl_bd_helpdesk_tag,base.group_user,1,0,0,0
+access_it_itl_bd_helpdesk_tag_team_member,access.it.itl.bd.helpdesk.tag.team.member,model_it_itl_bd_helpdesk_tag,itl_it_ticketing.it_ticketing_team_member,1,1,1,0
+access_it_itl_bd_helpdesk_tag_manager,access.it.itl.bd.helpdesk.tag.manager,model_it_itl_bd_helpdesk_tag,itl_it_ticketing.it_ticketing_manager,1,1,1,1
 
 
 
-access_it_itl_bd_helpdesk_tag,access.it.itl.bd.helpdesk.tag,model_it_itl_bd_helpdesk_tag,base.group_user,1,1,1,1
 access_it_itl_bd_helpdesk_types,access.it.itl.bd.helpdesk.types,model_it_itl_bd_helpdesk_types,base.group_user,1,1,1,1
 access_it_itl_bd_helpdesk_categories,access.it.itl.bd.helpdesk.categories,model_it_itl_bd_helpdesk_categories,base.group_user,1,1,1,1
 access_it_itl_bd_help_team,access.it.itl.bd.help.team,model_it_itl_bd_help_team,base.group_user,1,1,1,1
