@@ -20,7 +20,6 @@ access_it_itl_bd_helpdesk_categories_manager,access.it.itl.bd.helpdesk.categorie
 access_it_itl_bd_help_team_user,access.it.itl.bd.help.team.user,model_it_itl_bd_help_team,base.group_user,1,0,0,0
 access_it_itl_bd_help_team_team_member,access.it.itl.bd.help.team.team.member,model_it_itl_bd_help_team,itl_it_ticketing.it_ticketing_team_member,1,0,0,0
 access_it_itl_bd_help_team_manager,access.it.itl.bd.help.team.manager,model_it_itl_bd_help_team,itl_it_ticketing.it_ticketing_manager,1,1,1,1
-
 access_it_itl_bd_support_tickets_user,access.it.itl.bd.support.tickets.user,model_it_itl_bd_support_tickets,base.group_user,1,0,0,0
 access_it_itl_bd_support_tickets_team_member,access.it.itl.bd.support.tickets.team.member,model_it_itl_bd_support_tickets,itl_it_ticketing.it_ticketing_team_member,1,0,0,0
 access_it_itl_bd_support_tickets_manager,access.it.itl.bd.support.tickets.manager,model_it_itl_bd_support_tickets,itl_it_ticketing.it_ticketing_manager,1,1,1,1
@@ -29,9 +28,10 @@ access_it_itl_bd_merge_tickets_user,access.it.itl.bd.merge.tickets.user,model_it
 access_it_itl_bd_merge_tickets_team_member,access.it.itl.bd.merge.tickets.team.member,model_it_itl_bd_merge_tickets,itl_it_ticketing.it_ticketing_team_member,1,0,0,0
 access_it_itl_bd_merge_tickets_manager,access.it.itl.bd.merge.tickets.manager,model_it_itl_bd_merge_tickets,itl_it_ticketing.it_ticketing_manager,1,1,1,1
 
+access_it_itl_bd_ticket_correction_user,access.it.itl.bd.ticket.correction.user,model_it_itl_bd_ticket_correction,base.group_user,1,0,0,0
+access_it_itl_bd_ticket_correction_team_member,access.it.itl.bd.ticket.correction.team.member,model_it_itl_bd_ticket_correction,itl_it_ticketing.it_ticketing_team_member,1,1,1,0
+access_it_itl_bd_ticket_correction_manager,access.it.itl.bd.ticket.correction.manager,model_it_itl_bd_ticket_correction,itl_it_ticketing.it_ticketing_manager,1,1,1,1
 
 
-access_it_itl_bd_merge_tickets,access.it.itl.bd.merge.tickets,model_it_itl_bd_merge_tickets,base.group_user,1,1,1,1
-access_it_itl_bd_ticket_correction,access.it.itl.bd.ticket.correction,model_it_itl_bd_ticket_correction,base.group_user,1,1,1,1
 access_it_itl_bd_ticket_stage,access.it.itl.bd.ticket.stage,model_it_itl_bd_ticket_stage,base.group_user,1,1,1,1
 access_it_itl_bd_help_ticket,access.it.itl.bd.help.ticket,model_it_itl_bd_help_ticket,base.group_user,1,1,1,1
