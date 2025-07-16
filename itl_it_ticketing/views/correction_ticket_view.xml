@@ -48,7 +48,7 @@
             <field name="res_model">it.itl.bd.ticket.correction</field>
             <field name="view_mode">tree,form</field>
         </record>
-        <menuitem name="Ticket Correction Info" id="it_itl_bd_ticket_correction_menu" parent="helpdesk_configuration_menu"
-              action="it_itl_bd_ticket_correction_action"/>
+<!--        <menuitem name="Ticket Correction Info" id="it_itl_bd_ticket_correction_menu" parent="helpdesk_configuration_menu"-->
+<!--              action="it_itl_bd_ticket_correction_action"/>-->
     </data>
 </odoo>

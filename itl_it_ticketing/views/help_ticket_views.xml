@@ -73,8 +73,22 @@
 <!--                    <button name="action_create_invoice" string="Create Invoice"-->
 <!--                            type="object" class="btn-primary"-->
 <!--                            attrs="{'invisible':[('billable','=',False)]}"/>-->
-                    <field name="stage_id" widget="statusbar"
-                           options="{'clickable': '1'}"/>
+<!--                    <field name="stage_id" widget="statusbar"-->
+<!--                           options="{'clickable': '1'}"/>-->
+
+                    <field name="stage_id"
+                           widget="statusbar"
+                           options="{'clickable': '1'}"
+                           attrs="{'invisible': [('is_editor_user', '=', False)]}"/>
+                    <field name="stage_id"
+                           widget="statusbar"
+                           attrs="{'invisible': [('is_editor_user', '=', True)]}"/>
+
+<!--                    <field name="stage_id"-->
+<!--                           attrs="{'invisible': [('is_editor_user', '=', True)], 'readonly': [('is_editor_user', '=', False)]}"/>-->
+<!--                    <field name="stage_id"-->
+<!--                           widget="statusbar"-->
+<!--                           attrs="{'invisible': [('is_editor_user', '=', False)]}"/>-->
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">

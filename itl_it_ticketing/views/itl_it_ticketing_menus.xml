@@ -23,16 +23,17 @@
               action="it_itl_bd_help_ticket_my_ticket_action"
               groups="itl_it_ticketing.it_ticketing_team_member"
               sequence="1"/>
-    <menuitem id="help_ticket_menu_my_ticket_non_team"
-              parent="help_ticket_menu"
-              name="My Tickets (Employee)"
-              action="it_itl_bd_help_ticket_my_ticket_action_non_team"
-              sequence="2"/>
+
     <menuitem id="help_ticket_menu_all_ticket"
               parent="help_ticket_menu"
               name="All IT Tickets"
               action="it_itl_bd_help_ticket_action"
               groups="itl_it_ticketing.it_ticketing_team_member"
+              sequence="2"/>
+    <menuitem id="help_ticket_menu_my_ticket_non_team"
+              parent="help_ticket_menu"
+              name="My Tickets (Employee)"
+              action="it_itl_bd_help_ticket_my_ticket_action_non_team"
               sequence="3"/>
 <!--              groups="itl_it_ticketing.helpdesk_manager"-->
     <menuitem id="helpdesk_configuration_menu"

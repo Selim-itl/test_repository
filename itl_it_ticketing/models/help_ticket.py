@@ -438,6 +438,7 @@ class HelpTicket(models.Model):
             'itl_it_ticketing.it_ticketing_team_member').id)]
     )
 
+    # Block to track if current user is already assigned
     is_logged_user_assigned = fields.Boolean(
         string="Is Logged-in User Assigned",
         compute='_compute_is_logged_user_assigned',
@@ -450,6 +451,7 @@ class HelpTicket(models.Model):
         for rec in self:
             rec.is_logged_user_assigned = current_user in rec.assigned_user
 
+    # Block to track if current user is already assigned
     # added on 16 july to solve access level problem
     #---
 
