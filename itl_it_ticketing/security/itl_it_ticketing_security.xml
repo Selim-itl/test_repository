@@ -14,14 +14,14 @@
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
 
-        <!--    IT Ticketing Team member access-->
+    <!--    IT Ticketing Team member access-->
     <record id="it_ticketing_team_member" model="res.groups">
         <field name="name">Team Member</field>
         <field name="category_id" ref="itl_it_ticketing.module_category_it_itl_bd_ticketing"/>
         <field name="implied_ids" eval="[(4, ref('itl_it_ticketing.it_ticketing_user'))]"/>
     </record>
 
-            <!--    IT Ticketing Administrator/manager access-->
+    <!--    IT Ticketing Administrator/manager access-->
     <record id="it_ticketing_manager" model="res.groups">
         <field name="name">Manager</field>
         <field name="category_id" ref="itl_it_ticketing.module_category_it_itl_bd_ticketing"/>
@@ -31,7 +31,7 @@
     <record id="group_show_category_it_itl_bd" model="res.groups">
         <field name="name">group_show_category_it_itl_bd</field>
     </record>
-    it_itl_bd
+
     <record id="group_show_subcategory_it_itl_bd" model="res.groups">
         <field name="name">group_show_subcategory_it_itl_bd</field>
     </record>

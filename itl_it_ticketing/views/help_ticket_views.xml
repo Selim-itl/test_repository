@@ -99,14 +99,14 @@
                             <field name="email" force_save="1"/>
                             <field name="phone" force_save="1"/>
                             <field name="ticket_type"/>
-                            <field name="required_date"/>
-                            <field name="tags" widget="many2many_tags"/>
+                            <field name="required_date" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
+                            <field name="tags" widget="many2many_tags" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
                             <field name="pending_days"/>
                             <field name="is_verification_stage"/>
                         </group>
                         <group>
                             <field name="show_category" invisible="1"/>
-                            <field name="priority" widget="priority" options="{'autosave': False}"/>
+                            <field name="priority" widget="priority" options="{'autosave': False}" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
                             <field name="create_date"/>
                             <field name="start_date"/>
                             <field name="end_date"/>

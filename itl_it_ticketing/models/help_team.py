@@ -28,31 +28,31 @@ class HelpTeam(models.Model):
         # domain=lambda self: [('groups_id', 'in', self.env.ref(
         #     'itl_it_ticketing.helpdesk_user').id)]
     )
-    email = fields.Char(string='Email', help='Email')
+    # email = fields.Char(string='Email', help='Email')
     project_id = fields.Many2one('project.project',
                                  string='Project',
                                  help='The Project they are currently in')
     create_task = fields.Boolean(string="Create Task",
                                  help="Enable for allowing team to "
                                       "create tasks from tickets")
-    state = fields.Selection([
-        ('created', 'Created'),
-        ('cancelled', 'Cancelled')], 'Status', default='created', readonly=True)
+    # state = fields.Selection([
+    #     ('created', 'Created'),
+    #     ('cancelled', 'Cancelled')], 'Status', default='created', readonly=True)
 
-    ticket_num = fields.Integer(string="Ticket", compute='count_cs_ticket')
-    ticket_info = fields.One2many('it.itl.bd.help.ticket', 'team_id', 'Tickets')
-
-    @api.depends('ticket_info')  # Count and Show Ticket from smart button
-    def count_cs_ticket(self):
-        self.ticket_num = len(self.ticket_info)
-        return {
-            'name': 'Ticket Management',
-            'res_model': 'it.itl.bd.help.ticket',
-            'view_mode': 'tree,form',
-            'domain': [('team_id', '=', self.name)],
-            'type': 'ir.actions.act_window',
-            'context': {'default_team_id': self.name}
-        }
+    # ticket_num = fields.Integer(string="Ticket", compute='count_cs_ticket')
+    # ticket_info = fields.One2many('it.itl.bd.help.ticket', 'team_id', 'Tickets')
+    #
+    # @api.depends('ticket_info')  # Count and Show Ticket from smart button
+    # def count_cs_ticket(self):
+    #     self.ticket_num = len(self.ticket_info)
+    #     return {
+    #         'name': 'Ticket Management',
+    #         'res_model': 'it.itl.bd.help.ticket',
+    #         'view_mode': 'tree,form',
+    #         'domain': [('team_id', '=', self.name)],
+    #         'type': 'ir.actions.act_window',
+    #         'context': {'default_team_id': self.name}
+    #     }
 
     @api.onchange('team_lead_id')
     def members_choose(self):
