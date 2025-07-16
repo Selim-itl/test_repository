@@ -299,12 +299,12 @@
         <field name="arch" type="xml">
             <form>
                 <group>
+                    <field name="ticket_creator_id"/>
+                    <field name="employee_id"/>
                     <field name="subject" string="Subject"/>
-                    <!--                    <field name="customer_id" string="Customer"/>-->
-                    <field name="employee_id" string="Employee"/>
                     <field name="description" string="Description"/>
-                    <field name="team_id" string="Select Team"/>
-                    <field name="assigned_user" widget="many2many_tags"/>
+                    <field name="it_team" string="Select Team"/>
+                    <field name="ticket_type" options="{'no_create': 1}"/>
                 </group>
             </form>
         </field>
