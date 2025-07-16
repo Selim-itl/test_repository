@@ -89,7 +89,7 @@ class HelpTicket(models.Model):
                               help='The helpdesk team responsible for '
                                    'handling requests related to this '
                                    'record')
-    product_ids = fields.Many2many('product.template',
+    product_ids = fields.Many2one('product.template',
                                    string='Product',
                                    help='The product associated with this '
                                         'record.This field allows you to select'

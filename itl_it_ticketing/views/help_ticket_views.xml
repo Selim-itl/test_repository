@@ -105,7 +105,7 @@
                             <field name="department" force_save="1"/>
                             <field name="email" force_save="1"/>
                             <field name="phone" force_save="1"/>
-                            <field name="ticket_type"/>
+                            <field name="priority" widget="priority" options="{'autosave': False}" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
                             <field name="required_date" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
                             <field name="tags" widget="many2many_tags" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
                             <field name="pending_days"/>
@@ -113,12 +113,12 @@
                         </group>
                         <group>
                             <field name="show_category" invisible="1"/>
-                            <field name="priority" widget="priority" options="{'autosave': False}" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
+                            <field name="ticket_type"/>
+                            <field name="product_ids" widget="many2one_avatar"/>
                             <field name="create_date"/>
                             <field name="start_date" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
                             <field name="end_date" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
 <!--                            <field name="work_orders"/>-->
-                            <field name="product_ids" widget="many2many_tags"/>
 <!--                            <field name="chain_ids" widget="many2many_tags"/>-->
                             <field name="verified_by"/>
                             <field name="done_by"/>
@@ -134,7 +134,18 @@
                            attrs="{'invisible': [('ticket_from', '=', 'normal_create')]}"
                            style="padding: 10px 15px;border-radius: 5px; border: 1px solid #ccc;background-color:#d8e8c5 ;text-align: center;color:black;"/>
                     <notebook>
-                        <page string="Ticket Owner Info">
+                        <page string="Issue Description">
+                            <group>
+                                <field name="description"
+                                       placeholder="Provide the reason in detail"/>
+                            </group>
+                            <group>
+                                <field name="update_reason" placeholder="Update Reason"/>
+                                <field name="updated_by" placeholder="Update By Wizard" force_save="1"/>
+                                <field name="update_date" placeholder="Wizard Update Time" force_save="1"/>
+                            </group>
+                        </page>
+                        <page string="Ticket Handler Info">
                             <group>
                                 <group>
 <!--                                    <field name="team_id" options="{'no_create': 1}"/>-->
@@ -156,17 +167,6 @@
                                 </group>
                             </group>
                         </page>
-                        <page string="Issue Description">
-                            <group>
-                                <field name="description"
-                                       placeholder="Provide the reason in detail"/>
-                            </group>
-                            <group>
-                                <field name="update_reason" placeholder="Update Reason"/>
-                                <field name="updated_by" placeholder="Update By Wizard" force_save="1"/>
-                                <field name="update_date" placeholder="Wizard Update Time" force_save="1"/>
-                            </group>
-                        </page>
                         <page string="Attachments">
                             <field name="attachment_ids">
                                 <tree string="Attachments" no_open="1" create="0">
@@ -184,14 +184,14 @@
                                 </tree>
                             </field>
                         </page>
-                        <page string="Customer Rating">
+                        <page string="Employee review">
                             <group>
                                 <field name="customer_rating" attrs="{'readonly': [('is_editor_user', '=', True)]}"
                                        widget="priority" options="{'autosave': False}"/>
                                 <field name="review" attrs="{'readonly': [('is_editor_user', '=', True)]}"/>
                             </group>
                         </page>
-                        <page string="Status Records">
+                        <page string="Ticket status history">
                             <group>
                                 <group string="Stage Update Datetime">
                                     <field name="mis_datetime"/>
