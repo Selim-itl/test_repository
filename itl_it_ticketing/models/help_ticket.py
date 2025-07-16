@@ -48,7 +48,8 @@ class HelpTicket(models.Model):
                                   help='Select the Customer Name')
     employee_id = fields.Many2one('hr.employee',
                                   string='Ticket Issuer',
-                                  help="Select the employee name if the issue is related to someone else. If the issue is yours, there's no need to select anyone")
+                                  help="Select the employee name if the issue is related to someone else. If the issue is yours, there's no need to select anyone",
+                                  tracking=True)
     subject = fields.Text(string='Subject', required=True,
                           help='Subject of the Ticket')
     ticket_creator_id = fields.Many2one(
@@ -90,11 +91,10 @@ class HelpTicket(models.Model):
                                    'handling requests related to this '
                                    'record')
     product_ids = fields.Many2one('product.template',
-                                   string='Product',
-                                   help='The product associated with this '
-                                        'record.This field allows you to select'
-                                        'an existing product from the product '
-                                        'catalog.')
+                                  string='Product',
+                                  tracking=True,
+                                  help='The product associated with this '
+                                        'ticket. Select with which product you are facing issue')
 
     project_id = fields.Many2one('project.project',
                                  string='Project',
@@ -130,8 +130,8 @@ class HelpTicket(models.Model):
                                              ('detailed_type', '=', 'service')])
     create_date = fields.Datetime(string='Creation Date', help='Created date of'
                                                                'the Ticket', readonly=True)
-    start_date = fields.Datetime(string='Start Date & Time', help='Start Date & Time of the' 'Ticket')
-    end_date = fields.Datetime(string='End Date & Time', help='End Date & Time of the Ticket')
+    start_date = fields.Datetime(string='Start Date & Time', help='Select the date and time when you started working on this ticket.')
+    end_date = fields.Datetime(string='End Date & Time', help='Select the date and time when you finished working on this ticket.')
     total_hours = fields.Float(
         string='Time worked (hrs)',
         compute='_compute_total_hours',
@@ -165,7 +165,7 @@ class HelpTicket(models.Model):
     last_update_date = fields.Datetime(string='Last status Update',
                                        help='Last Update Date of Ticket', readonly=True)
     ticket_type = fields.Many2one('it.itl.bd.helpdesk.types',
-                                  string='Ticket Type', help='Ticket Type', required=True)
+                                  string='Ticket Type', help='Select Ticket Type. Selecting this field is mandatory.', required=True, tracking=True)
     team_head = fields.Many2one('res.users', string='Team Leader',
                                 compute='_compute_team_head',
                                 help='Team Leader Name', store=True)
@@ -352,11 +352,11 @@ class HelpTicket(models.Model):
                                    help='Display the default category')
     customer_rating = fields.Selection(RATING, default='0',
                                        string='Customer Rating',
-                                       help='Display the customer rating.',
+                                       help='Customer rating. Will allowed only the employee who created this ticket.',
                                        tracking=True)
 
     review = fields.Char(string='Review',
-                         help='Customer review of the ticket.')
+                         help='Ticket creator review. This is allowed to employee only who has created this ticket.')
     kanban_state = fields.Selection([
         ('normal', 'Ready'),
         ('done', 'In Progress'),
