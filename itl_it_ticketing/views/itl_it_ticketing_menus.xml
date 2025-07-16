@@ -53,11 +53,11 @@
 <!--              action="helpdesk_config_settings_action"-->
 <!--              parent="helpdesk_configuration_menu"-->
 <!--              sequence="1"/>-->
-    <menuitem id="it_itl_bd_help_team_menu"
-              name="Teams"
-              action="it_itl_bd_help_team_action"
-              parent="helpdesk_configuration_menu"
-              sequence="3"/>
+<!--    <menuitem id="it_itl_bd_help_team_menu"-->
+<!--              name="Teams"-->
+<!--              action="it_itl_bd_help_team_action"-->
+<!--              parent="helpdesk_configuration_menu"-->
+<!--              sequence="3"/>-->
     <menuitem id="it_itl_bd_helpdesk_tag_menu"
               name="Tags"
               action="it_itl_bd_helpdesk_tag_action"

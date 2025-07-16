@@ -20,6 +20,23 @@
         <field name="domain">['|', '|',('assigned_user','=',uid), ('employee_id','=',uid), ('ticket_creator_id','=',uid)]</field>
         <field name="view_mode">tree,kanban,form,calendar</field>
     </record>
+
+<!--    Connect custom kanban with action which is for non-team group-->
+    <record id="it_itl_bd_help_ticket_my_ticket_action_non_team_kanban_view" model="ir.actions.act_window.view">
+        <field name="sequence" eval="10"/>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="itl_it_ticketing.it_itl_bd_help_ticket_view_kanban_for_non_team"/>
+        <field name="act_window_id" ref="itl_it_ticketing.it_itl_bd_help_ticket_my_ticket_action_non_team"/>
+    </record>
+
+<!--    Connect editable kanban to enable team member and manager-->
+    <record id="it_itl_bd_help_ticket_my_ticket_action_for_team_kanban_view" model="ir.actions.act_window.view">
+        <field name="sequence" eval="10"/>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="itl_it_ticketing.it_itl_bd_help_ticket_view_kanban"/>
+        <field name="act_window_id" ref="itl_it_ticketing.it_itl_bd_help_ticket_my_ticket_action"/>
+    </record>
+
     <!--    Ticket report action-->
     <record id="it_itl_bd_help_ticket_report_action" model="ir.actions.act_window">
         <field name="name">it.itl.bd.Report Help Desk</field>
@@ -279,9 +296,107 @@
                     quick_create="true"
                     quick_create_view="itl_it_ticketing.it_itl_bd_help_ticket_view_form_quick_create"
                     on_create="quick_create">
+                <field name="is_editor_user" invisible="1"/>
                 <field name="color"/>
                 <field name="name"/>
                 <field name="stage_id"/>
+<!--                <field name="kanban_state"/>-->
+                <progressbar field="kanban_state"
+                             colors="{&quot;done&quot;: &quot;success&quot;, &quot;blocked&quot;: &quot;danger&quot;, &quot;normal&quot;: &quot;200&quot;}"/>
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''} #{lost_ribbon ? 'oe_kanban_card_ribbon' : ''} oe_kanban_global_click oe_kanban_card d-flex flex-column">
+                            <div class="o_dropdown_kanban dropdown">
+                                <a role="button"
+                                   class="dropdown-toggle o-no-caret btn"
+                                   data-toggle="dropdown" href="#"
+                                   aria-label="Dropdown menu"
+                                   title="Dropdown menu">
+                                    <span class="fa fa-ellipsis-v"/>
+                                </a>
+                                <div class="dropdown-menu" role="menu">
+                                    <t t-if="widget.editable">
+                                        <a role="menuitem" type="edit"
+                                           class="dropdown-item">Edit...
+                                        </a>
+                                    </t>
+                                    <t t-if="widget.deletable">
+                                        <a role="menuitem" type="delete"
+                                           class="dropdown-item">Delete
+                                        </a>
+                                    </t>
+                                    <ul class="oe_kanban_colorpicker"
+                                        data-field="color"/>
+                                </div>
+                            </div>
+                            <div class="oe_kanban_content">
+                                <div class="row">
+                                    <div class="col">
+                                        <strong>
+                                            <field name="name"/>
+                                        </strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <field name="subject"/>
+                                </div>
+                                <div class="row">
+                                    <!--                                    <field name="customer_id"/>-->
+                                    <field name="employee_id"/>
+                                </div>
+<!--                                <div class="row">-->
+<!--                                    <field name="chain_ids"/>-->
+<!--                                </div>-->
+                                <div class="row">
+                                    <div class="col">
+                                        <field name="ticket_from"
+                                               attrs="{'invisible': [('ticket_from', '=', 'normal_create')]}"
+                                               style="padding: 5px 5px;border-radius: 5px; border: 1px solid #ccc;background-color:#d8e8c5 ;text-align: center;color:black;"/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <field name="tags" widget="many2many_tags"/>
+                                </div>
+                                <div class="text-muted"
+                                     attrs="{'invisible': [('team_id', '=', False)]}">
+                                    <field name="team_id"/>
+                                </div>
+                                <div class="o_kanban_record_bottom flex-wrap">
+                                    <div class="oe_kanban_bottom_left">
+                                        <field name="priority"
+                                               widget="priority"/>
+                                        <field name="activity_ids"
+                                               widget="kanban_activity"/>
+                                    </div>
+                                    <div class="oe_kanban_bottom_right">
+<!--                                        <field name="kanban_state"-->
+<!--                                               widget="state_selection"/>-->
+                                        <field name="user_id"
+                                               widget="many2one_avatar_user"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="oe_clear"/>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+<!--    Kanban view for non team or normal user-->
+    <record id="it_itl_bd_help_ticket_view_kanban_for_non_team" model="ir.ui.view">
+        <field name="name">My tickets kanban</field>
+        <field name="model">it.itl.bd.help.ticket</field>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <kanban default_group_by="stage_id" class="o_kanban_small_column"
+                    quick_create="true"
+                    quick_create_view="itl_it_ticketing.it_itl_bd_help_ticket_view_form_quick_create"
+                    on_create="quick_create">
+                <field name="color"/>
+                <field name="name"/>
+                <field name="stage_id" readonly="1"/>
 <!--                <field name="kanban_state"/>-->
                 <progressbar field="kanban_state"
                              colors="{&quot;done&quot;: &quot;success&quot;, &quot;blocked&quot;: &quot;danger&quot;, &quot;normal&quot;: &quot;200&quot;}"/>
