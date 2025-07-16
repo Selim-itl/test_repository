@@ -1,7 +1,7 @@
 <odoo>
     <data>
         <record id="it_itl_bd_ticket_correction_form_view" model="ir.ui.view">
-            <field name="name">it.itl.bd.Ticket.Correction.Form.View</field>
+            <field name="name">Correction form</field>
             <field name="model">it.itl.bd.ticket.correction</field>
             <field name="arch" type="xml">
                 <form string="Cancel Model">
@@ -31,7 +31,7 @@
             </field>
         </record>
         <record id="it_itl_bd_ticket_correction_tree_view" model="ir.ui.view">
-            <field name="name">it.itl.bd.ticket.correction.Tree</field>
+            <field name="name">Correction Tree</field>
             <field name="model">it.itl.bd.ticket.correction</field>
             <field name="arch" type="xml">
                 <tree string="Ticket Correction Information">
@@ -44,7 +44,7 @@
             </field>
         </record>
         <record id="it_itl_bd_ticket_correction_action" model="ir.actions.act_window">
-            <field name="name">it.itl.bd Ticket Correction Action</field>
+            <field name="name">Correction</field>
             <field name="res_model">it.itl.bd.ticket.correction</field>
             <field name="view_mode">tree,form</field>
         </record>

@@ -2,14 +2,14 @@
 <odoo>
     <!--        Helpdesk Replay mail template-->
     <record id="helpdesk_replay_email_template" model="mail.template">
-        <field name="name">Helpdesk Reply Email Template</field>
+        <field name="name">IT ticket Reply Email Template</field>
         <field name="model_id"
                ref="itl_it_ticketing.model_it_itl_bd_help_ticket"/>
         <field name="auto_delete" eval="True"/>
         <field name="subject">{{ object.name }} Replay</field>
         <field name="body_html" type="html">
             <div class="container">
-                <h4 style="text-align:center">Helpdesk Replay</h4>
+                <h4 style="text-align:center">IT ticket Replay</h4>
                 <div style="min-height:30vh;">
                     message........
                 </div>

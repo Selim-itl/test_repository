@@ -2,7 +2,7 @@
 <odoo>
 <!--    Merge_tickets form view-->
     <record id="it_itl_bd_merge_tickets_view_form" model="ir.ui.view">
-        <field name="name">it.itl.bd.merge.tickets.view.form</field>
+        <field name="name">IT Ticket merge</field>
         <field name="model">it.itl.bd.merge.tickets</field>
         <field name="arch" type="xml">
             <form>

@@ -2,13 +2,13 @@
 <odoo>
     <!--    Helpdesk ticket team view action-->
     <record id="it_itl_bd_help_team_action" model="ir.actions.act_window">
-        <field name="name">IT Help Team</field>
+        <field name="name">IT Team</field>
         <field name="res_model">it.itl.bd.help.team</field>
         <field name="view_mode">tree,form</field>
     </record>
     <!--    Help_team form view-->
     <record id="it_itl_bd_help_team_view_form" model="ir.ui.view">
-        <field name="name">it.itl.bd.help.team.view.form</field>
+        <field name="name">IT Team form</field>
         <field name="model">it.itl.bd.help.team</field>
         <field name="arch" type="xml">
             <form>
@@ -68,7 +68,7 @@
     </record>
     <!--    Help_team tree view-->
     <record id="it_itl_bd_help_team_view_tree" model="ir.ui.view">
-        <field name="name">it.itl.bd.help.team.view.tree</field>
+        <field name="name">IT Team tree</field>
         <field name="model">it.itl.bd.help.team</field>
         <field name="arch" type="xml">
             <tree>

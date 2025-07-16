@@ -2,7 +2,7 @@
 <odoo>
     <!--    Helpdesk tag view action-->
     <record id="it_itl_bd_helpdesk_tag_action" model="ir.actions.act_window">
-        <field name="name">it.itl.bd.Tags</field>
+        <field name="name">IT ticket Tags</field>
         <field name="res_model">it.itl.bd.helpdesk.tag</field>
         <field name="view_mode">tree</field>
         <field name="help" type="html">
@@ -13,7 +13,7 @@
     </record>
     <!--Helpdesk tag tree view-->
     <record id="it_itl_bd_helpdesk_tag_view_tree" model="ir.ui.view">
-        <field name="name">it.itl.bd.helpdesk.tag.view.tree</field>
+        <field name="name">IT ticket tree</field>
         <field name="model">it.itl.bd.helpdesk.tag</field>
         <field name="arch" type="xml">
             <tree editable="bottom">
