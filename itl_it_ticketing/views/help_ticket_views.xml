@@ -56,7 +56,7 @@
                     <!--                    <button name="assign_to_teamleader" string="Confirmed Team Lead by mail"-->
                     <!--                            type="object" class="btn-info"/>-->
                     <button name="btn_assign_me_action" string="Assign Me"
-                            type="object" class="btn btn-info" attrs="{'invisible': [('is_verification_stage', '=', True)]}"
+                            type="object" class="btn btn-info" attrs="{'invisible': ['|',('is_verification_stage', '=', True), ('is_logged_user_assigned','=',True)]}"
                             groups="itl_it_ticketing.it_ticketing_team_member"/>
                     <button name="btn_correction_ticket"
                             string="Correction Reason Add"
@@ -108,7 +108,9 @@
                         <h1 class="mt0">
                             <field name="subject"/>
                         </h1>
+                        <field name="is_manager" invisible="1"/>
                         <field name="is_editor_user" invisible="1"/>
+                        <field name="is_logged_user_assigned" invisible="1"/>
                     </div>
                     <group>
                         <group>
@@ -151,24 +153,13 @@
                            attrs="{'invisible': [('ticket_from', '=', 'normal_create')]}"
                            style="padding: 10px 15px;border-radius: 5px; border: 1px solid #ccc;background-color:#d8e8c5 ;text-align: center;color:black;"/>
                     <notebook>
-                        <page string="Issue Description">
-                            <group>
-                                <field name="description"
-                                       placeholder="Provide the reason in detail"/>
-                            </group>
-                            <group>
-                                <field name="update_reason" placeholder="Update Reason"/>
-                                <field name="updated_by" placeholder="Update By Wizard" force_save="1"/>
-                                <field name="update_date" placeholder="Wizard Update Time" force_save="1"/>
-                            </group>
-                        </page>
                         <page string="Ticket Handler Info">
                             <group>
                                 <group>
 <!--                                    <field name="team_id" options="{'no_create': 1}"/>-->
 <!--                                    <field name="team_head"/>-->
                                     <field name="it_team"/>
-                                    <field name="assigned_user" widget="many2many_tags" options="{'no_create': 1}" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
+                                    <field name="assigned_user" widget="many2many_tags" options="{'no_create': 1}" attrs="{'readonly': [('is_manager', '=', False)]}"/>
                                 </group>
                                 <group>
                                     <field name="project_id" invisible="1"/>
@@ -184,6 +175,19 @@
                                 </group>
                             </group>
                         </page>
+
+                        <page string="Issue Description">
+                            <group>
+                                <field name="description"
+                                       placeholder="Provide the reason in detail"/>
+                            </group>
+                            <group>
+                                <field name="update_reason" placeholder="Update Reason"/>
+                                <field name="updated_by" placeholder="Update By Wizard" force_save="1"/>
+                                <field name="update_date" placeholder="Wizard Update Time" force_save="1"/>
+                            </group>
+                        </page>
+
                         <page string="Attachments">
                             <field name="attachment_ids">
                                 <tree string="Attachments" no_open="1" create="0">

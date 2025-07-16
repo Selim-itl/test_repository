@@ -209,6 +209,13 @@ class HelpTicket(models.Model):
 
     # Calculate if logged-in user can edit
     is_editor_user = fields.Boolean(compute="_compute_is_editor_user", store=False)
+    is_manager = fields.Boolean(compute="_compute_is_manager", store=False)
+
+    @api.depends('name')
+    def _compute_is_manager(self):
+        for rec in self:
+            user = self.env.user
+            rec.is_manager = user.has_group('itl_it_ticketing.it_ticketing_manager')
 
     @api.depends('name')
     def _compute_is_editor_user(self):
@@ -219,12 +226,15 @@ class HelpTicket(models.Model):
     @api.onchange('name')
     def _onchange_can_edit_fields(self):
         self._compute_is_editor_user()
+        self._compute_is_manager()
 
     @api.model
     def default_get(self, fields_list):
         res = super().default_get(fields_list)
         if 'is_editor_user' in fields_list and 'default_is_editor_user' in self.env.context:
             res['is_editor_user'] = self.env.context.get('default_is_editor_user')
+        if 'is_manager' in fields_list and 'default_is_manager' in self.env.context:
+            res['is_manager'] = self.env.context.get('default_is_manager')
         return res
     # Calculate if logged-in user can edit
 
@@ -427,6 +437,18 @@ class HelpTicket(models.Model):
         domain=lambda self: [('groups_id', 'in', self.env.ref(
             'itl_it_ticketing.it_ticketing_team_member').id)]
     )
+
+    is_logged_user_assigned = fields.Boolean(
+        string="Is Logged-in User Assigned",
+        compute='_compute_is_logged_user_assigned',
+        store=False
+    )
+
+    @api.depends('assigned_user')
+    def _compute_is_logged_user_assigned(self):
+        current_user = self.env.user
+        for rec in self:
+            rec.is_logged_user_assigned = current_user in rec.assigned_user
 
     # added on 16 july to solve access level problem
     #---
