@@ -6,12 +6,19 @@
         <field name="res_model">it.itl.bd.help.ticket</field>
         <field name="view_mode">kanban,tree,form,calendar,activity,pivot,graph</field>
     </record>
-    <!--    My ticket view action-->
+    <!--    My ticket view action for team members and administrator-->
     <record id="it_itl_bd_help_ticket_my_ticket_action" model="ir.actions.act_window">
-        <field name="name">it.itl.bd.My Helpdesk</field>
+        <field name="name">My tickets</field>
         <field name="res_model">it.itl.bd.help.ticket</field>
         <field name="domain">['|', '|',('assigned_user','=',uid), ('employee_id','=',uid), ('ticket_creator_id','=',uid)]</field>
-        <field name="view_mode">tree,kanban,form,calendar,activity,pivot,graph</field>
+        <field name="view_mode">kanban,tree,form,calendar,activity,pivot,graph</field>
+    </record>
+<!--    My tickets for not team members/user-->
+    <record id="it_itl_bd_help_ticket_my_ticket_action_non_team" model="ir.actions.act_window">
+        <field name="name">My tickets (User)</field>
+        <field name="res_model">it.itl.bd.help.ticket</field>
+        <field name="domain">['|', '|',('assigned_user','=',uid), ('employee_id','=',uid), ('ticket_creator_id','=',uid)]</field>
+        <field name="view_mode">tree,kanban,form,calendar</field>
     </record>
     <!--    Ticket report action-->
     <record id="it_itl_bd_help_ticket_report_action" model="ir.actions.act_window">
