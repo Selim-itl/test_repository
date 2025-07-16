@@ -15,7 +15,7 @@
     </record>
 <!--    My tickets for not team members/user-->
     <record id="it_itl_bd_help_ticket_my_ticket_action_non_team" model="ir.actions.act_window">
-        <field name="name">My tickets (User)</field>
+        <field name="name">My tickets (Employee)</field>
         <field name="res_model">it.itl.bd.help.ticket</field>
         <field name="domain">['|', '|',('assigned_user','=',uid), ('employee_id','=',uid), ('ticket_creator_id','=',uid)]</field>
         <field name="view_mode">tree,kanban,form,calendar</field>
@@ -115,8 +115,8 @@
                             <field name="show_category" invisible="1"/>
                             <field name="priority" widget="priority" options="{'autosave': False}" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
                             <field name="create_date"/>
-                            <field name="start_date"/>
-                            <field name="end_date"/>
+                            <field name="start_date" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
+                            <field name="end_date" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
 <!--                            <field name="work_orders"/>-->
                             <field name="product_ids" widget="many2many_tags"/>
 <!--                            <field name="chain_ids" widget="many2many_tags"/>-->
@@ -140,7 +140,7 @@
 <!--                                    <field name="team_id" options="{'no_create': 1}"/>-->
 <!--                                    <field name="team_head"/>-->
                                     <field name="it_team"/>
-                                    <field name="assigned_user" widget="many2many_tags" options="{'no_create': 1}"/>
+                                    <field name="assigned_user" widget="many2many_tags" options="{'no_create': 1}" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
                                 </group>
                                 <group>
                                     <field name="project_id" invisible="1"/>
@@ -152,7 +152,7 @@
                                     <field name="billable"
                                            attrs="{'invisible':[('create_task','=',False)]}"/>
                                     <field name="last_update_date"/>
-                                    <field name="replied_date"/>
+                                    <field name="replied_date" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
                                 </group>
                             </group>
                         </page>
@@ -186,9 +186,9 @@
                         </page>
                         <page string="Customer Rating">
                             <group>
-                                <field name="customer_rating"
+                                <field name="customer_rating" attrs="{'readonly': [('is_editor_user', '=', True)]}"
                                        widget="priority" options="{'autosave': False}"/>
-                                <field name="review"/>
+                                <field name="review" attrs="{'readonly': [('is_editor_user', '=', True)]}"/>
                             </group>
                         </page>
                         <page string="Status Records">

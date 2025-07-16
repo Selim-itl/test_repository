@@ -77,6 +77,7 @@
     <menuitem id="help_ticket_menu_report"
               name="Report"
               parent="helpdesk_dashboard_menu_root"
+              groups="itl_it_ticketing.it_ticketing_team_member"
               sequence="3"
               action="it_itl_bd_help_ticket_report_action"/>
 

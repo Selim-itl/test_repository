@@ -48,7 +48,7 @@ class HelpTicket(models.Model):
                                   help='Select the Customer Name')
     employee_id = fields.Many2one('hr.employee',
                                   string='Ticket Issuer',
-                                  help='Select the Employee Name who has issue')
+                                  help="Select the employee name if the issue is related to someone else. If the issue is yours, there's no need to select anyone")
     subject = fields.Text(string='Subject', required=True,
                           help='Subject of the Ticket')
     ticket_creator_id = fields.Many2one(
@@ -56,10 +56,10 @@ class HelpTicket(models.Model):
         string='Ticket Creator',
         default=lambda self: self.env.user,
         readonly=True,
-        help="The user who created the ticket."
+        help="The user who created the ticket. Will be helpful if employee is generating tickets for other employee."
     )
     description = fields.Text(string='Description',
-                              help='Issue Description')
+                              help='Issue Description', tracking=True)
     email = fields.Char(string='Email', help='Email of the issuer.', readonly=True)
     phone = fields.Char(string='Phone', help='Phone Number of the issuer', readonly=True)
     department = fields.Char(string='Department', help='Department of the issuer', readonly=True)
@@ -129,7 +129,7 @@ class HelpTicket(models.Model):
                                          domain=[
                                              ('detailed_type', '=', 'service')])
     create_date = fields.Datetime(string='Creation Date', help='Created date of'
-                                                               'the Ticket')
+                                                               'the Ticket', readonly=True)
     start_date = fields.Datetime(string='Start Date & Time', help='Start Date & Time of the' 'Ticket')
     end_date = fields.Datetime(string='End Date & Time', help='End Date & Time of the Ticket')
     total_hours = fields.Float(
@@ -423,7 +423,7 @@ class HelpTicket(models.Model):
         'res.users',
         'team_info',
         string='Members',
-        help='Users who belong to that Helpdesk Team',
+        help='IT Team employee who will handle the ticket',
         domain=lambda self: [('groups_id', 'in', self.env.ref(
             'itl_it_ticketing.it_ticketing_team_member').id)]
     )
