@@ -10,7 +10,7 @@
     <record id="it_itl_bd_help_ticket_my_ticket_action" model="ir.actions.act_window">
         <field name="name">it.itl.bd.My Helpdesk</field>
         <field name="res_model">it.itl.bd.help.ticket</field>
-        <field name="domain">[('assigned_user','=',uid), ('team_head','=', uid)]</field>
+        <field name="domain">['|', '|',('assigned_user','=',uid), ('employee_id','=',uid), ('ticket_creator_id','=',uid)]</field>
         <field name="view_mode">tree,kanban,form,calendar,activity,pivot,graph</field>
     </record>
     <!--    Ticket report action-->
@@ -90,8 +90,8 @@
                         <group>
                             <!--                            <field name="customer_id"/>-->
                             <field name="ticket_creator_id"/>
-                            <field name="employee_id" attrs="{'readonly': [('employee_id', '!=', False), ('is_editor_user', '=', False)]}"/>
-<!--                            <field name="employee_id" attrs="{'readonly': [('subject', '=', False)]}"/>-->
+<!--                            <field name="employee_id" attrs="{'readonly': [('employee_id', '!=', False), ('is_editor_user', '=', False)]}"/>-->
+                            <field name="employee_id" attrs="{'readonly': [('subject', '=', False)]}"/>
                             <field name="designation" force_save="1"/>
 <!--                            <field name="employee_ids" widget="many2many_tags"/>-->
 <!--                            <field name="job_reference"/>-->
