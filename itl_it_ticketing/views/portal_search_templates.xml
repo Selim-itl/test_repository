@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 <!--    Inheriting and add the groupBy and the search view.-->
-    <template id="helpdesk_website_inherit"
+    <template id="helpdesk_website_inherit_it_itl_bd"
               inherit_id="portal.portal_searchbar">
         <xpath expr="//div[@id='o_portal_navbar_content']" position="after">
             <div t-if="tickets" class="portal_group_by">

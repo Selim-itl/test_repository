@@ -48,6 +48,6 @@ class TicketGroupBy(http.Controller):
             'tickets': context,
         }
         response = http.Response(
-            template='itl_it_ticketing.ticket_group_by_table',
+            template='itl_it_ticketing.ticket_group_by_table_it_itl_bd',
             qcontext=values)
         return response.render()

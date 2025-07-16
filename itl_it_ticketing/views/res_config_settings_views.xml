@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 <!--    Helpdesk ticket Settings details-->
-    <record id="res_config_settings_view_form" model="ir.ui.view">
-        <field name="name">res.config.settings.view.form.inherit.odoo.website.helpdesk
+    <record id="res_config_settings_view_form_it_itl_bd" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.odoo.website._it_itl_bd
         </field>
         <field name="model">res.config.settings</field>
         <field name="priority" eval="15"/>
-        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form_it_itl_bd"/>
         <field name="arch" type="xml">
             <xpath expr="//div[hasclass('settings')]" position="inside">
                 <div class="app_settings_block" data-string="Helpdesk"
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                     </div>
-                    <div groups="itl_it_ticketing.helpdesk_manager">
+                    <div groups="itl_it_ticketing.it_ticketing_manager">
                         <h2>Ticket Settings</h2>
                         <div class="row mt16 o_settings_container">
                             <div class="col-lg-6 o_setting_box">

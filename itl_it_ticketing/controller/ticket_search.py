@@ -22,6 +22,6 @@ class TicketSearch(http.Controller):
         values = {
             'tickets': tickets,
         }
-        response = http.Response(template='itl_it_ticketing.ticket_table',
+        response = http.Response(template='itl_it_ticketing.ticket_table_it_itl_bd',
                                  qcontext=values)
         return response.render()

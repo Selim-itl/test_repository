@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-<!--    Portal home menu ticket template-->
-    <template id="portal_my_home_menu_tickets"
+    <!--    Portal home menu ticket template-->
+    <template id="portal_my_home_menu_tickets_it_itl_bd"
               name="Portal layout : upcoming tickets"
               inherit_id="portal.portal_breadcrumbs" priority="30">
         <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
@@ -16,8 +16,8 @@
             </li>
         </xpath>
     </template>
-<!--    Portal tickets menu template-->
-    <template id="portal_my_home_helpdesk" name="Tickets"
+    <!--    Portal tickets menu template-->
+    <template id="portal_my_home_helpdesk_it_itl_bd" name="Tickets"
               inherit_id="portal.portal_my_home" priority="1"
               customize_show="True">
         <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
@@ -28,18 +28,18 @@
             </t>
         </xpath>
     </template>
-<!--    Portal my tickets menu -->
-    <template id="portal_my_tickets" name="My Tickets">
-            <t t-call="portal.portal_layout">
-                <t t-set="breadcrumbs_searchbar" t-value="True"/>
-                <t t-call="portal.portal_searchbar">
-                    <t t-set="title">My Tickets</t>
-                </t>
-                <t t-call="itl_it_ticketing.ticket_table"/>
+    <!--    Portal my tickets menu -->
+    <template id="portal_my_tickets_it_itl_bd" name="My Tickets">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">My Tickets</t>
             </t>
+            <t t-call="itl_it_ticketing.ticket_table_it_itl_bd"/>
+        </t>
     </template>
-<!--    Portal tickets display table template-->
-    <template id="ticket_table">
+    <!--    Portal tickets display table template-->
+    <template id="ticket_table_it_itl_bd">
         <div class="search_ticket">
             <t t-if="tickets" t-call="portal.portal_table">
                 <thead>
@@ -101,8 +101,8 @@
             </p>
         </div>
     </template>
-<!--    Portal tickets details display-->
-    <template id="portal_ticket_details" name="My Tickets">
+    <!--    Portal tickets details display-->
+    <template id="portal_ticket_details_it_itl_bd" name="My Tickets">
         <t t-call="portal.portal_layout">
             <div class="row mt16 o_portal_sale_sidebar">
                 <!-- Sidebar -->
@@ -144,14 +144,14 @@
                     </t>
                 </t>
                 <!-- Page content -->
-                <div id="helpdesk_content"
+                <div id="helpdesk_content_it_itl_bd"
                      class="col-12 col-lg justify-content-end">
                     <div t-attf-class="card #{'pb-5' if report_type == 'html' else ''}"
                          id="portal_doc_content">
-                        <div t-call="itl_it_ticketing.helpdesk_content_preview"/>
+                        <div t-call="itl_it_ticketing.helpdesk_content_preview_it_itl_bd"/>
                     </div>
                     <!-- chatter -->
-                    <div id="helpdesk_ticket_communication" class="mt-4">
+                    <div id="helpdesk_ticket_communication_it_itl_bd" class="mt-4">
                         <h2>History</h2>
                         <t t-call="portal.message_thread">
                             <t t-set="object" t-value="details"/>
@@ -161,7 +161,7 @@
             </div>
         </t>
     </template>
-    <template id="helpdesk_content_preview" name="Sales Order Portal Content">
+    <template id="helpdesk_content_preview_it_itl_bd" name="Sales Order Portal Content">
         <div id="introduction"
              t-attf-class="pb-2 pt-3 #{'card-header bg-white' if report_type == 'html' else ''}"
              style="height:700px;">
@@ -241,7 +241,7 @@
             </table>
         </div>
     </template>
-    <template id="ticket_group_by_table">
+    <template id="ticket_group_by_table_it_itl_bd">
         <t t-if="tickets" t-call="portal.portal_table">
             <thead>
                 <tr class="active">

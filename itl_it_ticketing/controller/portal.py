@@ -39,7 +39,7 @@ class TicketPortal(portal.CustomerPortal):
             'tickets': tickets,
             'page_name': 'ticket',
         }
-        return request.render("itl_it_ticketing.portal_my_tickets",
+        return request.render("itl_it_ticketing.portal_my_tickets_it_itl_bd",
                               values)
 
     @http.route(['/my/tickets/<int:id>'], type='http', auth="public",
@@ -53,7 +53,7 @@ class TicketPortal(portal.CustomerPortal):
             'ticket': True,
             'details': details,
         }
-        return request.render("itl_it_ticketing.portal_ticket_details",data)
+        return request.render("itl_it_ticketing.portal_ticket_details_it_itl_bd",data)
 
     @http.route('/my/tickets/download/<id>', auth='public',
                 type='http',
@@ -64,9 +64,9 @@ class TicketPortal(portal.CustomerPortal):
         data = {
             'help': request.env['it.itl.bd.help.ticket'].sudo().browse(int(id))}
         report = request.env.ref(
-            'itl_it_ticketing.action_report_helpdesk_ticket')
+            'itl_it_ticketing.action_report_helpdesk_ticket_it_itl_bd')
         pdf, _ = request.env.ref(
-            'itl_it_ticketing.action_report_helpdesk_ticket').sudo()._render_qweb_pdf(
+            'itl_it_ticketing.action_report_helpdesk_ticket_it_itl_bd').sudo()._render_qweb_pdf(
             report, data=data)
         pdf_http_headers = [('Content-Type', 'application/pdf'),
                             ('Content-Length', len(pdf)),
@@ -90,7 +90,7 @@ class WebsiteDesk(http.Controller):
             'categories': categories,
             'product_website': product
         })
-        return request.render('itl_it_ticketing.ticket_form', values)
+        return request.render('itl_it_ticketing.ticket_form_it_itl_bd', values)
 
     @http.route(['/rating/<int:ticket_id>'], type='http', auth="public",
                 website=True,
@@ -101,7 +101,7 @@ class WebsiteDesk(http.Controller):
         data = {
             'ticket': ticket.id,
         }
-        return request.render('itl_it_ticketing.rating_form', data)
+        return request.render('itl_it_ticketing.rating_form_it_itl_bd', data)
 
     @http.route(['/rating/<int:ticket_id>/submit'], type='http',
                 auth="user",
@@ -114,4 +114,4 @@ class WebsiteDesk(http.Controller):
             'customer_rating': post['rating'],
             'review': post['message'],
         })
-        return request.render('itl_it_ticketing.rating_thanks')
+        return request.render('itl_it_ticketing.rating_thanks_it_itl_bd')
