@@ -8,7 +8,7 @@
     </record>
     <!--    My ticket view action for team members and administrator-->
     <record id="it_itl_bd_help_ticket_my_ticket_action" model="ir.actions.act_window">
-        <field name="name">My tickets</field>
+        <field name="name">My tickets (Team)</field>
         <field name="res_model">it.itl.bd.help.ticket</field>
         <field name="domain">['|', '|',('assigned_user','=',uid), ('employee_id','=',uid), ('ticket_creator_id','=',uid)]</field>
         <field name="view_mode">kanban,tree,form,calendar,activity,pivot,graph</field>
@@ -299,7 +299,7 @@
                 <field name="is_editor_user" invisible="1"/>
                 <field name="color"/>
                 <field name="name"/>
-                <field name="stage_id"/>
+                <field name="stage_id" readonly="1"/>
 <!--                <field name="kanban_state"/>-->
                 <progressbar field="kanban_state"
                              colors="{&quot;done&quot;: &quot;success&quot;, &quot;blocked&quot;: &quot;danger&quot;, &quot;normal&quot;: &quot;200&quot;}"/>
