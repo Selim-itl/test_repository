@@ -169,12 +169,6 @@ class HelpTicket(models.Model):
     team_head = fields.Many2one('res.users', string='Team Leader',
                                 compute='_compute_team_head',
                                 help='Team Leader Name', store=True)
-    assigned_user = fields.Many2many(
-        'res.users',
-        string='Ticket Owner',
-        # domain=lambda self: [('groups_id', 'in', self.env.ref(
-        #     'itl_it_ticketing.helpdesk_user').id)],
-        help='Choose the Assigned User Name')
 
     category_id = fields.Many2one('it.itl.bd.helpdesk.categories',
                                   help='Choose the Category', string='Category')
@@ -417,8 +411,24 @@ class HelpTicket(models.Model):
     done_datetime = fields.Datetime(string="Done Date", readonly=True)
     # --
     correction_info = fields.One2many('it.itl.bd.ticket.correction', 'ticket_id', string="Corrections")
+    # added on 16 july to solve access level problem
+    it_team = fields.Char(string="Team", default="IT Team", readonly=True)
+    # assigned_user = fields.Many2many(
+    #     'res.users',
+    #     string='Ticket Owner',
+    #     # domain=lambda self: [('groups_id', 'in', self.env.ref(
+    #     #     'itl_it_ticketing.helpdesk_user').id)],
+    #     help='Choose the Assigned User Name')
+    assigned_user = fields.Many2many(
+        'res.users',
+        'team_info',
+        string='Members',
+        help='Users who belong to that Helpdesk Team',
+        domain=lambda self: [('groups_id', 'in', self.env.ref(
+            'itl_it_ticketing.it_ticketing_team_member').id)]
+    )
 
-
+    # added on 16 july to solve access level problem
     #---
 
     def _compute_show_category(self):

@@ -130,8 +130,9 @@
                         <page string="Ticket Owner Info">
                             <group>
                                 <group>
-                                    <field name="team_id" options="{'no_create': 1}"/>
-                                    <field name="team_head"/>
+<!--                                    <field name="team_id" options="{'no_create': 1}"/>-->
+<!--                                    <field name="team_head"/>-->
+                                    <field name="it_team"/>
                                     <field name="assigned_user" widget="many2many_tags" options="{'no_create': 1}"/>
                                 </group>
                                 <group>
