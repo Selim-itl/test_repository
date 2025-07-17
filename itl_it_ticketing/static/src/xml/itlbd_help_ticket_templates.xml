@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <templates>
-    <t t-name="HelpdeskDashBoard">
-        <section class="dashboard_main_section" id="main_section_manager">
+    <t t-name="ItlBdItTicketingDashBoard">
+        <section class="dashboard_main_section" id="itlbd_main_section_manager">
             <div class="row">
                 <style>
                     .c-dashboardInfo {
@@ -132,7 +132,7 @@
                         <div class="col"
                              style="margin-top: 28px;margin-left: 88px;height: 48px;">
                             <h1 class="section-header" style="color:#f6921e !important;">
-                                IT Ticketing Dashboard
+                                IT Ticketing System Dashboard
                             </h1>
                         </div>
                         <div class="col-md-4 d-flex justify-content-end bg-light"
@@ -208,12 +208,12 @@
                                 </div>
                             </div>
 
-                    <!--  CS Card of Dashboard-->
+                    <!--  On Hold Card of Dashboard-->
                             <div class="c-dashboardInfo"
                                  id="cs_state">
                                 <div class="wrap">
                                     <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">
-                                        CS
+                                        On Hold
                                         <svg
                                                 class="MuiSvgIcon-root-19"
                                                 focusable="false"

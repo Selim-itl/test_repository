@@ -49,7 +49,7 @@
     ],
     'assets': {
         'web.assets_backend': [
-            'itl_it_ticketing/static/src/xml/help_ticket_templates.xml',
+            'itl_it_ticketing/static/src/xml/itlbd_help_ticket_templates.xml',
             'itl_it_ticketing/static/src/js/helpdesk_dashboard_action.js',
         ],
         'web.assets_frontend': [

@@ -9,14 +9,14 @@
     <menuitem id="helpdesk_dashboard_menu_root_it_itl_bd"
               name="IT Ticketing"
               action="action_help_ticket_dashboard_it_itl_bd"
-              sequence="1"
+              sequence="10"
     /> <!--    groups="itl_it_ticketing.helpdesk_user"-->
 
 
     <menuitem id="help_ticket_menu_it_itl_bd"
               parent="helpdesk_dashboard_menu_root_it_itl_bd"
               name="IT Tickets"
-              sequence="2"/>
+              sequence="20"/>
     <menuitem id="help_ticket_menu_my_ticket_it_itl_bd"
               parent="help_ticket_menu_it_itl_bd"
               name="My Tickets (Team)"
@@ -79,10 +79,10 @@
               name="Report"
               parent="helpdesk_dashboard_menu_root_it_itl_bd"
               groups="itl_it_ticketing.it_ticketing_team_member"
-              sequence="3"
+              sequence="30"
               action="it_itl_bd_help_ticket_report_action"/>
 
-<!--    This is required for CS ticketing module-->
+<!--    This is required for On Hold ticketing module-->
 <!--    <menuitem id="it_itl_bd_helpdesk_chain_menu"-->
 <!--              name="Order Chain"-->
 <!--              action="action_helpdesk_it_itl_bd_chain_conf"-->

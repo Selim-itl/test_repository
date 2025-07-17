@@ -194,8 +194,8 @@ class HelpTicket(models.Model):
                                         'catalog.')
 
     employee_ids = fields.Many2many('hr.employee',
-                                 string='CS',
-                                 help='CS Owners')
+                                 string='On Hold',
+                                 help='On Hold Owners')
 
     job_reference = fields.Char(string='Job Reference', help='Jobs number input in this field')
     work_orders = fields.Char(string='Work Orders', help='Job work orders added in this field')
@@ -411,7 +411,7 @@ class HelpTicket(models.Model):
 
     # stage base date field
     mis_datetime = fields.Datetime(string="MIS Date", readonly=True)
-    cs_datetime = fields.Datetime(string="CS Date", readonly=True)
+    cs_datetime = fields.Datetime(string="On Hold Date", readonly=True)
     in_progress_datetime = fields.Datetime(string="In Progress Date", readonly=True)
     verification_datetime = fields.Datetime(string="Verification Date", readonly=True)
     verified_by = fields.Many2one(comodel_name='res.users', string="Verified By", readonly=True)

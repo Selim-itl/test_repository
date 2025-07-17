@@ -5,7 +5,7 @@ var core = require('web.core');
 var rpc = require('web.rpc');
 var ajax = require('web.ajax');
 var CustomDashBoard = AbstractAction.extend({
-   template: 'HelpdeskDashBoard',
+   template: 'ItlBdItTicketingDashBoard',
 
    start: function() {
         var self = this;
@@ -53,10 +53,10 @@ var CustomDashBoard = AbstractAction.extend({
         })
         })
 
-        // Update the dashboard in CS state value
+        // Update the dashboard in On Hold state value
         self.$el.find("#cs_state").click(function(){
         self.do_action({
-            name:'CS Tickets',
+            name:'On Hold Tickets',
             type: 'ir.actions.act_window',
             res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
@@ -170,10 +170,10 @@ var CustomDashBoard = AbstractAction.extend({
         })
         })
 
-        // Week Update the dashboard in CS state value
+        // Week Update the dashboard in On Hold state value
         self.$el.find("#cs_state").click(function(){
         self.do_action({
-            name:'CS Tickets',
+            name:'On Hold Tickets',
             type: 'ir.actions.act_window',
             res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
@@ -287,10 +287,10 @@ var CustomDashBoard = AbstractAction.extend({
         })
         })
 
-        // Month the dashboard in CS state value
+        // Month the dashboard in On Hold state value
         self.$el.find("#cs_state").click(function(){
         self.do_action({
-            name:'CS Tickets',
+            name:'On Hold Tickets',
             type: 'ir.actions.act_window',
             res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
@@ -404,10 +404,10 @@ var CustomDashBoard = AbstractAction.extend({
         })
         })
 
-        // Year Update the dashboard in CS state value
+        // Year Update the dashboard in On Hold state value
         self.$el.find("#cs_state").click(function(){
         self.do_action({
-            name:'CS Tickets',
+            name:'On Hold Tickets',
             type: 'ir.actions.act_window',
             res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',

@@ -14,7 +14,7 @@
     <!-- Project Stages -->
     <record id="it_itl_bd_ticket_stage_cs" model="it.itl.bd.ticket.stage">
         <field name="sequence">18</field>
-        <field name="name">CS</field>
+        <field name="name">On Hold</field>
     </record>
 
     <!--In progress-->

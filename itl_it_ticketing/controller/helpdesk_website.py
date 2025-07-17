@@ -34,7 +34,7 @@ class HelpDeskDashboard(http.Controller):
             [('stage_id', '=', stage_mis)])
         in_mis_ls = [data.id for data in in_mis_id]
 
-        # In CS
+        # In On Hold
         stage_cs = request.env['it.itl.bd.ticket.stage'].search(
             [('name', '=', 'CS')], limit=1).id
         cs = request.env["it.itl.bd.help.ticket"].search_count(
@@ -146,7 +146,7 @@ class HelpDeskDashboard(http.Controller):
             [('stage_id', '=', stage_mis)])
         in_mis_ls = [data.id for data in in_mis_id]
 
-        # In CS
+        # In On Hold
         stage_cs = request.env['it.itl.bd.ticket.stage'].search(
             [('name', '=', 'CS')], limit=1).id
         cs = request.env["it.itl.bd.help.ticket"].search_count(
@@ -249,7 +249,7 @@ class HelpDeskDashboard(http.Controller):
         in_mis_id = request.env["it.itl.bd.help.ticket"].search(
             [('stage_id', '=', stage_mis)])
         in_mis_ls = [data.id for data in in_mis_id]
-        # In CS
+        # In On Hold
         stage_cs = request.env['it.itl.bd.ticket.stage'].search(
             [('name', '=', 'CS')], limit=1).id
         cs = request.env["it.itl.bd.help.ticket"].search_count(
@@ -360,7 +360,7 @@ class HelpDeskDashboard(http.Controller):
         in_mis_id = request.env["it.itl.bd.help.ticket"].search(
             [('stage_id', '=', stage_mis)])
         in_mis_ls = [data.id for data in in_mis_id]
-        # In CS
+        # In On Hold
         stage_cs = request.env['it.itl.bd.ticket.stage'].search(
             [('name', '=', 'CS')], limit=1).id
         cs = request.env["it.itl.bd.help.ticket"].search_count(
