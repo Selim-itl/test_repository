@@ -12,7 +12,7 @@ var CustomDashBoard = AbstractAction.extend({
         ajax.rpc('/helpdesk_dashboard').then(function (res) {
         self.$el.find("#new_state_value").text(res.new)
         self.$el.find("#mis_stage_value").text(res.in_mis)
-        self.$el.find("#cs_stage_value").text(res.cs)
+        self.$el.find("#on_hold_value").text(res.cs)
         self.$el.find("#inprogress_value").text(res.in_progress)
         self.$el.find("#canceled_value").text(res.canceled)
         self.$el.find("#verification_value").text(res.verification)
@@ -54,7 +54,7 @@ var CustomDashBoard = AbstractAction.extend({
         })
 
         // Update the dashboard in On Hold state value
-        self.$el.find("#cs_state").click(function(){
+        self.$el.find("#on_hold_state").click(function(){
         self.do_action({
             name:'On Hold Tickets',
             type: 'ir.actions.act_window',
@@ -129,7 +129,7 @@ var CustomDashBoard = AbstractAction.extend({
         ajax.rpc('/helpdesk_dashboard_week').then(function (res) {
         self.$el.find("#new_state_value").text(res.new)
         self.$el.find("#mis_stage_value").text(res.in_mis)
-        self.$el.find("#cs_stage_value").text(res.cs)
+        self.$el.find("#on_hold_value").text(res.cs)
         self.$el.find("#inprogress_value").text(res.in_progress)
         self.$el.find("#canceled_value").text(res.canceled)
         self.$el.find("#verification_value").text(res.verification)
@@ -171,7 +171,7 @@ var CustomDashBoard = AbstractAction.extend({
         })
 
         // Week Update the dashboard in On Hold state value
-        self.$el.find("#cs_state").click(function(){
+        self.$el.find("#on_hold_state").click(function(){
         self.do_action({
             name:'On Hold Tickets',
             type: 'ir.actions.act_window',
@@ -246,7 +246,7 @@ var CustomDashBoard = AbstractAction.extend({
         ajax.rpc('/helpdesk_dashboard_month').then(function (res) {
         self.$el.find("#new_state_value").text(res.new)
         self.$el.find("#mis_stage_value").text(res.in_mis)
-        self.$el.find("#cs_stage_value").text(res.cs)
+        self.$el.find("#on_hold_value").text(res.cs)
         self.$el.find("#inprogress_value").text(res.in_progress)
         self.$el.find("#canceled_value").text(res.canceled)
         self.$el.find("#verification_value").text(res.verification)
@@ -288,7 +288,7 @@ var CustomDashBoard = AbstractAction.extend({
         })
 
         // Month the dashboard in On Hold state value
-        self.$el.find("#cs_state").click(function(){
+        self.$el.find("#on_hold_state").click(function(){
         self.do_action({
             name:'On Hold Tickets',
             type: 'ir.actions.act_window',
@@ -362,7 +362,7 @@ var CustomDashBoard = AbstractAction.extend({
         ajax.rpc('/helpdesk_dashboard_year').then(function (res) {
              self.$el.find("#new_state_value").text(res.new)
         self.$el.find("#mis_stage_value").text(res.in_mis)
-        self.$el.find("#cs_stage_value").text(res.cs)
+        self.$el.find("#on_hold_value").text(res.cs)
         self.$el.find("#inprogress_value").text(res.in_progress)
         self.$el.find("#canceled_value").text(res.canceled)
         self.$el.find("#verification_value").text(res.verification)
@@ -405,7 +405,7 @@ var CustomDashBoard = AbstractAction.extend({
         })
 
         // Year Update the dashboard in On Hold state value
-        self.$el.find("#cs_state").click(function(){
+        self.$el.find("#on_hold_state").click(function(){
         self.do_action({
             name:'On Hold Tickets',
             type: 'ir.actions.act_window',

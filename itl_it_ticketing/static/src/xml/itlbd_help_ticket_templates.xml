@@ -210,7 +210,7 @@
 
                     <!--  On Hold Card of Dashboard-->
                             <div class="c-dashboardInfo"
-                                 id="cs_state">
+                                 id="on_hold_state">
                                 <div class="wrap">
                                     <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">
                                         On Hold
@@ -228,7 +228,7 @@
                                         </svg>
                                     </h4>
                                     <span class="hind-font caption-12 c-dashboardInfo__count"
-                                          id="cs_stage_value">
+                                          id="on_hold_value">
                                     </span>
                                 </div>
                             </div>
