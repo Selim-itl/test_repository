@@ -19,8 +19,8 @@
 #    If not, see <http://www.gnu.org/licenses/>.
 #
 #############################################################################
-from . import helpdesk_website
-from . import portal
-from . import ticket_search
-from . import ticket_group_by
-from . import website
+from . import iltbd_helpdesk_website
+from . import iltbd_portal
+from . import iltbd_ticket_search
+from . import iltbd_ticket_group_by
+from . import iltbd_website

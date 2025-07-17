@@ -3,18 +3,18 @@
 # ITL Bangladesh Pvt. Limited
 #
 #############################################################################
-from . import account_move
-from . import help_team
-from . import help_ticket
-from . import helpdesk_categories
-from . import helpdesk_tag
-from . import helpdesk_types
-from . import mail_compose_message
-from . import merge_tickets
-from . import project_task
-from . import res_config_settings
-from . import support_tickets
-from . import ticket_stage
-from . import website_menu
-from . import chain_conf
-from . import correction_ticket_form
+from . import iltbd_account_move
+from . import iltbd_help_team
+from . import iltbd_help_ticket
+from . import iltbd_helpdesk_categories
+from . import iltbd_helpdesk_tag
+from . import iltbd_helpdesk_types
+from . import iltbd_mail_compose_message
+from . import iltbd_merge_tickets
+from . import iltbd_project_task
+from . import iltbd_res_config_settings
+from . import iltbd_support_tickets
+from . import iltbd_ticket_stage
+from . import iltbd_website_menu
+from . import iltbd_chain_conf
+from . import iltbd_correction_ticket_form
