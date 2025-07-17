@@ -36,7 +36,7 @@ class HelpDeskDashboard(http.Controller):
 
         # In On Hold
         stage_cs = request.env['it.itl.bd.ticket.stage'].search(
-            [('name', '=', 'CS')], limit=1).id
+            [('name', '=', 'On Hold')], limit=1).id
         cs = request.env["it.itl.bd.help.ticket"].search_count(
             [('stage_id', '=', stage_cs)])
         cs_id = request.env["it.itl.bd.help.ticket"].search(
@@ -148,7 +148,7 @@ class HelpDeskDashboard(http.Controller):
 
         # In On Hold
         stage_cs = request.env['it.itl.bd.ticket.stage'].search(
-            [('name', '=', 'CS')], limit=1).id
+            [('name', '=', 'On Hold')], limit=1).id
         cs = request.env["it.itl.bd.help.ticket"].search_count(
             [('stage_id', '=', stage_cs)])
         cs_id = request.env["it.itl.bd.help.ticket"].search(
@@ -251,7 +251,7 @@ class HelpDeskDashboard(http.Controller):
         in_mis_ls = [data.id for data in in_mis_id]
         # In On Hold
         stage_cs = request.env['it.itl.bd.ticket.stage'].search(
-            [('name', '=', 'CS')], limit=1).id
+            [('name', '=', 'On Hold')], limit=1).id
         cs = request.env["it.itl.bd.help.ticket"].search_count(
             [('stage_id', '=', stage_cs)])
         cs_id = request.env["it.itl.bd.help.ticket"].search(
@@ -362,7 +362,7 @@ class HelpDeskDashboard(http.Controller):
         in_mis_ls = [data.id for data in in_mis_id]
         # In On Hold
         stage_cs = request.env['it.itl.bd.ticket.stage'].search(
-            [('name', '=', 'CS')], limit=1).id
+            [('name', '=', 'On Hold')], limit=1).id
         cs = request.env["it.itl.bd.help.ticket"].search_count(
             [('stage_id', '=', stage_cs)])
         cs_id = request.env["it.itl.bd.help.ticket"].search(
