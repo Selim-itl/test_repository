@@ -221,8 +221,8 @@
                         </page>
                         <page string="Employee review">
                             <group>
-                                <field name="customer_rating" attrs="{'readonly': [('is_editor_user', '=', True)]}"
-                                       widget="priority" options="{'autosave': False}"/>
+<!--                                <field name="customer_rating" attrs="{'readonly': [('is_editor_user', '=', True)]}"-->
+<!--                                       widget="priority" options="{'autosave': False}"/>-->
                                 <field name="review" attrs="{'readonly': [('is_editor_user', '=', True)]}"/>
                             </group>
                         </page>
