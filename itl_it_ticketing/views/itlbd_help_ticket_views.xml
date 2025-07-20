@@ -151,7 +151,7 @@
                         <group>
                             <field name="show_category" invisible="1"/>
                             <field name="ticket_type"/>
-                            <field name="product_ids" widget="many2one_avatar"/>
+                            <field name="product_ids" widget="many2one_avatar" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
                             <field name="create_date"/>
                             <field name="start_date" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
                             <field name="end_date" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>

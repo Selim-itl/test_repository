@@ -102,7 +102,7 @@ class HelpTicket(models.Model):
                                   string='Product',
                                   tracking=True,
                                   help='The product associated with this '
-                                        'ticket. Select with which product you are facing issue')
+                                        'ticket. Select with which product is having issue')
 
     project_id = fields.Many2one('project.project',
                                  string='Project',
