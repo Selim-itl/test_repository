@@ -11,8 +11,8 @@ from odoo.http import request, _logger
 class HelpDeskDashboard(http.Controller):
     """Website helpdesk dashboard"""
 
-    @http.route(['/helpdesk_dashboard'], type='json', auth="public")
-    def helpdesk_dashboard(self):
+    @http.route(['/itlbd_ticketing_dashboard'], type='json', auth="public")
+    def itlbd_ticketing_dashboard(self):
         """Helpdesk dashboard controller"""
         stage_new = request.env['it.itl.bd.ticket.stage'].search(
             [('name', '=', 'Inbox')], limit=1).id
@@ -117,8 +117,8 @@ class HelpDeskDashboard(http.Controller):
 
 
 
-    @http.route(['/helpdesk_dashboard_week'], type='json', auth="public")
-    def helpdesk_dashboard_week(self):
+    @http.route(['/itlbd_ticketing_dashboard_week'], type='json', auth="public")
+    def itlbd_ticketing_dashboard_week(self):
         """Week based sorting controller"""
         today = DT.date.today()
         stage_new = request.env['it.itl.bd.ticket.stage'].search(
@@ -226,8 +226,8 @@ class HelpDeskDashboard(http.Controller):
         }
         return dashboard_values
 
-    @http.route(['/helpdesk_dashboard_month'], type='json', auth="public")
-    def helpdesk_dashboard_month(self):
+    @http.route(['/itlbd_ticketing_dashboard_month'], type='json', auth="public")
+    def itlbd_ticketing_dashboard_month(self):
         """Month based sorting controller"""
         today = DT.date.today()
         stage_new = request.env['it.itl.bd.ticket.stage'].search(
@@ -336,8 +336,8 @@ class HelpDeskDashboard(http.Controller):
         }
         return dashboard_values
 
-    @http.route(['/helpdesk_dashboard_year'], type='json', auth="public")
-    def helpdesk_dashboard_year(self):
+    @http.route(['/itlbd_ticketing_dashboard_year'], type='json', auth="public")
+    def itlbd_ticketing_dashboard_year(self):
         """Year based sorting"""
         today = DT.date.today()
         stage_new = request.env['it.itl.bd.ticket.stage'].search(

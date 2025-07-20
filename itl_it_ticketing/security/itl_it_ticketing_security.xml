@@ -11,7 +11,6 @@
     <record id="it_ticketing_user" model="res.groups">
         <field name="name">User</field>
         <field name="category_id" ref="itl_it_ticketing.module_category_it_itl_bd_ticketing"/>
-        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
 
     <!--    IT Ticketing Team member access-->

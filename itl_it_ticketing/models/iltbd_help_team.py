@@ -64,7 +64,7 @@ class HelpTeam(models.Model):
             lambda x: x.id != self.team_lead_id.id)
         return {'domain': {'member_ids': [
             ('id', '=', filtered_members.ids),
-            ('groups_id', 'in', self.env.ref('base.group_user').id),
+            ('groups_id', 'in', self.env.ref('itl_it_ticketing.it_ticketing_user').id),
             # ('groups_id', 'not in', self.env.ref(
             #     'itl_it_ticketing.helpdesk_team_leader').id)
         ]}}

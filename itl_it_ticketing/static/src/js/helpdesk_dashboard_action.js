@@ -9,7 +9,7 @@ var CustomDashBoard = AbstractAction.extend({
 
    start: function() {
         var self = this;
-        ajax.rpc('/helpdesk_dashboard').then(function (res) {
+        ajax.rpc('/itlbd_ticketing_dashboard').then(function (res) {
         self.$el.find("#new_state_value").text(res.new)
         self.$el.find("#mis_stage_value").text(res.in_mis)
         self.$el.find("#on_hold_value").text(res.cs)
@@ -126,7 +126,7 @@ var CustomDashBoard = AbstractAction.extend({
         var target = $(e.target)
         var value = target.val()
         if (value == "this_week") {
-        ajax.rpc('/helpdesk_dashboard_week').then(function (res) {
+        ajax.rpc('/itlbd_ticketing_dashboard_week').then(function (res) {
         self.$el.find("#new_state_value").text(res.new)
         self.$el.find("#mis_stage_value").text(res.in_mis)
         self.$el.find("#on_hold_value").text(res.cs)
@@ -243,7 +243,7 @@ var CustomDashBoard = AbstractAction.extend({
         }
 //        Month function start
         else if (value == "this_month") {
-        ajax.rpc('/helpdesk_dashboard_month').then(function (res) {
+        ajax.rpc('/itlbd_ticketing_dashboard_month').then(function (res) {
         self.$el.find("#new_state_value").text(res.new)
         self.$el.find("#mis_stage_value").text(res.in_mis)
         self.$el.find("#on_hold_value").text(res.cs)
@@ -359,7 +359,7 @@ var CustomDashBoard = AbstractAction.extend({
         }
 //        Year filtering start -----------
         else if (value == "this_year") {
-        ajax.rpc('/helpdesk_dashboard_year').then(function (res) {
+        ajax.rpc('/itlbd_ticketing_dashboard_year').then(function (res) {
              self.$el.find("#new_state_value").text(res.new)
         self.$el.find("#mis_stage_value").text(res.in_mis)
         self.$el.find("#on_hold_value").text(res.cs)
@@ -478,6 +478,6 @@ var CustomDashBoard = AbstractAction.extend({
    })
   },
 })
-core.action_registry.add('helpdesk_dashboard_tag', CustomDashBoard);
+core.action_registry.add('itlbd_dashboard_tag', CustomDashBoard);
 return CustomDashBoard
 })
