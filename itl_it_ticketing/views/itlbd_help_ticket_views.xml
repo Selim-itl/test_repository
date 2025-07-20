@@ -15,7 +15,7 @@
         <field name="view_mode">kanban,tree,form,calendar,activity,pivot,graph</field>
     </record>
 
-<!--    My tickets action for user group -->
+    <!--    My tickets action for user group -->
     <record id="it_itl_bd_help_ticket_my_ticket_action_non_team" model="ir.actions.act_window">
         <field name="name">My tickets (Employee)</field>
         <field name="res_model">it.itl.bd.help.ticket</field>
@@ -23,23 +23,23 @@
         <field name="view_mode">tree,kanban,form,calendar</field>
     </record>
 
-<!--&lt;!&ndash;    Connect custom kanban with action which is for non-team group&ndash;&gt;-->
-<!--    <record id="it_itl_bd_help_ticket_my_ticket_action_non_team_kanban_view" model="ir.actions.act_window.view">-->
-<!--&lt;!&ndash;        <field name="sequence" eval="200"/>&ndash;&gt;-->
-<!--        <field name="view_mode">kanban</field>-->
-<!--        <field name="view_id" ref="itl_it_ticketing.it_itl_bd_help_ticket_view_kanban_for_non_team"/>-->
-<!--        <field name="act_window_id" ref="itl_it_ticketing.it_itl_bd_help_ticket_my_ticket_action_non_team"/>-->
-<!--    </record>-->
+    <!--&lt;!&ndash;    Connect custom kanban with action which is for non-team group&ndash;&gt;-->
+    <!--    <record id="it_itl_bd_help_ticket_my_ticket_action_non_team_kanban_view" model="ir.actions.act_window.view">-->
+    <!--&lt;!&ndash;        <field name="sequence" eval="200"/>&ndash;&gt;-->
+    <!--        <field name="view_mode">kanban</field>-->
+    <!--        <field name="view_id" ref="itl_it_ticketing.it_itl_bd_help_ticket_view_kanban_for_non_team"/>-->
+    <!--        <field name="act_window_id" ref="itl_it_ticketing.it_itl_bd_help_ticket_my_ticket_action_non_team"/>-->
+    <!--    </record>-->
 
 
 
-<!--&lt;!&ndash;    Connect editable kanban to enable team member and manager&ndash;&gt;-->
-<!--    <record id="it_itl_bd_help_ticket_my_ticket_action_for_team_kanban_view" model="ir.actions.act_window.view">-->
-<!--&lt;!&ndash;        <field name="sequence" eval="10"/>&ndash;&gt;-->
-<!--        <field name="view_mode">kanban</field>-->
-<!--        <field name="view_id" ref="itl_it_ticketing.it_itl_bd_help_ticket_view_kanban"/>-->
-<!--        <field name="act_window_id" ref="itl_it_ticketing.it_itl_bd_help_ticket_my_ticket_action"/>-->
-<!--    </record>-->
+    <!--&lt;!&ndash;    Connect editable kanban to enable team member and manager&ndash;&gt;-->
+    <!--    <record id="it_itl_bd_help_ticket_my_ticket_action_for_team_kanban_view" model="ir.actions.act_window.view">-->
+    <!--&lt;!&ndash;        <field name="sequence" eval="10"/>&ndash;&gt;-->
+    <!--        <field name="view_mode">kanban</field>-->
+    <!--        <field name="view_id" ref="itl_it_ticketing.it_itl_bd_help_ticket_view_kanban"/>-->
+    <!--        <field name="act_window_id" ref="itl_it_ticketing.it_itl_bd_help_ticket_my_ticket_action"/>-->
+    <!--    </record>-->
 
     <!--    Ticket report action-->
     <record id="it_itl_bd_help_ticket_report_action" model="ir.actions.act_window">
@@ -71,14 +71,14 @@
 
                     <button name="action_download_attachment" string="Download Attachment"
                             type="object" class="btn btn-info"/>
-<!--                    <button name="action_create_tasks" string="Create Task"-->
-<!--                            type="object" class="btn-primary"-->
-<!--                            attrs="{'invisible':[('create_task','=',False)]}"/>-->
-<!--                    <button name="action_create_invoice" string="Create Invoice"-->
-<!--                            type="object" class="btn-primary"-->
-<!--                            attrs="{'invisible':[('billable','=',False)]}"/>-->
-<!--                    <field name="stage_id" widget="statusbar"-->
-<!--                           options="{'clickable': '1'}"/>-->
+                    <!--                    <button name="action_create_tasks" string="Create Task"-->
+                    <!--                            type="object" class="btn-primary"-->
+                    <!--                            attrs="{'invisible':[('create_task','=',False)]}"/>-->
+                    <!--                    <button name="action_create_invoice" string="Create Invoice"-->
+                    <!--                            type="object" class="btn-primary"-->
+                    <!--                            attrs="{'invisible':[('billable','=',False)]}"/>-->
+                    <!--                    <field name="stage_id" widget="statusbar"-->
+                    <!--                           options="{'clickable': '1'}"/>-->
 
                     <field name="stage_id"
                            widget="statusbar"
@@ -88,18 +88,18 @@
                            widget="statusbar"
                            attrs="{'invisible': [('is_editor_user', '=', True)]}"/>
 
-<!--                    <field name="stage_id"-->
-<!--                           attrs="{'invisible': [('is_editor_user', '=', True)], 'readonly': [('is_editor_user', '=', False)]}"/>-->
-<!--                    <field name="stage_id"-->
-<!--                           widget="statusbar"-->
-<!--                           attrs="{'invisible': [('is_editor_user', '=', False)]}"/>-->
+                    <!--                    <field name="stage_id"-->
+                    <!--                           attrs="{'invisible': [('is_editor_user', '=', True)], 'readonly': [('is_editor_user', '=', False)]}"/>-->
+                    <!--                    <field name="stage_id"-->
+                    <!--                           widget="statusbar"-->
+                    <!--                           attrs="{'invisible': [('is_editor_user', '=', False)]}"/>-->
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-<!--                        <button class="oe_stat_button" name="action_open_tasks"-->
-<!--                                string="Tasks" type="object" icon="fa-tasks"-->
-<!--                                attrs="{'invisible':[('create_task','=',False)]}">-->
-<!--                        </button>-->
+                        <!--                        <button class="oe_stat_button" name="action_open_tasks"-->
+                        <!--                                string="Tasks" type="object" icon="fa-tasks"-->
+                        <!--                                attrs="{'invisible':[('create_task','=',False)]}">-->
+                        <!--                        </button>-->
                         <button class="oe_stat_button"
                                 name="action_open_merged_tickets"
                                 string="Merged Tickets" type="object"
@@ -110,35 +110,35 @@
                                 <span class="o_stat_text">Merged Tickets</span>
                             </div>
                         </button>
-<!--                        <button class="oe_stat_button" name="action_open_invoices"-->
-<!--                                string="Invoices" type="object" icon="fa-tasks"-->
-<!--                                attrs="{'invisible':[('billable','=',False)]}">-->
-<!--                        </button>-->
                     </div>
-<!--                    <field name="kanban_state" widget="state_selection"/>-->
-
+                    <!--                    <field name="kanban_state" widget="state_selection"/>-->
                     <div class="oe_title">
+                        <field name="is_manager" invisible="1"/>
+                        <field name="is_editor_user" invisible="1"/>
+                        <field name="is_logged_user_assigned" invisible="1"/>
                         <label for="name" class="oe_edit_only"/>
                         <h1>
                             <field name="name"/>
                         </h1>
+                    </div>
+
+                    <group>
                         <label for="subject" class="oe_edit_only"/>
                         <h1 class="mt0">
                             <field name="subject"/>
                         </h1>
-                        <field name="is_manager" invisible="1"/>
-                        <field name="is_editor_user" invisible="1"/>
-                        <field name="is_logged_user_assigned" invisible="1"/>
-                    </div>
+                        <field name="description"/>
+                    </group>
+
                     <group>
                         <group>
                             <!--                            <field name="customer_id"/>-->
                             <field name="ticket_creator_id"/>
-<!--                            <field name="employee_id" attrs="{'readonly': [('employee_id', '!=', False), ('is_editor_user', '=', False)]}"/>-->
+                            <!--                            <field name="employee_id" attrs="{'readonly': [('employee_id', '!=', False), ('is_editor_user', '=', False)]}"/>-->
                             <field name="employee_id" attrs="{'readonly': [('subject', '=', False)]}"/>
                             <field name="designation" force_save="1"/>
-<!--                            <field name="employee_ids" widget="many2many_tags"/>-->
-<!--                            <field name="job_reference"/>-->
+                            <!--                            <field name="employee_ids" widget="many2many_tags"/>-->
+                            <!--                            <field name="job_reference"/>-->
                             <field name="department" force_save="1"/>
                             <field name="email" force_save="1"/>
                             <field name="phone" force_save="1"/>
@@ -155,8 +155,8 @@
                             <field name="create_date"/>
                             <field name="start_date" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
                             <field name="end_date" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
-<!--                            <field name="work_orders"/>-->
-<!--                            <field name="chain_ids" widget="many2many_tags"/>-->
+                            <!--                            <field name="work_orders"/>-->
+                            <!--                            <field name="chain_ids" widget="many2many_tags"/>-->
                             <field name="verified_by"/>
                             <field name="done_by"/>
                             <field name="correction_by"/>
@@ -174,8 +174,8 @@
                         <page string="Ticket Handler Info">
                             <group>
                                 <group>
-<!--                                    <field name="team_id" options="{'no_create': 1}"/>-->
-<!--                                    <field name="team_head"/>-->
+                                    <!--                                    <field name="team_id" options="{'no_create': 1}"/>-->
+                                    <!--                                    <field name="team_head"/>-->
                                     <field name="it_team"/>
                                     <field name="assigned_user" widget="many2many_tags" options="{'no_create': 1}" attrs="{'readonly': [('is_manager', '=', False)]}"/>
                                 </group>
@@ -195,10 +195,6 @@
                         </page>
 
                         <page string="Issue Description">
-                            <group>
-                                <field name="description"
-                                       placeholder="Provide the reason in detail"/>
-                            </group>
                             <group>
                                 <field name="update_reason" placeholder="Update Reason"/>
                                 <field name="updated_by" placeholder="Update By Wizard" force_save="1"/>
@@ -276,7 +272,7 @@
                 <field name="subject"/>
                 <field name="employee_id"/>
                 <!--                <field name="customer_id"/>-->
-<!--                <field name="chain_ids" widget="many2many_tags"/>-->
+                <!--                <field name="chain_ids" widget="many2many_tags"/>-->
                 <field name="create_date"/>
                 <field name="stage_id"/>
                 <field name="last_update_date"/>
@@ -323,7 +319,7 @@
                 <field name="color"/>
                 <field name="name"/>
                 <field name="stage_id" readonly="1"/>
-<!--                <field name="kanban_state"/>-->
+                <!--                <field name="kanban_state"/>-->
                 <progressbar field="kanban_state"
                              colors="{&quot;done&quot;: &quot;success&quot;, &quot;blocked&quot;: &quot;danger&quot;, &quot;normal&quot;: &quot;200&quot;}"/>
 
@@ -368,9 +364,9 @@
                                     <!--                                    <field name="customer_id"/>-->
                                     <field name="employee_id"/>
                                 </div>
-<!--                                <div class="row">-->
-<!--                                    <field name="chain_ids"/>-->
-<!--                                </div>-->
+                                <!--                                <div class="row">-->
+                                <!--                                    <field name="chain_ids"/>-->
+                                <!--                                </div>-->
                                 <div class="row">
                                     <div class="col">
                                         <field name="ticket_from"
@@ -393,8 +389,8 @@
                                                widget="kanban_activity" attrs="{'invisible': [('is_manager', '=', False)]}"/>
                                     </div>
                                     <div class="oe_kanban_bottom_right">
-<!--                                        <field name="kanban_state"-->
-<!--                                               widget="state_selection"/>-->
+                                        <!--                                        <field name="kanban_state"-->
+                                        <!--                                               widget="state_selection"/>-->
                                         <field name="user_id"
                                                widget="many2one_avatar_user"/>
                                     </div>
@@ -407,103 +403,103 @@
             </kanban>
         </field>
     </record>
-<!--    Kanban view for non team or normal user-->
-<!--    <record id="it_itl_bd_help_ticket_view_kanban_for_non_team" model="ir.ui.view">-->
-<!--        <field name="name">My tickets kanban</field>-->
-<!--        <field name="model">it.itl.bd.help.ticket</field>-->
-<!--        <field name="priority" eval="20"/>-->
-<!--        <field name="arch" type="xml">-->
-<!--            <kanban default_group_by="stage_id" class="o_kanban_small_column"-->
-<!--                    quick_create="true"-->
-<!--                    quick_create_view="itl_it_ticketing.it_itl_bd_help_ticket_view_form_quick_create"-->
-<!--                    on_create="quick_create">-->
-<!--                <field name="color"/>-->
-<!--                <field name="name"/>-->
-<!--                <field name="stage_id" readonly="1"/>-->
-<!--&lt;!&ndash;                <field name="kanban_state"/>&ndash;&gt;-->
-<!--                <progressbar field="kanban_state"-->
-<!--                             colors="{&quot;done&quot;: &quot;success&quot;, &quot;blocked&quot;: &quot;danger&quot;, &quot;normal&quot;: &quot;200&quot;}"/>-->
+    <!--    Kanban view for non team or normal user-->
+    <!--    <record id="it_itl_bd_help_ticket_view_kanban_for_non_team" model="ir.ui.view">-->
+    <!--        <field name="name">My tickets kanban</field>-->
+    <!--        <field name="model">it.itl.bd.help.ticket</field>-->
+    <!--        <field name="priority" eval="20"/>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <kanban default_group_by="stage_id" class="o_kanban_small_column"-->
+    <!--                    quick_create="true"-->
+    <!--                    quick_create_view="itl_it_ticketing.it_itl_bd_help_ticket_view_form_quick_create"-->
+    <!--                    on_create="quick_create">-->
+    <!--                <field name="color"/>-->
+    <!--                <field name="name"/>-->
+    <!--                <field name="stage_id" readonly="1"/>-->
+    <!--&lt;!&ndash;                <field name="kanban_state"/>&ndash;&gt;-->
+    <!--                <progressbar field="kanban_state"-->
+    <!--                             colors="{&quot;done&quot;: &quot;success&quot;, &quot;blocked&quot;: &quot;danger&quot;, &quot;normal&quot;: &quot;200&quot;}"/>-->
 
-<!--                <templates>-->
-<!--                    <t t-name="kanban-box">-->
-<!--                        <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''} #{lost_ribbon ? 'oe_kanban_card_ribbon' : ''} oe_kanban_global_click oe_kanban_card d-flex flex-column">-->
-<!--                            <div class="o_dropdown_kanban dropdown">-->
-<!--                                <a role="button"-->
-<!--                                   class="dropdown-toggle o-no-caret btn"-->
-<!--                                   data-toggle="dropdown" href="#"-->
-<!--                                   aria-label="Dropdown menu"-->
-<!--                                   title="Dropdown menu">-->
-<!--                                    <span class="fa fa-ellipsis-v"/>-->
-<!--                                </a>-->
-<!--                                <div class="dropdown-menu" role="menu">-->
-<!--                                    <t t-if="widget.editable">-->
-<!--                                        <a role="menuitem" type="edit"-->
-<!--                                           class="dropdown-item">Edit...-->
-<!--                                        </a>-->
-<!--                                    </t>-->
-<!--                                    <t t-if="widget.deletable">-->
-<!--                                        <a role="menuitem" type="delete"-->
-<!--                                           class="dropdown-item">Delete-->
-<!--                                        </a>-->
-<!--                                    </t>-->
-<!--                                    <ul class="oe_kanban_colorpicker"-->
-<!--                                        data-field="color"/>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="oe_kanban_content">-->
-<!--                                <div class="row">-->
-<!--                                    <div class="col">-->
-<!--                                        <strong>-->
-<!--                                            <field name="name"/>-->
-<!--                                        </strong>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class="row">-->
-<!--                                    <field name="subject"/>-->
-<!--                                </div>-->
-<!--                                <div class="row">-->
-<!--                                    &lt;!&ndash;                                    <field name="customer_id"/>&ndash;&gt;-->
-<!--                                    <field name="employee_id"/>-->
-<!--                                </div>-->
-<!--&lt;!&ndash;                                <div class="row">&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <field name="chain_ids"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                                <div class="row">-->
-<!--                                    <div class="col">-->
-<!--                                        <field name="ticket_from"-->
-<!--                                               attrs="{'invisible': [('ticket_from', '=', 'normal_create')]}"-->
-<!--                                               style="padding: 5px 5px;border-radius: 5px; border: 1px solid #ccc;background-color:#d8e8c5 ;text-align: center;color:black;"/>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div>-->
-<!--                                    <field name="tags" widget="many2many_tags"/>-->
-<!--                                </div>-->
-<!--                                <div class="text-muted"-->
-<!--                                     attrs="{'invisible': [('team_id', '=', False)]}">-->
-<!--                                    <field name="team_id"/>-->
-<!--                                </div>-->
-<!--                                <div class="o_kanban_record_bottom flex-wrap">-->
-<!--                                    <div class="oe_kanban_bottom_left">-->
-<!--                                        <field name="priority"-->
-<!--                                               widget="priority"/>-->
-<!--                                        <field name="activity_ids"-->
-<!--                                               widget="kanban_activity"/>-->
-<!--                                    </div>-->
-<!--                                    <div class="oe_kanban_bottom_right">-->
-<!--&lt;!&ndash;                                        <field name="kanban_state"&ndash;&gt;-->
-<!--&lt;!&ndash;                                               widget="state_selection"/>&ndash;&gt;-->
-<!--                                        <field name="user_id"-->
-<!--                                               widget="many2one_avatar_user"/>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="oe_clear"/>-->
-<!--                        </div>-->
-<!--                    </t>-->
-<!--                </templates>-->
-<!--            </kanban>-->
-<!--        </field>-->
-<!--    </record>-->
+    <!--                <templates>-->
+    <!--                    <t t-name="kanban-box">-->
+    <!--                        <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''} #{lost_ribbon ? 'oe_kanban_card_ribbon' : ''} oe_kanban_global_click oe_kanban_card d-flex flex-column">-->
+    <!--                            <div class="o_dropdown_kanban dropdown">-->
+    <!--                                <a role="button"-->
+    <!--                                   class="dropdown-toggle o-no-caret btn"-->
+    <!--                                   data-toggle="dropdown" href="#"-->
+    <!--                                   aria-label="Dropdown menu"-->
+    <!--                                   title="Dropdown menu">-->
+    <!--                                    <span class="fa fa-ellipsis-v"/>-->
+    <!--                                </a>-->
+    <!--                                <div class="dropdown-menu" role="menu">-->
+    <!--                                    <t t-if="widget.editable">-->
+    <!--                                        <a role="menuitem" type="edit"-->
+    <!--                                           class="dropdown-item">Edit...-->
+    <!--                                        </a>-->
+    <!--                                    </t>-->
+    <!--                                    <t t-if="widget.deletable">-->
+    <!--                                        <a role="menuitem" type="delete"-->
+    <!--                                           class="dropdown-item">Delete-->
+    <!--                                        </a>-->
+    <!--                                    </t>-->
+    <!--                                    <ul class="oe_kanban_colorpicker"-->
+    <!--                                        data-field="color"/>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                            <div class="oe_kanban_content">-->
+    <!--                                <div class="row">-->
+    <!--                                    <div class="col">-->
+    <!--                                        <strong>-->
+    <!--                                            <field name="name"/>-->
+    <!--                                        </strong>-->
+    <!--                                    </div>-->
+    <!--                                </div>-->
+    <!--                                <div class="row">-->
+    <!--                                    <field name="subject"/>-->
+    <!--                                </div>-->
+    <!--                                <div class="row">-->
+    <!--                                    &lt;!&ndash;                                    <field name="customer_id"/>&ndash;&gt;-->
+    <!--                                    <field name="employee_id"/>-->
+    <!--                                </div>-->
+    <!--&lt;!&ndash;                                <div class="row">&ndash;&gt;-->
+    <!--&lt;!&ndash;                                    <field name="chain_ids"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+    <!--                                <div class="row">-->
+    <!--                                    <div class="col">-->
+    <!--                                        <field name="ticket_from"-->
+    <!--                                               attrs="{'invisible': [('ticket_from', '=', 'normal_create')]}"-->
+    <!--                                               style="padding: 5px 5px;border-radius: 5px; border: 1px solid #ccc;background-color:#d8e8c5 ;text-align: center;color:black;"/>-->
+    <!--                                    </div>-->
+    <!--                                </div>-->
+    <!--                                <div>-->
+    <!--                                    <field name="tags" widget="many2many_tags"/>-->
+    <!--                                </div>-->
+    <!--                                <div class="text-muted"-->
+    <!--                                     attrs="{'invisible': [('team_id', '=', False)]}">-->
+    <!--                                    <field name="team_id"/>-->
+    <!--                                </div>-->
+    <!--                                <div class="o_kanban_record_bottom flex-wrap">-->
+    <!--                                    <div class="oe_kanban_bottom_left">-->
+    <!--                                        <field name="priority"-->
+    <!--                                               widget="priority"/>-->
+    <!--                                        <field name="activity_ids"-->
+    <!--                                               widget="kanban_activity"/>-->
+    <!--                                    </div>-->
+    <!--                                    <div class="oe_kanban_bottom_right">-->
+    <!--&lt;!&ndash;                                        <field name="kanban_state"&ndash;&gt;-->
+    <!--&lt;!&ndash;                                               widget="state_selection"/>&ndash;&gt;-->
+    <!--                                        <field name="user_id"-->
+    <!--                                               widget="many2one_avatar_user"/>-->
+    <!--                                    </div>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                            <div class="oe_clear"/>-->
+    <!--                        </div>-->
+    <!--                    </t>-->
+    <!--                </templates>-->
+    <!--            </kanban>-->
+    <!--        </field>-->
+    <!--    </record>-->
     <!--   Ticket activity view-->
     <record id="it_itl_bd_help_ticket_view_activity" model="ir.ui.view">
         <field name="name">IT ticket activity</field>
@@ -590,13 +586,13 @@
             <search string="Ticket Search">
                 <field name="name" string="Ticket"/>
                 <field name="subject"/>
-<!--                <field name="chain_ids"/>-->
-<!--                <field name="job_reference"/>-->
+                <!--                <field name="chain_ids"/>-->
+                <!--                <field name="job_reference"/>-->
                 <!--                <field name="customer_id"/>-->
                 <field name="employee_id"/>
                 <field name="user_id"/>
-<!--                <field name="employee_ids"/>-->
-<!--                <field name="work_orders"/>-->
+                <!--                <field name="employee_ids"/>-->
+                <!--                <field name="work_orders"/>-->
                 <field name="done_by"/>
                 <field name="correction_by"/>
                 <filter string="My Tickets" name="My Ticket"

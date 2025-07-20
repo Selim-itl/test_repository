@@ -50,8 +50,8 @@ class HelpTicket(models.Model):
                                   string='Ticket Issuer',
                                   help="Select the employee name if the issue is related to someone else. If the issue is yours, there's no need to select anyone",
                                   tracking=True)
-    subject = fields.Text(string='Subject', required=True,
-                          help='Subject of the Ticket')
+    subject = fields.Char(string='Subject/Issue', required=True,
+                          help='Subject/Issue related to the Ticket. (Subject/Issue should be within 256 characters)')
     ticket_creator_id = fields.Many2one(
         'res.users',
         string='Ticket Creator',
