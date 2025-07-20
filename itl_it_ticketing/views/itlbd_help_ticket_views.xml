@@ -171,20 +171,13 @@
                            attrs="{'invisible': [('ticket_from', '=', 'normal_create')]}"
                            style="padding: 10px 15px;border-radius: 5px; border: 1px solid #ccc;background-color:#d8e8c5 ;text-align: center;color:black;"/>
                     <notebook>
-                        <page string="Issue Description">
-                            <group>
-                                <field name="update_reason" placeholder="Updated description"/>
-                                <field name="updated_by" placeholder="Update By Wizard" force_save="1"/>
-                                <field name="update_date" placeholder="Wizard Update Time" force_save="1"/>
-                            </group>
-                        </page>
                         <page string="Ticket Handler Info">
                             <group>
                                 <group>
                                     <!--                                    <field name="team_id" options="{'no_create': 1}"/>-->
                                     <!--                                    <field name="team_head"/>-->
                                     <field name="it_team"/>
-                                    <field name="assigned_user" widget="many2many_tags" options="{'no_create': 1}" attrs="{'readonly': [('is_manager', '=', False)]}"/>
+                                    <field name="assigned_user" widget="many2many_tags" options="{'no_create': 1}" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
                                 </group>
                                 <group>
                                     <field name="project_id" invisible="1"/>
@@ -198,6 +191,14 @@
                                     <field name="last_update_date"/>
                                     <field name="replied_date" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
                                 </group>
+                            </group>
+                        </page>
+
+                        <page string="Issue Description">
+                            <group>
+                                <field name="update_reason" placeholder="Updated description"/>
+                                <field name="updated_by" placeholder="Update By Wizard" force_save="1"/>
+                                <field name="update_date" placeholder="Wizard Update Time" force_save="1"/>
                             </group>
                         </page>
 
