@@ -243,6 +243,10 @@
                                 </group>
                             </group>
                         </page>
+                        <page string="Internal Notes" groups="itl_it_ticketing.it_ticketing_team_member">
+                            <field name="can_edit_internal_notes" invisible="1"/>
+                            <field name="internal_notes" placeholder="Write notes here" attrs="{'readonly': [('can_edit_internal_notes', '=', False)]}"/>
+                        </page>
                     </notebook>
                 </sheet>
                 <div class="o_attachment_preview"/>

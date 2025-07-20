@@ -46,6 +46,7 @@ class HelpTicket(models.Model):
     customer_id = fields.Many2one('res.partner',
                                   string='Customer Name',
                                   help='Select the Customer Name')
+    internal_notes = fields.Html(string='Internal Notes', store=True)
     employee_id = fields.Many2one('hr.employee',
                                   required=True,
                                   string='Ticket Issuer',
@@ -53,6 +54,16 @@ class HelpTicket(models.Model):
                                   tracking=True,
                                   default=lambda self: self._default_employee_id()
                                   )
+
+    can_edit_internal_notes = fields.Boolean(store=False, compute="_compute_can_edit_internal_notes")
+
+    @api.depends('assigned_user')
+    def _compute_can_edit_internal_notes(self):
+        current_user = self.env.user
+        for rec in self:
+            rec.can_edit_internal_notes = current_user in rec.assigned_user or rec.is_manager
+
+    """Set default value to Ticket issuer field. """
     @api.model
     def _default_employee_id(self):
         employee = self.env['hr.employee'].search([('user_id','=',self.env.uid)], limit=1)
