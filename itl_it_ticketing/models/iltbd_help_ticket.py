@@ -47,9 +47,17 @@ class HelpTicket(models.Model):
                                   string='Customer Name',
                                   help='Select the Customer Name')
     employee_id = fields.Many2one('hr.employee',
+                                  required=True,
                                   string='Ticket Issuer',
                                   help="Select the employee name if the issue is related to someone else. If the issue is yours, there's no need to select anyone",
-                                  tracking=True)
+                                  tracking=True,
+                                  default=lambda self: self._default_employee_id()
+                                  )
+    @api.model
+    def _default_employee_id(self):
+        employee = self.env['hr.employee'].search([('user_id','=',self.env.uid)], limit=1)
+        return employee.id if employee else False
+
     subject = fields.Char(string='Subject/Issue', required=True,
                           help='Subject/Issue related to the Ticket. (Subject/Issue should be within 256 characters)')
     ticket_creator_id = fields.Many2one(

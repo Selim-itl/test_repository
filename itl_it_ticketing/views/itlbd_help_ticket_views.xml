@@ -135,7 +135,7 @@
                             <!--                            <field name="customer_id"/>-->
                             <field name="ticket_creator_id"/>
                             <!--                            <field name="employee_id" attrs="{'readonly': [('employee_id', '!=', False), ('is_editor_user', '=', False)]}"/>-->
-                            <field name="employee_id" attrs="{'readonly': [('subject', '=', False)]}"/>
+                            <field name="employee_id"/>
                             <field name="designation" force_save="1"/>
                             <!--                            <field name="employee_ids" widget="many2many_tags"/>-->
                             <!--                            <field name="job_reference"/>-->
