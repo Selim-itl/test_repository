@@ -399,7 +399,7 @@ class HelpTicket(models.Model):
     # Wizard update trace fields:
     updated_by = fields.Many2one(comodel_name='res.partner', string="Updated By")
     update_date = fields.Datetime(string="Update Time", readonly=True)
-    update_reason = fields.Text(string="Update Reason")
+    update_reason = fields.Text(string="Updated description")
 
     """Setting value to updated_by and update_date"""
     @api.onchange('description')
