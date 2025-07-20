@@ -159,7 +159,7 @@
                             <!--                            <field name="chain_ids" widget="many2many_tags"/>-->
                             <field name="verified_by"/>
                             <field name="done_by"/>
-                            <field name="correction_by"/>
+<!--                            <field name="correction_by"/>-->
                             <field name="total_hours"/>
                             <field name="show_category" invisible="1"/>
                             <field name="merge_count" invisible="1"/>
@@ -233,11 +233,11 @@
                                     <field name="cs_datetime"/>
                                     <field name="in_progress_datetime"/>
                                     <field name="verification_datetime"/>
-                                    <field name="correction_datetime"/>
+<!--                                    <field name="correction_datetime"/>-->
                                     <field name="done_datetime"/>
                                 </group>
-                                <group string="Correction Info">
-                                    <field name="correction_info" readonly="1"/>
+                                <group string="Other Info">
+<!--                                    <field name="correction_info" readonly="1"/>-->
                                     <field name="aging_entry_days"/>
                                     <field name="aging_verification_days"/>
                                 </group>
@@ -284,7 +284,7 @@
                 <field name="verification_datetime"/>
                 <field name="verified_by"/>
                 <field name="done_by"/>
-                <field name="correction_datetime"/>
+<!--                <field name="correction_datetime"/>-->
                 <field name="done_datetime"/>
                 <field name="aging_entry_days"/>
                 <field name="aging_verification_days"/>
@@ -598,13 +598,13 @@
                 <!--                <field name="employee_ids"/>-->
                 <!--                <field name="work_orders"/>-->
                 <field name="done_by"/>
-                <field name="correction_by"/>
+<!--                <field name="correction_by"/>-->
                 <filter string="My Tickets" name="My Ticket"
                         domain="[('assigned_user', '=', uid)]"/>
                 <filter string="Done By" name="Done By"
                         domain="[('done_by', '=', uid)]"/>
-                <filter string="Correction By" name="Done By"
-                        domain="[('correction_by', '=', uid)]"/>
+<!--                <filter string="Correction By" name="Done By"-->
+<!--                        domain="[('correction_by', '=', uid)]"/>-->
                 <filter string="Archived" name="filter_archived"
                         domain="[('active','=', False)]"/>
                 <filter string="UnArchived" name="filter_unarchived"
