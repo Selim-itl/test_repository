@@ -160,7 +160,7 @@
                             <field name="cancel_date" attrs="{'invisible': [('cancel_date', '=', False)]}"/>
                             <!--                            <field name="work_orders"/>-->
                             <!--                            <field name="chain_ids" widget="many2many_tags"/>-->
-                            <field name="verified_by"/>
+<!--                            <field name="verified_by"/>-->
                             <field name="done_by"/>
 <!--                            <field name="correction_by"/>-->
                             <field name="total_hours"/>
@@ -226,16 +226,16 @@
                             <group>
                                 <group string="Stage Update Datetime">
                                     <field name="mis_datetime"/>
-                                    <field name="cs_datetime"/>
+                                    <field name="on_hold_datetime"/>
                                     <field name="in_progress_datetime"/>
-                                    <field name="verification_datetime"/>
+<!--                                    <field name="verification_datetime"/>-->
 <!--                                    <field name="correction_datetime"/>-->
                                     <field name="done_datetime"/>
                                 </group>
                                 <group string="Other Info">
 <!--                                    <field name="correction_info" readonly="1"/>-->
-                                    <field name="aging_entry_days"/>
-                                    <field name="aging_verification_days"/>
+<!--                                    <field name="aging_entry_days"/>-->
+<!--                                    <field name="aging_verification_days"/>-->
                                 </group>
                             </group>
                         </page>
@@ -283,13 +283,13 @@
                 <field name="stage_id"/>
                 <field name="last_update_date"/>
                 <field name="assigned_user" widget="many2many_tags"/>
-                <field name="verification_datetime"/>
-                <field name="verified_by"/>
+<!--                <field name="verification_datetime"/>-->
+<!--                <field name="verified_by"/>-->
                 <field name="done_by"/>
 <!--                <field name="correction_datetime"/>-->
                 <field name="done_datetime"/>
-                <field name="aging_entry_days"/>
-                <field name="aging_verification_days"/>
+<!--                <field name="aging_entry_days"/>-->
+<!--                <field name="aging_verification_days"/>-->
                 <field name="user_id"/>
             </tree>
         </field>

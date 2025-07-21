@@ -444,7 +444,7 @@ class HelpTicket(models.Model):
 
     # stage base date field
     mis_datetime = fields.Datetime(string="MIS Date", readonly=True)
-    cs_datetime = fields.Datetime(string="On Hold Date", readonly=True)
+    on_hold_datetime = fields.Datetime(string="On Hold Date", readonly=True)
     in_progress_datetime = fields.Datetime(string="In Progress Date", readonly=True)
     verification_datetime = fields.Datetime(string="Verification Date", readonly=True)
     verified_by = fields.Many2one(comodel_name='res.users', string="Verified By", readonly=True)
@@ -578,8 +578,8 @@ class HelpTicket(models.Model):
             for record in self:
                 if new_stage.name == 'MIS':
                     vals['mis_datetime'] = current_time
-                elif new_stage.name == 'CS':
-                    vals['cs_datetime'] = current_time
+                elif new_stage.name == 'On Hold':
+                    vals['on_hold_datetime'] = current_time
                 elif new_stage.name == 'In Progress':
                     vals['in_progress_datetime'] = current_time
                 elif new_stage.name == 'Verification':
