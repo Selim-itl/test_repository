@@ -55,6 +55,7 @@ class HelpTicket(models.Model):
                                   default=lambda self: self._default_employee_id()
                                   )
 
+    # Setting true if logged-in user is a manager or is assigned to the ticket
     can_edit_internal_notes = fields.Boolean(store=False, compute="_compute_can_edit_internal_notes")
 
     @api.depends('assigned_user')
@@ -70,7 +71,7 @@ class HelpTicket(models.Model):
         return employee.id if employee else False
 
     subject = fields.Char(string='Subject/Issue', required=True,
-                          help='Subject/Issue related to the Ticket. (Subject/Issue should be within 256 characters)')
+                          help='Subject/Issue related to the Ticket. (Subject/Issue should be within 256 characters). Note: This field can only be edited when empty. After data is entered, it becomes read-only. For updates or corrections, contact the IT team.')
     ticket_creator_id = fields.Many2one(
         'res.users',
         string='Ticket Creator',
@@ -78,8 +79,7 @@ class HelpTicket(models.Model):
         readonly=True,
         help="The user who created the ticket. Will be helpful if employee is generating tickets for other employee."
     )
-    description = fields.Text(string='Description',
-                              help='Issue Description', tracking=True)
+    description = fields.Text(string='Description', help='Issue Description. Note: This field can only be edited when empty. After data is entered, it becomes read-only. For updates or corrections, contact the IT team.')
     email = fields.Char(string='Email', help='Email of the issuer.', readonly=True)
     phone = fields.Char(string='Phone', help='Phone Number of the issuer', readonly=True)
     department = fields.Char(string='Department', help='Department of the issuer', readonly=True)
@@ -418,7 +418,7 @@ class HelpTicket(models.Model):
     # Wizard update trace fields:
     updated_by = fields.Many2one(comodel_name='res.partner', string="Updated By")
     update_date = fields.Datetime(string="Update Time", readonly=True)
-    update_reason = fields.Text(string="Updated description")
+    update_reason = fields.Text(string="Updated description", help="Updated issue description.")
 
     """Setting value to updated_by and update_date"""
     @api.onchange('description')
