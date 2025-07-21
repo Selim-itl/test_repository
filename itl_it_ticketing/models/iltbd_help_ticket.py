@@ -404,6 +404,17 @@ class HelpTicket(models.Model):
                                group_expand='_read_group_stage_ids',
                                help='Stages of the ticket.')
 
+    # calculating stage if it is in Done stage
+    is_stage_done = fields.Boolean(compute="_compute_stage_done")
+
+    @api.depends('stage_id')
+    def _compute_stage_done(self):
+        for rec in self:
+            rec.is_stage_done = True if rec.stage_id.name == "Done" else False
+
+    # calculating stage if it is in Done stage
+
+
     is_verification_stage = fields.Boolean(
         string='Is Verification Stage',
         compute='_compute_is_verification_stage',

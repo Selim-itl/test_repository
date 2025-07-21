@@ -117,6 +117,7 @@
                         <field name="is_manager" invisible="1"/>
                         <field name="is_editor_user" invisible="1"/>
                         <field name="is_logged_user_assigned" invisible="1"/>
+                        <field name="is_stage_done" invisible="1"/>
                         <label for="name" class="oe_edit_only"/>
                         <h1>
                             <field name="name"/>
@@ -220,13 +221,6 @@
                                 </tree>
                             </field>
                         </page>
-                        <page string="Employee review">
-                            <group>
-<!--                                <field name="customer_rating" attrs="{'readonly': [('is_editor_user', '=', True)]}"-->
-<!--                                       widget="priority" options="{'autosave': False}"/>-->
-                                <field name="review" attrs="{'readonly': [('is_editor_user', '=', True)]}"/>
-                            </group>
-                        </page>
                         <page string="Ticket status history">
                             <group>
                                 <group string="Stage Update Datetime">
@@ -246,6 +240,13 @@
                         </page>
                         <page string="Internal Notes" groups="itl_it_ticketing.it_ticketing_team_member">
                             <field name="internal_notes" placeholder="Write notes here" attrs="{'readonly': [('can_edit_internal_notes', '=', False)]}"/>
+                        </page>
+                        <page string="Employee review" attrs="{'invisible': [('is_stage_done', '=', False)]}">
+                            <group>
+<!--                                <field name="customer_rating" attrs="{'readonly': [('is_editor_user', '=', True)]}"-->
+<!--                                       widget="priority" options="{'autosave': False}"/>-->
+                                <field name="review" attrs="{'readonly': [('is_editor_user', '=', True)]}"/>
+                            </group>
                         </page>
                     </notebook>
                 </sheet>
