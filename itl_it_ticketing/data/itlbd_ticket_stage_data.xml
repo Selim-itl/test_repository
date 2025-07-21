@@ -41,6 +41,7 @@
         <field name="sequence">50</field>
         <field name="name">Done</field>
         <field name="folded" eval="True"/>
+        <field name="closing_stage" eval="True"/>
     </record>
 
     <!--Cancelled-->
@@ -55,7 +56,7 @@
     <record id="it_itl_bd_ticket_stage_closed" model="it.itl.bd.ticket.stage">
         <field name="sequence">70</field>
         <field name="name">Closed</field>
-        <field name="closing_stage" eval="True"/>
+<!--        <field name="closing_stage" eval="True"/>-->
         <field name="folded" eval="True"/>
     </record>
 </odoo>

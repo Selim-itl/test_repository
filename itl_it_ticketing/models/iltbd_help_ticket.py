@@ -149,9 +149,9 @@ class HelpTicket(models.Model):
                                              ('detailed_type', '=', 'service')])
     create_date = fields.Datetime(string='Creation Date', help='Created date of'
                                                                'the Ticket', readonly=True)
-    start_date = fields.Datetime(string='Start Date & Time', help='Date and time when the ticket was moved to the In progress stage.')
+    start_date = fields.Datetime(string='Start Date & Time', help='Date and time when the ticket was moved to the In progress stage.', readonly=True)
     cancel_date = fields.Datetime(string='Cancel Date & Time', readonly=True)
-    end_date = fields.Datetime(string='End Date & Time', help='Date and time when the ticket was moved to the Done stage.')
+    end_date = fields.Datetime(string='End Date & Time', help='Date and time when the ticket was moved to the Done stage.', readonly=True)
     total_hours = fields.Float(
         string='Time worked (hrs)',
         compute='_compute_total_hours',
@@ -323,8 +323,10 @@ class HelpTicket(models.Model):
         data.last_update_date = fields.Datetime.now()
         if self.stage_id.starting_stage:
             data.start_date = fields.Datetime.now()
-        if self.stage_id.closing_stage or self.stage_id.cancel_stage:
+        if self.stage_id.closing_stage:
             data.end_date = fields.Datetime.now()
+        if self.stage_id.cancel_stage:
+            data.cancel_date = fields.Datetime.now()
         if self.stage_id.template_id:
             mail_template = self.stage_id.template_id
             mail_template.send_mail(self._origin.id, force_send=True)
