@@ -157,6 +157,7 @@
                             <field name="create_date"/>
                             <field name="start_date" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
                             <field name="end_date" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
+                            <field name="cancel_date" attrs="{'invisible': [('cancel_date', '=', False)]}"/>
                             <!--                            <field name="work_orders"/>-->
                             <!--                            <field name="chain_ids" widget="many2many_tags"/>-->
                             <field name="verified_by"/>

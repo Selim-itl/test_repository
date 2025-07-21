@@ -149,8 +149,9 @@ class HelpTicket(models.Model):
                                              ('detailed_type', '=', 'service')])
     create_date = fields.Datetime(string='Creation Date', help='Created date of'
                                                                'the Ticket', readonly=True)
-    start_date = fields.Datetime(string='Start Date & Time', help='Select the date and time when you started working on this ticket.')
-    end_date = fields.Datetime(string='End Date & Time', help='Select the date and time when you finished working on this ticket.')
+    start_date = fields.Datetime(string='Start Date & Time', help='Date and time when the ticket was moved to the In progress stage.')
+    cancel_date = fields.Datetime(string='Cancel Date & Time', readonly=True)
+    end_date = fields.Datetime(string='End Date & Time', help='Date and time when the ticket was moved to the Done stage.')
     total_hours = fields.Float(
         string='Time worked (hrs)',
         compute='_compute_total_hours',
@@ -587,7 +588,10 @@ class HelpTicket(models.Model):
                     vals['correction_by'] = self.env.user.id  # Set current user
                 elif new_stage.name == 'Done':
                     vals['done_datetime'] = current_time
+                    vals['end_date'] = current_time
                     vals['done_by'] = self.env.user.id  # Set current user
+                elif new_stage.name == 'Canceled':
+                    vals['cancel_date'] = current_time
         # Handle the correction stage notification
         if 'stage_id' in vals:
             correction_stage = self.env['it.itl.bd.ticket.stage'].search([('name', '=', 'Correction')], limit=1)
