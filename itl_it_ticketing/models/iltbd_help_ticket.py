@@ -594,9 +594,12 @@ class HelpTicket(models.Model):
         """
         for record in self:
             current_user = self.env.user
+            in_progress_stage = self.env['it.itl.bd.ticket.stage'].search([('name','=','In Progress')], limit=1)
 
             # Assign the current user to the ticket
             record.assigned_user = [(4, current_user.id)]
+            record.stage_id = in_progress_stage
+            record.start_date = fields.Datetime.now()
 
             # Check if the current user belongs to a helpdesk team
             team = self.env['it.itl.bd.help.team'].search([('member_ids', '=', current_user.id)], limit=1)
