@@ -24,17 +24,17 @@
         <field name="name">In Progress</field>
     </record>
 
-    <record id="it_itl_bd_ticket_stage_in_verification" model="it.itl.bd.ticket.stage">
-        <field name="sequence">30</field>
-        <field name="starting_stage" eval="True"/>
-        <field name="name">Verification</field>
-    </record>
+<!--    <record id="it_itl_bd_ticket_stage_in_verification" model="it.itl.bd.ticket.stage">-->
+<!--        <field name="sequence">30</field>-->
+<!--        <field name="starting_stage" eval="True"/>-->
+<!--        <field name="name">Verification</field>-->
+<!--    </record>-->
 
-    <record id="it_itl_bd_ticket_stage_correction" model="it.itl.bd.ticket.stage">
-        <field name="sequence">40</field>
-        <field name="name">Correction</field>
-        <field name="folded" eval="True"/>
-    </record>
+<!--    <record id="it_itl_bd_ticket_stage_correction" model="it.itl.bd.ticket.stage">-->
+<!--        <field name="sequence">40</field>-->
+<!--        <field name="name">Correction</field>-->
+<!--        <field name="folded" eval="True"/>-->
+<!--    </record>-->
 
     <!--Done-->
     <record id="it_itl_bd_ticket_stage_done" model="it.itl.bd.ticket.stage">

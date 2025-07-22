@@ -148,7 +148,7 @@
                             <field name="required_date" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
                             <field name="tags" widget="many2many_tags" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
                             <field name="pending_days"/>
-                            <field name="is_verification_stage"/>
+                            <field name="is_verification_stage" invisible="1"/>
                         </group>
                         <group>
                             <field name="show_category" invisible="1"/>
