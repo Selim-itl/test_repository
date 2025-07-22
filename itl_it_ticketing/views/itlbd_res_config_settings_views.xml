@@ -75,13 +75,13 @@
                     <div class="row mt16 o_settings_container">
                         <div class="col-lg-6 o_setting_box">
                             <div class="o_setting_right_pane">
-                                <label for="closed_stage" string="Close Stage"/>
+                                <label for="resolved_stage" string="Close Stage"/>
                                 <div class="text-muted">
                                     Set The Closing stage
                                 </div>
                                 <div class="content-group">
                                     <div class="mt16">
-                                        <field name="closed_stage"/>
+                                        <field name="resolved_stage"/>
                                     </div>
                                 </div>
                             </div>

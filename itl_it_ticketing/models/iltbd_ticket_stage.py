@@ -37,7 +37,7 @@ class TicketStage(models.Model):
                                    help='Whether the stage is a closing stage '
                                         'or not. A closing stage is a stage '
                                         'that indicates that the helpdesk '
-                                        'ticket has been resolved or closed.'
+                                        'ticket has been resolved.'
                                         ' This field is used to identify the '
                                         'closing stage and is used in various '
                                         'calculations and reports.')

@@ -32,14 +32,14 @@
         <field name="auto_delete" eval="True"/>
         <field name="email_from">itlbd.helpdesk@gmail.com</field>
         <field name="email_to">{{object.customer_id.email}}</field>
-        <field name="subject">Ticket Closed</field>
+        <field name="subject">Ticket Resolved</field>
         <field name="body_html" type="html">
             <p>
                 Dear
                 <t t-out="object.customer_id.name"/>
                 Your Ticket
                 <t t-out="object.name"/>
-                Is Closed
+                Is Resolved
                 <br/>
                 <button class="btn btn-info" role="button"
                         style="border:1px solid black;background-color:purple;padding-x:20px;padding-y:15px;border-radius:10px; width:120px;">

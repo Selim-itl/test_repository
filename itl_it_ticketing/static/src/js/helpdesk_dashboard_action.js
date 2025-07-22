@@ -18,7 +18,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.$el.find("#verification_value").text(res.verification)
         self.$el.find("#done_value").text(res.done)
         self.$el.find("#correction_stage_value").text(res.correction)
-        self.$el.find("#closed_value").text(res.closed)
+        self.$el.find("#resolved_value").text(res.closed)
 //        Update the dashboard new state value
         self.$el.find("#new_state").click(function(){
         self.do_action({
@@ -110,10 +110,10 @@ var CustomDashBoard = AbstractAction.extend({
             domain: [['id', '=', res.done_id]],
         })
         })
-//         Update the dashboard closed state value
+//         Update the dashboard resolved state value
         self.$el.find("#closed_state").click(function(){
         self.do_action({
-            name:'Closed Tickets',
+            name:'Resolved Tickets',
             type: 'ir.actions.act_window',
             res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
@@ -135,7 +135,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.$el.find("#verification_value").text(res.verification)
         self.$el.find("#done_value").text(res.done)
         self.$el.find("#correction_stage_value").text(res.correction)
-        self.$el.find("#closed_value").text(res.closed)
+        self.$el.find("#resolved_value").text(res.closed)
 //        Week function new state updation
         self.$el.find("#new_state").click(function(){
         self.do_action({
@@ -231,7 +231,7 @@ var CustomDashBoard = AbstractAction.extend({
 //         Week function in closed state update
         self.$el.find("#closed_state").click(function(){
         self.do_action({
-            name:'Closed Tickets',
+            name:'Resolved Tickets',
             type: 'ir.actions.act_window',
             res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
@@ -252,7 +252,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.$el.find("#verification_value").text(res.verification)
         self.$el.find("#done_value").text(res.done)
         self.$el.find("#correction_stage_value").text(res.correction)
-        self.$el.find("#closed_value").text(res.closed)
+        self.$el.find("#resolved_value").text(res.closed)
 //        Month searching new state update
         self.$el.find("#new_state").click(function(){
         self.do_action({
@@ -344,10 +344,10 @@ var CustomDashBoard = AbstractAction.extend({
             domain: [['id', '=', res.done_id]],
         })
         })
-//        Month searching closed state update
+//        Month searching Resolved state update
         self.$el.find("#closed_state").click(function(){
         self.do_action({
-            name:'Closed Tickets',
+            name:'Resolved Tickets',
             type: 'ir.actions.act_window',
             res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',
@@ -368,7 +368,7 @@ var CustomDashBoard = AbstractAction.extend({
         self.$el.find("#verification_value").text(res.verification)
         self.$el.find("#done_value").text(res.done)
         self.$el.find("#correction_stage_value").text(res.correction)
-        self.$el.find("#closed_value").text(res.closed)
+        self.$el.find("#resolved_value").text(res.closed)
 //        Year filtering new state update
         self.$el.find("#new_state").click(function(){
         self.do_action({
@@ -461,10 +461,10 @@ var CustomDashBoard = AbstractAction.extend({
             domain: [['id', '=', res.done_id]],
         })
         })
-//        Year filtering closed state update
+//        Year filtering Resolved state update
         self.$el.find("#closed_state").click(function(){
         self.do_action({
-            name:'Closed Tickets',
+            name:'Resolved Tickets',
             type: 'ir.actions.act_window',
             res_model: 'it.itl.bd.help.ticket',
             view_mode: 'tree,form',

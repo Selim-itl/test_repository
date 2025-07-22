@@ -86,7 +86,7 @@ class HelpDeskDashboard(http.Controller):
 
         # Close
         stage_closed = request.env['it.itl.bd.ticket.stage'].search(
-            [('name', '=', 'Closed')], limit=1).id
+            [('name', '=', 'Resolved')], limit=1).id
         closed = request.env["it.itl.bd.help.ticket"].search_count(
             [('stage_id', '=', stage_closed)])
         closed_id = request.env["it.itl.bd.help.ticket"].search(
@@ -129,7 +129,7 @@ class HelpDeskDashboard(http.Controller):
         stage_done = request.env['it.itl.bd.ticket.stage'].search(
             [('name', '=', 'Done')], limit=1).id
         stage_closed = request.env['it.itl.bd.ticket.stage'].search(
-            [('name', '=', 'Closed')], limit=1).id
+            [('name', '=', 'Resolved')], limit=1).id
         stage_ids = [stage_new, stage_draft]
         week_ago = str(today - DT.timedelta(days=7)) + ' '
         new = request.env["it.itl.bd.help.ticket"].search_count(
@@ -308,7 +308,7 @@ class HelpDeskDashboard(http.Controller):
 
         # Closed
         stage_closed = request.env['it.itl.bd.ticket.stage'].search(
-            [('name', '=', 'Closed')], limit=1).id
+            [('name', '=', 'Resolved')], limit=1).id
         closed = request.env["it.itl.bd.help.ticket"].search_count(
             [('stage_id', '=', stage_closed), ('create_date', '>', week_ago)])
         closed_id = request.env["it.itl.bd.help.ticket"].search(
@@ -417,7 +417,7 @@ class HelpDeskDashboard(http.Controller):
         correction_id_ls = [data.id for data in correction_id]
         # Closed
         stage_closed = request.env['it.itl.bd.ticket.stage'].search(
-            [('name', '=', 'Closed')], limit=1).id
+            [('name', '=', 'Resolved')], limit=1).id
         closed = request.env["it.itl.bd.help.ticket"].search_count(
             [('stage_id', '=', stage_closed), ('create_date', '>', week_ago)])
         closed_id = request.env["it.itl.bd.help.ticket"].search(

@@ -359,7 +359,7 @@
                                  id="closed_state">
                                 <div class="wrap">
                                     <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">
-                                        Closed
+                                        Resolved
                                         <svg
                                                 class="MuiSvgIcon-root-19"
                                                 focusable="false"
@@ -374,7 +374,7 @@
                                         </svg>
                                     </h4>
                                     <span class="hind-font caption-12 c-dashboardInfo__count"
-                                          id="closed_value">
+                                          id="resolved_value">
                                     </span>
                                 </div>
                             </div>

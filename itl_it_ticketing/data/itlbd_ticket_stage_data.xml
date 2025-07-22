@@ -52,10 +52,10 @@
         <field name="folded" eval="True"/>
     </record>
 
-    <!--    Closed-->
-    <record id="it_itl_bd_ticket_stage_closed" model="it.itl.bd.ticket.stage">
+    <!--    Resolved-->
+    <record id="it_itl_bd_ticket_stage_resolved" model="it.itl.bd.ticket.stage">
         <field name="sequence">70</field>
-        <field name="name">Closed</field>
+        <field name="name">Resolved</field>
 <!--        <field name="closing_stage" eval="True"/>-->
         <field name="folded" eval="True"/>
     </record>
