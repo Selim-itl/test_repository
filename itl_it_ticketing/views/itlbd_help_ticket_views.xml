@@ -80,13 +80,15 @@
                     <!--                    <field name="stage_id" widget="statusbar"-->
                     <!--                           options="{'clickable': '1'}"/>-->
 
+<!--                   show clickable statusbar when user is a manager or an assigned member-->
                     <field name="stage_id"
                            widget="statusbar"
                            options="{'clickable': '1'}"
-                           attrs="{'invisible': [('is_editor_user', '=', False)]}"/>
+                           attrs="{'invisible': [('can_edit_internal_notes', '=', False)]}"/>
+<!--                   show not clickable statusbar when user is a manager or an assigned member-->
                     <field name="stage_id"
                            widget="statusbar"
-                           attrs="{'invisible': [('is_editor_user', '=', True)]}"/>
+                           attrs="{'invisible': [('can_edit_internal_notes', '=', True)]}"/>
 
                     <!--                    <field name="stage_id"-->
                     <!--                           attrs="{'invisible': [('is_editor_user', '=', True)], 'readonly': [('is_editor_user', '=', False)]}"/>-->
