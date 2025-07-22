@@ -12,7 +12,7 @@
     </record>
 
     <!-- Project Stages -->
-    <record id="it_itl_bd_ticket_stage_cs" model="it.itl.bd.ticket.stage">
+    <record id="it_itl_bd_ticket_stage_on_hold" model="it.itl.bd.ticket.stage">
         <field name="sequence">18</field>
         <field name="name">On Hold</field>
     </record>

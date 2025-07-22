@@ -35,13 +35,13 @@ class HelpDeskDashboard(http.Controller):
         in_mis_ls = [data.id for data in in_mis_id]
 
         # In On Hold
-        stage_cs = request.env['it.itl.bd.ticket.stage'].search(
+        stage_on_hold = request.env['it.itl.bd.ticket.stage'].search(
             [('name', '=', 'On Hold')], limit=1).id
-        cs = request.env["it.itl.bd.help.ticket"].search_count(
-            [('stage_id', '=', stage_cs)])
-        cs_id = request.env["it.itl.bd.help.ticket"].search(
-            [('stage_id', '=', stage_cs)])
-        cs_id_ls = [data.id for data in cs_id]
+        on_hold = request.env["it.itl.bd.help.ticket"].search_count(
+            [('stage_id', '=', stage_on_hold)])
+        on_hold_id = request.env["it.itl.bd.help.ticket"].search(
+            [('stage_id', '=', stage_on_hold)])
+        on_hold_ls = [data.id for data in on_hold_id]
 
         # In Progress
         stage_inprogress = request.env['it.itl.bd.ticket.stage'].search(
@@ -95,7 +95,7 @@ class HelpDeskDashboard(http.Controller):
         dashboard_values = {
             'new': new,
             'in_mis': in_mis,
-            'cs': cs,
+            'on_hold': on_hold,
             'in_progress': in_progress,
             'verification': verification,
             'canceled': canceled,
@@ -104,7 +104,7 @@ class HelpDeskDashboard(http.Controller):
             'closed': closed,
             'new_id': new_id_ls,
             'in_mis_id': in_mis_ls,
-            'cs_id': cs_id_ls,
+            'on_hold_id': on_hold_ls,
             'in_progress_id': in_progress_ls,
             'verification_id': verification_id_ls,
             'canceled_id': canceled_id_ls,
@@ -147,13 +147,13 @@ class HelpDeskDashboard(http.Controller):
         in_mis_ls = [data.id for data in in_mis_id]
 
         # In On Hold
-        stage_cs = request.env['it.itl.bd.ticket.stage'].search(
+        stage_on_hold = request.env['it.itl.bd.ticket.stage'].search(
             [('name', '=', 'On Hold')], limit=1).id
-        cs = request.env["it.itl.bd.help.ticket"].search_count(
-            [('stage_id', '=', stage_cs)])
-        cs_id = request.env["it.itl.bd.help.ticket"].search(
-            [('stage_id', '=', stage_cs)])
-        cs_id_ls = [data.id for data in cs_id]
+        on_hold = request.env["it.itl.bd.help.ticket"].search_count(
+            [('stage_id', '=', stage_on_hold)])
+        on_hold_id = request.env["it.itl.bd.help.ticket"].search(
+            [('stage_id', '=', stage_on_hold)])
+        on_hold_ls = [data.id for data in on_hold_id]
 
         # In progress
         stage_inprogress = request.env['it.itl.bd.ticket.stage'].search(
@@ -207,7 +207,7 @@ class HelpDeskDashboard(http.Controller):
         dashboard_values = {
             'new': new,
             'in_mis': in_mis,
-            'cs': cs,
+            'on_hold': on_hold,
             'in_progress': in_progress,
             'verification': verification,
             'canceled': canceled,
@@ -216,7 +216,7 @@ class HelpDeskDashboard(http.Controller):
             'closed': closed,
             'new_id': new_id_ls,
             'in_mis_id': in_mis_ls,
-            'cs_id': cs_id_ls,
+            'on_hold_id': on_hold_ls,
             'in_progress_id': in_progress_ls,
             'verification_id': verification_id_ls,
             'canceled_id': canceled_id_ls,
@@ -250,13 +250,13 @@ class HelpDeskDashboard(http.Controller):
             [('stage_id', '=', stage_mis)])
         in_mis_ls = [data.id for data in in_mis_id]
         # In On Hold
-        stage_cs = request.env['it.itl.bd.ticket.stage'].search(
+        stage_on_hold = request.env['it.itl.bd.ticket.stage'].search(
             [('name', '=', 'On Hold')], limit=1).id
-        cs = request.env["it.itl.bd.help.ticket"].search_count(
-            [('stage_id', '=', stage_cs)])
-        cs_id = request.env["it.itl.bd.help.ticket"].search(
-            [('stage_id', '=', stage_cs)])
-        cs_id_ls = [data.id for data in cs_id]
+        on_hold = request.env["it.itl.bd.help.ticket"].search_count(
+            [('stage_id', '=', stage_on_hold)])
+        on_hold_id = request.env["it.itl.bd.help.ticket"].search(
+            [('stage_id', '=', stage_on_hold)])
+        on_hold_ls = [data.id for data in on_hold_id]
 
         # In progress
         stage_inprogress = request.env['it.itl.bd.ticket.stage'].search(
@@ -317,7 +317,7 @@ class HelpDeskDashboard(http.Controller):
         dashboard_values = {
             'new': new,
             'in_mis': in_mis,
-            'cs': cs,
+            'on_hold': on_hold,
             'in_progress': in_progress,
             'verification': verification,
             'canceled': canceled,
@@ -326,7 +326,7 @@ class HelpDeskDashboard(http.Controller):
             'closed': closed,
             'new_id': new_id_ls,
             'in_mis_id': in_mis_ls,
-            'cs_id': cs_id_ls,
+            'on_hold_id': on_hold_ls,
             'in_progress_id': in_progress_ls,
             'verification_id': verification_id_ls,
             'canceled_id': canceled_id_ls,
@@ -361,13 +361,13 @@ class HelpDeskDashboard(http.Controller):
             [('stage_id', '=', stage_mis)])
         in_mis_ls = [data.id for data in in_mis_id]
         # In On Hold
-        stage_cs = request.env['it.itl.bd.ticket.stage'].search(
+        stage_on_hold = request.env['it.itl.bd.ticket.stage'].search(
             [('name', '=', 'On Hold')], limit=1).id
-        cs = request.env["it.itl.bd.help.ticket"].search_count(
-            [('stage_id', '=', stage_cs)])
-        cs_id = request.env["it.itl.bd.help.ticket"].search(
-            [('stage_id', '=', stage_cs)])
-        cs_id_ls = [data.id for data in cs_id]
+        on_hold = request.env["it.itl.bd.help.ticket"].search_count(
+            [('stage_id', '=', stage_on_hold)])
+        on_hold_id = request.env["it.itl.bd.help.ticket"].search(
+            [('stage_id', '=', stage_on_hold)])
+        on_hold_ls = [data.id for data in on_hold_id]
 
         # In progress
         stage_inprogress = request.env['it.itl.bd.ticket.stage'].search(
@@ -426,7 +426,7 @@ class HelpDeskDashboard(http.Controller):
         dashboard_values = {
             'new': new,
             'in_mis': in_mis,
-            'cs': cs,
+            'on_hold': on_hold,
             'in_progress': in_progress,
             'verification': verification,
             'canceled': canceled,
@@ -435,7 +435,7 @@ class HelpDeskDashboard(http.Controller):
             'closed': closed,
             'new_id': new_id_ls,
             'in_mis_id': in_mis_ls,
-            'cs_id': cs_id_ls,
+            'on_hold_id': on_hold_ls,
             'in_progress_id': in_progress_ls,
             'verification_id': verification_id_ls,
             'canceled_id': canceled_id_ls,
