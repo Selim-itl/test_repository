@@ -6,22 +6,22 @@
         <field name="name">Draft</field>
     </record>
 
-    <record id="it_itl_bd_ticket_stage_mis" model="it.itl.bd.ticket.stage">
+    <!--In progress-->
+    <record id="it_itl_bd_ticket_stage_in_progress" model="it.itl.bd.ticket.stage">
         <field name="sequence">15</field>
+        <field name="starting_stage" eval="True"/>
+        <field name="name">In Progress</field>
+    </record>
+
+    <record id="it_itl_bd_ticket_stage_mis" model="it.itl.bd.ticket.stage">
+        <field name="sequence">20</field>
         <field name="name">MIS</field>
     </record>
 
     <!-- Project Stages -->
     <record id="it_itl_bd_ticket_stage_on_hold" model="it.itl.bd.ticket.stage">
-        <field name="sequence">18</field>
+        <field name="sequence">25</field>
         <field name="name">On Hold</field>
-    </record>
-
-    <!--In progress-->
-    <record id="it_itl_bd_ticket_stage_in_progress" model="it.itl.bd.ticket.stage">
-        <field name="sequence">20</field>
-        <field name="starting_stage" eval="True"/>
-        <field name="name">In Progress</field>
     </record>
 
 <!--    <record id="it_itl_bd_ticket_stage_in_verification" model="it.itl.bd.ticket.stage">-->
@@ -38,25 +38,25 @@
 
     <!--Done-->
     <record id="it_itl_bd_ticket_stage_done" model="it.itl.bd.ticket.stage">
-        <field name="sequence">50</field>
+        <field name="sequence">30</field>
         <field name="name">Done</field>
         <field name="folded" eval="True"/>
         <field name="closing_stage" eval="True"/>
     </record>
 
-    <!--Cancelled-->
-    <record id="it_itl_bd_ticket_stage_cancel" model="it.itl.bd.ticket.stage">
-        <field name="sequence">60</field>
-        <field name="name">Canceled</field>
-        <field name="cancel_stage" eval="True"/>
+    <!--    Resolved-->
+    <record id="it_itl_bd_ticket_stage_resolved" model="it.itl.bd.ticket.stage">
+        <field name="sequence">35</field>
+        <field name="name">Resolved</field>
+<!--        <field name="closing_stage" eval="True"/>-->
         <field name="folded" eval="True"/>
     </record>
 
-    <!--    Resolved-->
-    <record id="it_itl_bd_ticket_stage_resolved" model="it.itl.bd.ticket.stage">
-        <field name="sequence">70</field>
-        <field name="name">Resolved</field>
-<!--        <field name="closing_stage" eval="True"/>-->
+    <!--Cancelled-->
+    <record id="it_itl_bd_ticket_stage_cancel" model="it.itl.bd.ticket.stage">
+        <field name="sequence">40</field>
+        <field name="name">Canceled</field>
+        <field name="cancel_stage" eval="True"/>
         <field name="folded" eval="True"/>
     </record>
 </odoo>
