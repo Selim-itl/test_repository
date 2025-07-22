@@ -85,13 +85,13 @@ class HelpDeskDashboard(http.Controller):
         correction_id_ls = [data.id for data in correction_id]
 
         # Close
-        stage_closed = request.env['it.itl.bd.ticket.stage'].search(
+        stage_resolved = request.env['it.itl.bd.ticket.stage'].search(
             [('name', '=', 'Resolved')], limit=1).id
-        closed = request.env["it.itl.bd.help.ticket"].search_count(
-            [('stage_id', '=', stage_closed)])
-        closed_id = request.env["it.itl.bd.help.ticket"].search(
-            [('stage_id', '=', stage_closed)])
-        closed_id_ls = [data.id for data in closed_id]
+        resolved = request.env["it.itl.bd.help.ticket"].search_count(
+            [('stage_id', '=', stage_resolved)])
+        resolved_id = request.env["it.itl.bd.help.ticket"].search(
+            [('stage_id', '=', stage_resolved)])
+        resolved_id_ls = [data.id for data in resolved_id]
         dashboard_values = {
             'new': new,
             'in_mis': in_mis,
@@ -101,7 +101,7 @@ class HelpDeskDashboard(http.Controller):
             'canceled': canceled,
             'done': done,
             'correction': correction,
-            'closed': closed,
+            'resolved': resolved,
             'new_id': new_id_ls,
             'in_mis_id': in_mis_ls,
             'on_hold_id': on_hold_ls,
@@ -110,7 +110,7 @@ class HelpDeskDashboard(http.Controller):
             'canceled_id': canceled_id_ls,
             'done_id': done_id_ls,
             'correction_id': correction_id_ls,
-            'closed_id': closed_id_ls,
+            'resolved_id': resolved_id_ls,
         }
         return dashboard_values
 
@@ -128,7 +128,7 @@ class HelpDeskDashboard(http.Controller):
 
         stage_done = request.env['it.itl.bd.ticket.stage'].search(
             [('name', '=', 'Done')], limit=1).id
-        stage_closed = request.env['it.itl.bd.ticket.stage'].search(
+        stage_resolved = request.env['it.itl.bd.ticket.stage'].search(
             [('name', '=', 'Resolved')], limit=1).id
         stage_ids = [stage_new, stage_draft]
         week_ago = str(today - DT.timedelta(days=7)) + ' '
@@ -199,11 +199,11 @@ class HelpDeskDashboard(http.Controller):
         correction_id = request.env["it.itl.bd.help.ticket"].search(
             [('stage_id', '=', stage_correction), ('create_date', '>', week_ago)])
         correction_id_ls = [data.id for data in correction_id]
-        closed = request.env["it.itl.bd.help.ticket"].search_count(
-            [('stage_id', '=', stage_closed), ('create_date', '>', week_ago)])
-        closed_id = request.env["it.itl.bd.help.ticket"].search(
-            [('stage_id', '=', stage_closed), ('create_date', '>', week_ago)])
-        closed_id_ls = [data.id for data in closed_id]
+        resolved = request.env["it.itl.bd.help.ticket"].search_count(
+            [('stage_id', '=', stage_resolved), ('create_date', '>', week_ago)])
+        resolved_id = request.env["it.itl.bd.help.ticket"].search(
+            [('stage_id', '=', stage_resolved), ('create_date', '>', week_ago)])
+        resolved_id_ls = [data.id for data in resolved_id]
         dashboard_values = {
             'new': new,
             'in_mis': in_mis,
@@ -213,7 +213,7 @@ class HelpDeskDashboard(http.Controller):
             'canceled': canceled,
             'done': done,
             'correction': correction,
-            'closed': closed,
+            'resolved': resolved,
             'new_id': new_id_ls,
             'in_mis_id': in_mis_ls,
             'on_hold_id': on_hold_ls,
@@ -222,7 +222,7 @@ class HelpDeskDashboard(http.Controller):
             'canceled_id': canceled_id_ls,
             'done_id': done_id_ls,
             'correction_id': correction_id_ls,
-            'closed_id': closed_id_ls,
+            'resolved_id': resolved_id_ls,
         }
         return dashboard_values
 
@@ -306,14 +306,14 @@ class HelpDeskDashboard(http.Controller):
             [('stage_id', '=', stage_correction), ('create_date', '>', week_ago)])
         correction_id_ls = [data.id for data in correction_id]
 
-        # Closed
-        stage_closed = request.env['it.itl.bd.ticket.stage'].search(
+        # resolved
+        stage_resolved = request.env['it.itl.bd.ticket.stage'].search(
             [('name', '=', 'Resolved')], limit=1).id
-        closed = request.env["it.itl.bd.help.ticket"].search_count(
-            [('stage_id', '=', stage_closed), ('create_date', '>', week_ago)])
-        closed_id = request.env["it.itl.bd.help.ticket"].search(
-            [('stage_id', '=', stage_closed), ('create_date', '>', week_ago)])
-        closed_id_ls = [data.id for data in closed_id]
+        resolved = request.env["it.itl.bd.help.ticket"].search_count(
+            [('stage_id', '=', stage_resolved), ('create_date', '>', week_ago)])
+        resolved_id = request.env["it.itl.bd.help.ticket"].search(
+            [('stage_id', '=', stage_resolved), ('create_date', '>', week_ago)])
+        resolved_id_ls = [data.id for data in resolved_id]
         dashboard_values = {
             'new': new,
             'in_mis': in_mis,
@@ -323,7 +323,7 @@ class HelpDeskDashboard(http.Controller):
             'canceled': canceled,
             'done': done,
             'correction': correction,
-            'closed': closed,
+            'resolved': resolved,
             'new_id': new_id_ls,
             'in_mis_id': in_mis_ls,
             'on_hold_id': on_hold_ls,
@@ -332,7 +332,7 @@ class HelpDeskDashboard(http.Controller):
             'canceled_id': canceled_id_ls,
             'done_id': done_id_ls,
             'correction_id': correction_id_ls,
-            'closed_id': closed_id_ls,
+            'resolved_id': resolved_id_ls,
         }
         return dashboard_values
 
@@ -415,14 +415,14 @@ class HelpDeskDashboard(http.Controller):
         correction_id = request.env["it.itl.bd.help.ticket"].search(
             [('stage_id', '=', stage_correction), ('create_date', '>', week_ago)])
         correction_id_ls = [data.id for data in correction_id]
-        # Closed
-        stage_closed = request.env['it.itl.bd.ticket.stage'].search(
+        # resolved
+        stage_resolved = request.env['it.itl.bd.ticket.stage'].search(
             [('name', '=', 'Resolved')], limit=1).id
-        closed = request.env["it.itl.bd.help.ticket"].search_count(
-            [('stage_id', '=', stage_closed), ('create_date', '>', week_ago)])
-        closed_id = request.env["it.itl.bd.help.ticket"].search(
-            [('stage_id', '=', stage_closed), ('create_date', '>', week_ago)])
-        closed_id_ls = [data.id for data in closed_id]
+        resolved = request.env["it.itl.bd.help.ticket"].search_count(
+            [('stage_id', '=', stage_resolved), ('create_date', '>', week_ago)])
+        resolved_id = request.env["it.itl.bd.help.ticket"].search(
+            [('stage_id', '=', stage_resolved), ('create_date', '>', week_ago)])
+        resolved_id_ls = [data.id for data in resolved_id]
         dashboard_values = {
             'new': new,
             'in_mis': in_mis,
@@ -432,7 +432,7 @@ class HelpDeskDashboard(http.Controller):
             'canceled': canceled,
             'done': done,
             'correction': correction,
-            'closed': closed,
+            'resolved': resolved,
             'new_id': new_id_ls,
             'in_mis_id': in_mis_ls,
             'on_hold_id': on_hold_ls,
@@ -441,6 +441,6 @@ class HelpDeskDashboard(http.Controller):
             'canceled_id': canceled_id_ls,
             'done_id': done_id_ls,
             'correction_id': correction_id_ls,
-            'closed_id': closed_id_ls,
+            'resolved_id': resolved_id_ls,
         }
         return dashboard_values

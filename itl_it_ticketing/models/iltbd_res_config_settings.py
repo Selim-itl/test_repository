@@ -52,7 +52,7 @@ class ResConfigSettings(models.TransientModel):
         help='When enabling this option to visible Helpdesk menu in website')
 
     @api.onchange('resolved_stage')
-    def closed_stage_a(self):
+    def resolved_stage_a(self):
         """This method is triggered when the 'resolved_stage' field is changed.
          It updates the 'closing_stage' attribute of the selected stage and
          clears it for other stages.

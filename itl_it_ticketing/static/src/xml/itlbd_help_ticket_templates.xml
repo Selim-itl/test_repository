@@ -354,9 +354,9 @@
                                     </span>
                                 </div>
                             </div>
-                            <!-- closed-->
+                            <!-- resolved-->
                             <div class="c-dashboardInfo"
-                                 id="closed_state">
+                                 id="resolved_state">
                                 <div class="wrap">
                                     <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">
                                         Resolved
