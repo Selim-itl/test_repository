@@ -282,15 +282,15 @@
                 <field name="create_date"/>
                 <field name="stage_id"/>
                 <field name="last_update_date"/>
-                <field name="assigned_user" widget="many2many_tags"/>
+                <field name="assigned_user" widget="many2many_tags" string="Assigned to"/>
 <!--                <field name="verification_datetime"/>-->
 <!--                <field name="verified_by"/>-->
-                <field name="done_by"/>
+<!--                <field name="done_by"/>-->
 <!--                <field name="correction_datetime"/>-->
                 <field name="done_datetime"/>
 <!--                <field name="aging_entry_days"/>-->
 <!--                <field name="aging_verification_days"/>-->
-                <field name="user_id"/>
+<!--                <field name="user_id"/>-->
             </tree>
         </field>
     </record>
