@@ -35,7 +35,7 @@ class HelpTicket(models.Model):
     product, start and end dates, and related tasks and invoices."""
 
     _name = 'it.itl.bd.help.ticket'
-    _description = 'Help Ticket'
+    _description = 'IT Help Ticket'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string='Ticket No',
@@ -288,6 +288,20 @@ class HelpTicket(models.Model):
                 current_time = fields.Datetime.now()
                 delta = current_time - ticket.create_date
                 ticket.pending_days = delta.days
+
+    remaining_days = fields.Integer(string='Days Remaining', compute='_compute_remaining_days', store=False)
+    @api.depends('required_date')
+    def _compute_remaining_days(self):
+        today = fields.Date.today()
+        for record in self:
+            if record.required_date:
+                delta = (record.required_date - today).days
+                if delta > 0:
+                    record.remaining_days = delta
+                else:
+                    record.remaining_days = 0
+            else:
+                record.remaining_days = 0
 
     # ---
 
