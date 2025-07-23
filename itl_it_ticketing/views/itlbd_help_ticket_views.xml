@@ -89,12 +89,6 @@
                     <field name="stage_id"
                            widget="statusbar"
                            attrs="{'invisible': [('access_manager_assigned', '=', True)]}"/>
-
-                    <!--                    <field name="stage_id"-->
-                    <!--                           attrs="{'invisible': [('is_editor_user', '=', True)], 'readonly': [('is_editor_user', '=', False)]}"/>-->
-                    <!--                    <field name="stage_id"-->
-                    <!--                           widget="statusbar"-->
-                    <!--                           attrs="{'invisible': [('is_editor_user', '=', False)]}"/>-->
                 </header>
                 <sheet>
                     <field name="access_manager_assigned" invisible="1"/>
@@ -117,7 +111,7 @@
                     <!--                    <field name="kanban_state" widget="state_selection"/>-->
                     <div class="oe_title">
                         <field name="is_manager" invisible="1"/>
-                        <field name="is_editor_user" invisible="1"/>
+                        <field name="is_team_manager_group" invisible="1"/>
                         <field name="is_logged_user_assigned" invisible="1"/>
                         <field name="is_stage_done" invisible="1"/>
                         <label for="name" class="oe_edit_only"/>
@@ -138,7 +132,6 @@
                         <group>
                             <!--                            <field name="customer_id"/>-->
                             <field name="ticket_creator_id"/>
-                            <!--                            <field name="employee_id" attrs="{'readonly': [('employee_id', '!=', False), ('is_editor_user', '=', False)]}"/>-->
                             <field name="employee_id"/>
                             <field name="designation" force_save="1"/>
                             <!--                            <field name="employee_ids" widget="many2many_tags"/>-->
@@ -146,7 +139,8 @@
                             <field name="department" force_save="1"/>
                             <field name="email" force_save="1"/>
                             <field name="phone" force_save="1"/>
-                            <field name="priority" widget="priority" options="{'autosave': False}" attrs="{'readonly': [('access_manager_assigned', '=', False)]}"/>
+<!--                            Show fields to manager, assigned and unassigned user also readonly for unassigned member  -->
+                            <field name="priority" widget="priority" options="{'autosave': False}" attrs="{'readonly': [('access_manager_assigned', '=', False)], 'invisible': [('is_team_manager_group','=', False)]}"/>
                             <field name="required_date" attrs="{'readonly': [('access_manager_assigned', '=', False)]}"/>
                             <field name="tags" widget="many2many_tags" attrs="{'readonly': [('access_manager_assigned', '=', False)]}"/>
                             <!--                            <field name="pending_days"/>-->
@@ -180,10 +174,9 @@
                         <page string="Ticket Handler Info">
                             <group>
                                 <group>
-                                    <!--                                    <field name="team_id" options="{'no_create': 1}"/>-->
-                                    <!--                                    <field name="team_head"/>-->
                                     <field name="it_team"/>
-                                    <field name="assigned_user" widget="many2many_tags" options="{'no_create': 1}" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
+<!--                                    Allow full access team and manager to assign user field -->
+                                    <field name="assigned_user" widget="many2many_tags" options="{'no_create': 1}" attrs="{'readonly': [('is_team_manager_group', '=', False)]}"/>
                                 </group>
                                 <group>
                                     <field name="project_id" invisible="1"/>
@@ -243,9 +236,8 @@
                         </page>
                         <page string="Employee review" attrs="{'invisible': [('is_stage_done', '=', False)]}">
                             <group>
-                                <!--                                <field name="customer_rating" attrs="{'readonly': [('is_editor_user', '=', True)]}"-->
-                                <!--                                       widget="priority" options="{'autosave': False}"/>-->
-                                <field name="review" attrs="{'readonly': [('is_editor_user', '=', True)]}"/>
+<!--                                Allow team and manager to read the review only-->
+                                <field name="review" attrs="{'readonly': [('is_team_manager_group', '=', True)]}"/>
                             </group>
                         </page>
                     </notebook>
@@ -320,7 +312,8 @@
                     quick_create="true"
                     quick_create_view="itl_it_ticketing.it_itl_bd_help_ticket_view_form_quick_create"
                     on_create="quick_create">
-                <field name="is_editor_user" invisible="1"/>
+                <field name="is_team_manager_group" invisible="1"/>
+                <field name="access_manager_assigned" invisible="1"/>
                 <field name="is_manager" invisible="1"/>
                 <field name="color"/>
                 <field name="name"/>
@@ -396,8 +389,9 @@
                                 </div>
                                 <div class="o_kanban_record_bottom flex-wrap">
                                     <div class="oe_kanban_bottom_left">
+<!--                                        Hide priority from normal user group and readonly for unassigned team member-->
                                         <field name="priority"
-                                               widget="priority" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
+                                               widget="priority" attrs="{'invisible': [('is_team_manager_group', '=', False)], 'readonly': [('access_manager_assigned', '=', False)]}"/>
                                         <field name="activity_ids"
                                                widget="kanban_activity" attrs="{'invisible': [('is_manager', '=', False)]}"/>
                                     </div>

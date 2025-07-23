@@ -65,6 +65,14 @@ class HelpTicket(models.Model):
         for rec in self:
             rec.access_manager_assigned = current_user in rec.assigned_user or rec.is_manager
 
+    is_unassigned_team_member = fields.Boolean(store=False, compute="_compute_is_unassigned_team_member")
+
+    def _compute_is_unassigned_team_member(self):
+        """Compute weather the current user is in team but not assigned to the project"""
+        current_user = self.env.user
+        for rec in self:
+            rec.is_unassigned_team_member = current_user.has_group('itl_it_ticketing.it_ticketing_team_member') and current_user not in rec.assigned_user
+
     @api.model
     def _default_employee_id(self):
         """Set default value to Ticket issuer field."""
@@ -229,7 +237,7 @@ class HelpTicket(models.Model):
         string="Pending Days", readonly=True)
 
     # Calculate if logged-in user can edit
-    is_editor_user = fields.Boolean(compute="_compute_is_editor_user", store=False)
+    is_team_manager_group = fields.Boolean(compute="_compute_is_team_manager_group", store=False)
     is_manager = fields.Boolean(compute="_compute_is_manager", store=False)
 
     @api.depends('name')
@@ -239,21 +247,24 @@ class HelpTicket(models.Model):
             rec.is_manager = user.has_group('itl_it_ticketing.it_ticketing_manager')
 
     @api.depends('name')
-    def _compute_is_editor_user(self):
+    def _compute_is_team_manager_group(self):
+        """Calculate weather the user is manager or in the team member group"""
         for rec in self:
             user = self.env.user
-            rec.is_editor_user = user.has_group('itl_it_ticketing.it_ticketing_manager') or user.has_group('itl_it_ticketing.it_ticketing_team_member')
+            rec.is_team_manager_group = user.has_group('itl_it_ticketing.it_ticketing_manager') or user.has_group('itl_it_ticketing.it_ticketing_team_member')
 
     @api.onchange('name')
     def _onchange_can_edit_fields(self):
-        self._compute_is_editor_user()
+        """Activating access when the ticket just got created"""
+        self._compute_is_team_manager_group()
         self._compute_is_manager()
 
     @api.model
     def default_get(self, fields_list):
+        """Providing access when a complete new ticket form just opened to create new ticket"""
         res = super().default_get(fields_list)
-        if 'is_editor_user' in fields_list and 'default_is_editor_user' in self.env.context:
-            res['is_editor_user'] = self.env.context.get('default_is_editor_user')
+        if 'is_team_manager_group' in fields_list and 'default_is_team_manager_group' in self.env.context:
+            res['is_team_manager_group'] = self.env.context.get('default_is_team_manager_group')
         if 'is_manager' in fields_list and 'default_is_manager' in self.env.context:
             res['is_manager'] = self.env.context.get('default_is_manager')
         return res
