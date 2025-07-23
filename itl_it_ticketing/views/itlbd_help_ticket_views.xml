@@ -113,6 +113,7 @@
                         <field name="is_manager" invisible="1"/>
                         <field name="is_team_manager_group" invisible="1"/>
                         <field name="is_logged_user_assigned" invisible="1"/>
+                        <field name="is_unassigned_team_member" invisible="1"/>
                         <field name="is_stage_done" invisible="1"/>
                         <label for="name" class="oe_edit_only"/>
                         <h1>
@@ -132,10 +133,8 @@
                         <group>
                             <!--                            <field name="customer_id"/>-->
                             <field name="ticket_creator_id"/>
-                            <field name="employee_id"/>
+                            <field name="employee_id" attrs="{'readonly': [('is_unassigned_team_member', '=', True)]}"/>
                             <field name="designation" force_save="1"/>
-                            <!--                            <field name="employee_ids" widget="many2many_tags"/>-->
-                            <!--                            <field name="job_reference"/>-->
                             <field name="department" force_save="1"/>
                             <field name="email" force_save="1"/>
                             <field name="phone" force_save="1"/>
@@ -149,7 +148,7 @@
                         </group>
                         <group>
                             <field name="show_category" invisible="1"/>
-                            <field name="ticket_type"/>
+                            <field name="ticket_type" attrs="{'readonly': [('is_unassigned_team_member', '=', True)]}"/>
                             <field name="product_ids" widget="many2one_avatar" attrs="{'readonly': [('is_manager_and_assigned', '=', False)]}"/>
                             <field name="create_date"/>
                             <field name="start_date" attrs="{'invisible': [('start_date', '=', False)]}"/>
@@ -391,7 +390,7 @@
                                     <div class="oe_kanban_bottom_left">
 <!--                                        Hide priority from normal user group and readonly for unassigned team member-->
                                         <field name="priority"
-                                               widget="priority" attrs="{'invisible': [('is_team_manager_group', '=', False)], 'readonly': [('is_manager_and_assignedf', '=', False)]}"/>
+                                               widget="priority" attrs="{'invisible': [('is_team_manager_group', '=', False)], 'readonly': [('is_manager_and_assigned', '=', False)]}"/>
                                         <field name="activity_ids"
                                                widget="kanban_activity" attrs="{'invisible': [('is_manager', '=', False)]}"/>
                                     </div>
@@ -593,28 +592,18 @@
             <search string="Ticket Search">
                 <field name="name" string="Ticket"/>
                 <field name="subject"/>
-                <!--                <field name="chain_ids"/>-->
-                <!--                <field name="job_reference"/>-->
-                <!--                <field name="customer_id"/>-->
                 <field name="employee_id"/>
                 <field name="user_id"/>
-                <!--                <field name="employee_ids"/>-->
-                <!--                <field name="work_orders"/>-->
                 <field name="done_by"/>
-                <!--                <field name="correction_by"/>-->
                 <filter string="My Tickets" name="My Ticket"
                         domain="[('assigned_user', '=', uid)]"/>
                 <filter string="Done By" name="Done By"
                         domain="[('done_by', '=', uid)]"/>
-                <!--                <filter string="Correction By" name="Done By"-->
-                <!--                        domain="[('correction_by', '=', uid)]"/>-->
                 <filter string="Archived" name="filter_archived"
                         domain="[('active','=', False)]"/>
                 <filter string="UnArchived" name="filter_unarchived"
                         domain="[('active','=', True)]"/>
                 <group expand="0" string="Group By">
-                    <!--                    <filter name="Customer" string="Customer"-->
-                    <!--                            context="{'group_by':'customer_id'}"/>-->
                     <filter name="Employee" string="Employee"
                             context="{'group_by':'employee_id'}"/>
                     <filter name="Team" string="Team"
