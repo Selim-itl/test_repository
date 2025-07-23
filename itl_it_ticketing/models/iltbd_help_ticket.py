@@ -56,14 +56,14 @@ class HelpTicket(models.Model):
                                   )
 
     # Setting true if logged-in user is a manager or is assigned to the ticket
-    access_manager_assigned = fields.Boolean(store=False, compute="_compute_access_manager_assigned")
+    is_manager_and_assigned = fields.Boolean(store=False, compute="_compute_is_manager_and_assigned")
 
     @api.depends('assigned_user')
-    def _compute_access_manager_assigned(self):
+    def _compute_is_manager_and_assigned(self):
         """Calculating weather current logged-in user is the manager or assigned person in the ticket"""
         current_user = self.env.user
         for rec in self:
-            rec.access_manager_assigned = current_user in rec.assigned_user or rec.is_manager
+            rec.is_manager_and_assigned = current_user in rec.assigned_user or rec.is_manager
 
     is_unassigned_team_member = fields.Boolean(store=False, compute="_compute_is_unassigned_team_member")
 
