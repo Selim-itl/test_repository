@@ -56,17 +56,18 @@ class HelpTicket(models.Model):
                                   )
 
     # Setting true if logged-in user is a manager or is assigned to the ticket
-    can_edit_internal_notes = fields.Boolean(store=False, compute="_compute_can_edit_internal_notes")
+    access_manager_assigned = fields.Boolean(store=False, compute="_compute_access_manager_assigned")
 
     @api.depends('assigned_user')
-    def _compute_can_edit_internal_notes(self):
+    def _compute_access_manager_assigned(self):
+        """Calculating weather current logged-in user is the manager or assigned person in the ticket"""
         current_user = self.env.user
         for rec in self:
-            rec.can_edit_internal_notes = current_user in rec.assigned_user or rec.is_manager
+            rec.access_manager_assigned = current_user in rec.assigned_user or rec.is_manager
 
-    """Set default value to Ticket issuer field. """
     @api.model
     def _default_employee_id(self):
+        """Set default value to Ticket issuer field."""
         employee = self.env['hr.employee'].search([('user_id','=',self.env.uid)], limit=1)
         return employee.id if employee else False
 

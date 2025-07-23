@@ -84,11 +84,11 @@
                     <field name="stage_id"
                            widget="statusbar"
                            options="{'clickable': '1'}"
-                           attrs="{'invisible': [('can_edit_internal_notes', '=', False)]}"/>
+                           attrs="{'invisible': [('access_manager_assigned', '=', False)]}"/>
 <!--                   show not clickable statusbar when user is a manager or an assigned member-->
                     <field name="stage_id"
                            widget="statusbar"
-                           attrs="{'invisible': [('can_edit_internal_notes', '=', True)]}"/>
+                           attrs="{'invisible': [('access_manager_assigned', '=', True)]}"/>
 
                     <!--                    <field name="stage_id"-->
                     <!--                           attrs="{'invisible': [('is_editor_user', '=', True)], 'readonly': [('is_editor_user', '=', False)]}"/>-->
@@ -97,7 +97,7 @@
                     <!--                           attrs="{'invisible': [('is_editor_user', '=', False)]}"/>-->
                 </header>
                 <sheet>
-                    <field name="can_edit_internal_notes" invisible="1"/>
+                    <field name="access_manager_assigned" invisible="1"/>
                     <div class="oe_button_box" name="button_box">
                         <!--                        <button class="oe_stat_button" name="action_open_tasks"-->
                         <!--                                string="Tasks" type="object" icon="fa-tasks"-->
@@ -146,9 +146,9 @@
                             <field name="department" force_save="1"/>
                             <field name="email" force_save="1"/>
                             <field name="phone" force_save="1"/>
-                            <field name="priority" widget="priority" options="{'autosave': False}" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
-                            <field name="required_date" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
-                            <field name="tags" widget="many2many_tags" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
+                            <field name="priority" widget="priority" options="{'autosave': False}" attrs="{'readonly': [('access_manager_assigned', '=', False)]}"/>
+                            <field name="required_date" attrs="{'readonly': [('access_manager_assigned', '=', False)]}"/>
+                            <field name="tags" widget="many2many_tags" attrs="{'readonly': [('access_manager_assigned', '=', False)]}"/>
                             <!--                            <field name="pending_days"/>-->
                             <field name="remaining_days"/>
                             <field name="is_verification_stage" invisible="1"/>
@@ -156,7 +156,7 @@
                         <group>
                             <field name="show_category" invisible="1"/>
                             <field name="ticket_type"/>
-                            <field name="product_ids" widget="many2one_avatar" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
+                            <field name="product_ids" widget="many2one_avatar" attrs="{'readonly': [('access_manager_assigned', '=', False)]}"/>
                             <field name="create_date"/>
                             <field name="start_date" attrs="{'invisible': [('start_date', '=', False)]}"/>
                             <field name="end_date" attrs="{'invisible': [('end_date', '=', False)]}"/>
@@ -195,15 +195,15 @@
                                     <field name="billable"
                                            attrs="{'invisible':[('create_task','=',False)]}"/>
                                     <field name="last_update_date"/>
-                                    <field name="replied_date" attrs="{'readonly': [('is_editor_user', '=', False)]}"/>
+                                    <field name="replied_date" attrs="{'readonly': [('access_manager_assigned', '=', False)]}"/>
                                 </group>
                             </group>
                         </page>
 
                         <page string="Issue Description">
                             <group>
-                                <field name="update_reason" placeholder="Update issue description" attrs="{'readonly': [('can_edit_internal_notes', '=', False)]}"/>
-                                <field name="updated_by" force_save="1" attrs="{'readonly': [('can_edit_internal_notes', '=', False)]}"/>
+                                <field name="update_reason" placeholder="Update issue description" attrs="{'readonly': [('access_manager_assigned', '=', False)]}"/>
+                                <field name="updated_by" force_save="1" attrs="{'readonly': [('access_manager_assigned', '=', False)]}"/>
                                 <field name="update_date" placeholder="Wizard Update Time" force_save="1"/>
                             </group>
                         </page>
@@ -235,15 +235,11 @@
                                     <!--                                    <field name="correction_datetime"/>-->
                                     <field name="done_datetime"/>
                                 </group>
-                                <group string="Other Info">
-                                    <!--                                    <field name="correction_info" readonly="1"/>-->
-                                    <!--                                    <field name="aging_entry_days"/>-->
-                                    <!--                                    <field name="aging_verification_days"/>-->
-                                </group>
+
                             </group>
                         </page>
                         <page string="Internal Notes" groups="itl_it_ticketing.it_ticketing_team_member">
-                            <field name="internal_notes" placeholder="Write notes here" attrs="{'readonly': [('can_edit_internal_notes', '=', False)]}"/>
+                            <field name="internal_notes" placeholder="Write notes here" attrs="{'readonly': [('access_manager_assigned', '=', False)]}"/>
                         </page>
                         <page string="Employee review" attrs="{'invisible': [('is_stage_done', '=', False)]}">
                             <group>
