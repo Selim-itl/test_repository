@@ -11,7 +11,7 @@
     <record id="it_itl_bd_help_ticket_my_ticket_action" model="ir.actions.act_window">
         <field name="name">My tickets (Team)</field>
         <field name="res_model">it.itl.bd.help.ticket</field>
-        <field name="domain">['|', '|',('assigned_user','=',uid), ('employee_id','=',uid), ('ticket_creator_id','=',uid)]</field>
+        <field name="domain">['|', '|','|',('assigned_user','=',uid), ('ticket_issuer','=',uid), ('invited_user_ids','=',uid), ('ticket_creator_id','=',uid)]</field>
         <field name="view_mode">kanban,tree,form,calendar,activity,pivot,graph</field>
     </record>
 
@@ -19,7 +19,7 @@
     <record id="it_itl_bd_help_ticket_my_ticket_action_non_team" model="ir.actions.act_window">
         <field name="name">My tickets (Employee)</field>
         <field name="res_model">it.itl.bd.help.ticket</field>
-        <field name="domain">['|', '|',('assigned_user','=',uid), ('employee_id','=',uid), ('ticket_creator_id','=',uid)]</field>
+        <field name="domain">['|', '|','|',('assigned_user','=',uid), ('ticket_issuer','=',uid), ('invited_user_ids','=',uid), ('ticket_creator_id','=',uid)]</field>
         <field name="view_mode">tree,kanban,form,calendar</field>
     </record>
 
@@ -123,7 +123,7 @@
                             <field name="subject" attrs="{'readonly': [('id', '!=', False)]}"/>
                         </h1>
                         <field name="description" attrs="{'readonly': [('id', '!=', False)]}"/>
-                        <field name="is_manager_assigned_creator" string="Manager/Assigned/Creator" invisible="0"/>
+                        <field name="is_manager_assigned_creator" string="Manager/Assigned/Creator" invisible="1"/>
                     </group>
 
                     <group>
@@ -171,9 +171,10 @@
                         <page string="Ticket Handler Info">
                             <group>
                                 <group>
-                                    <field name="it_team"/>
+<!--                                    <field name="it_team"/>-->
 <!--                                    Allow full access team and manager to assign user field -->
                                     <field name="assigned_user" widget="many2many_tags" options="{'no_create': 1}" attrs="{'readonly': [('is_team_manager_group', '=', False)]}"/>
+                                    <field name="invited_user_ids" widget="many2many_tags" attrs="{'readonly': [('is_manager_and_assigned', '=', False)]}"/>
                                 </group>
                                 <group>
                                     <field name="project_id" invisible="1"/>

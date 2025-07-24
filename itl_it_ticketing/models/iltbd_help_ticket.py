@@ -58,6 +58,11 @@ class HelpTicket(models.Model):
                                     required=True,
                                     default=lambda self: self.env.user.id)
 
+    invited_user_ids = fields.Many2many("res.users",
+                                        'invited_person',
+                                        string="Invite employee",
+                                        help="Select employees who should have access to view this ticket. Only the selected users will be able to see the ticket details.")
+
     # Taking ticket issuer id and passing it to employee_id
 
     employee_id = fields.Many2one('hr.employee',
@@ -511,7 +516,7 @@ class HelpTicket(models.Model):
     assigned_user = fields.Many2many(
         'res.users',
         'team_info',
-        string='Members',
+        string='Assign Members',
         help='IT Team employee who will handle the ticket',
         domain=lambda self: [('groups_id', 'in', self.env.ref(
             'itl_it_ticketing.it_ticketing_team_member').id)]
