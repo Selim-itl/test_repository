@@ -55,6 +55,13 @@ class HelpTicket(models.Model):
                                   default=lambda self: self._default_employee_id()
                                   )
 
+    is_manager_assigned_creator = fields.Boolean(store=False, compute="_compute_is_manager_assigned_creator")
+    def _compute_is_manager_assigned_creator(self):
+        """Determines weather current user is the manager or assigned member or ticket creator"""
+        user = self.env.user
+        for rec in self:
+            rec.is_manager_assigned_creator = user.has_group('itl_it_ticketing.it_ticketing_manager') or user in rec.assigned_user or user == rec.ticket_creator_id
+
     # Setting true if logged-in user is a manager or is assigned to the ticket
     is_manager_and_assigned = fields.Boolean(store=False, compute="_compute_is_manager_and_assigned")
 

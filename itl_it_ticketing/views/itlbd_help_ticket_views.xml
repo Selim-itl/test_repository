@@ -93,10 +93,6 @@
                 <sheet>
                     <field name="is_manager_and_assigned" invisible="1"/>
                     <div class="oe_button_box" name="button_box">
-                        <!--                        <button class="oe_stat_button" name="action_open_tasks"-->
-                        <!--                                string="Tasks" type="object" icon="fa-tasks"-->
-                        <!--                                attrs="{'invisible':[('create_task','=',False)]}">-->
-                        <!--                        </button>-->
                         <button class="oe_stat_button"
                                 name="action_open_merged_tickets"
                                 string="Merged Tickets" type="object"
@@ -127,13 +123,14 @@
                             <field name="subject" attrs="{'readonly': [('id', '!=', False)]}"/>
                         </h1>
                         <field name="description" attrs="{'readonly': [('id', '!=', False)]}"/>
+                        <field name="is_manager_assigned_creator" string="Manager/Assigned/Creator" invisible="1"/>
                     </group>
 
                     <group>
                         <group>
                             <!--                            <field name="customer_id"/>-->
                             <field name="ticket_creator_id"/>
-                            <field name="employee_id" attrs="{'readonly': [('is_unassigned_team_member', '=', True)]}"/>
+                            <field name="employee_id" attrs="{'readonly': [('is_manager_assigned_creator', '=', False)]}"/>
                             <field name="designation" force_save="1"/>
                             <field name="department" force_save="1"/>
                             <field name="email" force_save="1"/>
@@ -148,7 +145,7 @@
                         </group>
                         <group>
                             <field name="show_category" invisible="1"/>
-                            <field name="ticket_type" attrs="{'readonly': [('is_unassigned_team_member', '=', True)]}"/>
+                            <field name="ticket_type" attrs="{'readonly': [('is_manager_assigned_creator', '=', False)]}"/>
                             <field name="product_ids" widget="many2one_avatar" attrs="{'readonly': [('is_manager_and_assigned', '=', False)]}"/>
                             <field name="create_date"/>
                             <field name="start_date" attrs="{'invisible': [('start_date', '=', False)]}"/>
