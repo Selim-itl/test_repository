@@ -154,7 +154,7 @@
                             <!--                            <field name="work_orders"/>-->
                             <!--                            <field name="chain_ids" widget="many2many_tags"/>-->
                             <!--                            <field name="verified_by"/>-->
-                            <field name="done_by"/>
+<!--                            <field name="done_by"/>-->
                             <!--                            <field name="correction_by"/>-->
                             <field name="total_hours"/>
                             <field name="show_category" invisible="1"/>
@@ -591,11 +591,11 @@
                 <field name="subject"/>
                 <field name="employee_id"/>
                 <field name="user_id"/>
-                <field name="done_by"/>
+<!--                <field name="done_by"/>-->
                 <filter string="My Tickets" name="My Ticket"
                         domain="[('assigned_user', '=', uid)]"/>
-                <filter string="Done By" name="Done By"
-                        domain="[('done_by', '=', uid)]"/>
+<!--                <filter string="Done By" name="Done By"-->
+<!--                        domain="[('done_by', '=', uid)]"/>-->
                 <filter string="Archived" name="filter_archived"
                         domain="[('active','=', False)]"/>
                 <filter string="UnArchived" name="filter_unarchived"
