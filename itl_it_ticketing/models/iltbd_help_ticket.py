@@ -4,6 +4,8 @@
 #
 #############################################################################
 import logging
+from email.policy import default
+
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
 from odoo.exceptions import ValidationError
@@ -47,13 +49,20 @@ class HelpTicket(models.Model):
                                   string='Customer Name',
                                   help='Select the Customer Name')
     internal_notes = fields.Html(string='Internal Notes', store=True)
+
+    # Taking ticket issuer id and passing it to employee_id
+    ticket_issuer = fields.Many2one('res.users',
+                                    string='Ticket Issuer (new)',
+                                    help="Select the employee name if the issue is related to someone else. If the issue is yours, there's no need to select anyone",
+                                    tracking=True,
+                                    required=True,
+                                    default=lambda self: self.env.user.id)
+
+    # Taking ticket issuer id and passing it to employee_id
+
     employee_id = fields.Many2one('hr.employee',
-                                  required=True,
                                   string='Ticket Issuer',
-                                  help="Select the employee name if the issue is related to someone else. If the issue is yours, there's no need to select anyone",
-                                  tracking=True,
-                                  default=lambda self: self._default_employee_id()
-                                  )
+                                  compute="_convert_res_user_to_hr_employee")
 
     is_manager_assigned_creator = fields.Boolean(store=False, compute="_compute_is_manager_assigned_creator")
     def _compute_is_manager_assigned_creator(self):
@@ -80,11 +89,16 @@ class HelpTicket(models.Model):
         for rec in self:
             rec.is_unassigned_team_member = current_user.has_group('itl_it_ticketing.it_ticketing_team_member') and current_user not in rec.assigned_user
 
-    @api.model
-    def _default_employee_id(self):
+    @api.depends('ticket_issuer')
+    def _convert_res_user_to_hr_employee(self):
         """Set default value to Ticket issuer field."""
-        employee = self.env['hr.employee'].search([('user_id','=',self.env.uid)], limit=1)
-        return employee.id if employee else False
+        for rec in self:
+            if rec.ticket_issuer:
+                employee = self.env['hr.employee'].search([('user_id', '=', rec.ticket_issuer.id)], limit=1)
+                rec.employee_id = employee
+            else:
+                rec.employee_id = False
+
 
     subject = fields.Char(string='Subject/Issue', required=True,
                           help='Subject/Issue related to the Ticket. (Subject/Issue should be within 256 characters). Note: This field can only be edited when empty. After data is entered, it becomes read-only. For updates or corrections, contact the IT team.')
@@ -103,10 +117,9 @@ class HelpTicket(models.Model):
     ticket_creator = fields.Many2one('hr.employee',
                                   string='Ticket Creator')
 
-    """Setting value to email, phone and department when employee_id got value"""
-
     @api.onchange('employee_id')
     def _onchange_employee_id(self):
+        """Setting value to email, phone and department when employee_id got value"""
         if self.employee_id:
             self.email = self.employee_id.work_email
             self.phone = self.employee_id.work_phone
