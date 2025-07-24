@@ -621,7 +621,7 @@ class HelpTicket(models.Model):
                 elif new_stage.name == 'Correction':
                     vals['correction_datetime'] = current_time
                     vals['correction_by'] = self.env.user.id  # Set current user
-                elif new_stage.name == 'Done':
+                elif new_stage.name == 'Resolved':
                     vals['resolve_datetime'] = current_time
                     vals['end_date'] = current_time
                     vals['done_by'] = self.env.user.id  # Set current user
