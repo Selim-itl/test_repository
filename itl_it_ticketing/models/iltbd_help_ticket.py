@@ -287,11 +287,11 @@ class HelpTicket(models.Model):
                 record.aging_entry_days = 0  # Default if any date is missing
 
 
-    @api.depends('verification_datetime', 'done_datetime')
+    @api.depends('verification_datetime', 'resolve_datetime')
     def _compute_aging_verification_date(self):
         for rec in self:
-            if rec.verification_datetime and rec.done_datetime:
-                delta = rec.done_datetime.date() - rec.verification_datetime.date()
+            if rec.verification_datetime and rec.resolve_datetime:
+                delta = rec.resolve_datetime.date() - rec.verification_datetime.date()
                 rec.aging_verification_days = delta.days
             else:
                 rec.aging_verification_days = 0 # set default 0
@@ -440,15 +440,15 @@ class HelpTicket(models.Model):
                                group_expand='_read_group_stage_ids',
                                help='Stages of the ticket.')
 
-    # calculating stage if it is in Done stage
+    # calculating stage if it is in Resolved stage
     is_stage_done = fields.Boolean(compute="_compute_stage_done")
 
     @api.depends('stage_id')
     def _compute_stage_done(self):
         for rec in self:
-            rec.is_stage_done = True if rec.stage_id.name == "Done" else False
+            rec.is_stage_done = True if rec.stage_id.name == "Resolved" else False
 
-    # calculating stage if it is in Done stage
+    # calculating stage if it is in Resolved stage
 
 
     is_verification_stage = fields.Boolean(
@@ -484,7 +484,7 @@ class HelpTicket(models.Model):
     done_by = fields.Many2one(comodel_name='res.users', string="Done By", readonly=True)
     correction_by = fields.Many2one(comodel_name='res.users', string="Correction By", readonly=True)
     correction_datetime = fields.Datetime(string="Correction Date", readonly=True)
-    done_datetime = fields.Datetime(string="Done Date", readonly=True)
+    resolve_datetime = fields.Datetime(string="Resolved Date", readonly=True)
     # --
     correction_info = fields.One2many('it.itl.bd.ticket.correction', 'ticket_id', string="Corrections")
     # added on 16 july to solve access level problem
@@ -622,7 +622,7 @@ class HelpTicket(models.Model):
                     vals['correction_datetime'] = current_time
                     vals['correction_by'] = self.env.user.id  # Set current user
                 elif new_stage.name == 'Done':
-                    vals['done_datetime'] = current_time
+                    vals['resolve_datetime'] = current_time
                     vals['end_date'] = current_time
                     vals['done_by'] = self.env.user.id  # Set current user
                 elif new_stage.name == 'Canceled':

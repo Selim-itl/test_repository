@@ -222,7 +222,7 @@
                                     <field name="in_progress_datetime"/>
                                     <!--                                    <field name="verification_datetime"/>-->
                                     <!--                                    <field name="correction_datetime"/>-->
-                                    <field name="done_datetime"/>
+                                    <field name="resolve_datetime"/>
                                 </group>
 
                             </group>
@@ -275,7 +275,7 @@
                 <!--                <field name="verified_by"/>-->
                 <!--                <field name="done_by"/>-->
                 <!--                <field name="correction_datetime"/>-->
-                <field name="done_datetime"/>
+                <field name="resolve_datetime"/>
                 <!--                <field name="aging_entry_days"/>-->
                 <!--                <field name="aging_verification_days"/>-->
                 <!--                <field name="user_id"/>-->
