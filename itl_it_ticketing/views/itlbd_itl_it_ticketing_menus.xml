@@ -5,16 +5,31 @@
         <field name="name">IT Ticketing</field>
         <field name="tag">itlbd_dashboard_tag</field>
     </record>
-        <!-- Helpdesk module menus -->
-    <menuitem id="helpdesk_dashboard_menu_root_it_itl_bd"
+        <!-- Helpdesk module root menu for user group users -->
+    <menuitem id="helpdesk_menu_root_it_itl_bd"
               name="IT Ticketing"
-              action="action_help_ticket_dashboard_it_itl_bd"
+              action="it_itl_bd_help_ticket_my_ticket_action_non_team"
               sequence="10"
-    /> <!--    groups="itl_it_ticketing.helpdesk_user"-->
+    />
+
+    <!-- Helpdesk module root menu for team member and manager group users  -->
+    <menuitem id="helpdesk_menu_dashboard_it_itl_bd"
+              name="Dashboard"
+              parent="helpdesk_menu_root_it_itl_bd"
+              sequence="10"
+              action="action_help_ticket_dashboard_it_itl_bd"
+              groups="itl_it_ticketing.it_ticketing_team_member"
+    />
+
+    <menuitem id="helpdesk_menu_root_it_itl_bd"
+              name="IT Ticketing"
+              action="it_itl_bd_help_ticket_my_ticket_action_non_team"
+              sequence="10"
+    />
 
 
     <menuitem id="help_ticket_menu_it_itl_bd"
-              parent="helpdesk_dashboard_menu_root_it_itl_bd"
+              parent="helpdesk_menu_root_it_itl_bd"
               name="IT Tickets"
               sequence="20"/>
     <menuitem id="help_ticket_menu_my_ticket_it_itl_bd"
@@ -35,41 +50,18 @@
               name="My Tickets (Employee)"
               action="it_itl_bd_help_ticket_my_ticket_action_non_team"
               sequence="3"/>
-<!--              groups="itl_it_ticketing.helpdesk_manager"-->
     <menuitem id="helpdesk_configuration_menu_it_itl_bd"
               groups="itl_it_ticketing.it_ticketing_team_member"
               name="Configuration"
               sequence="50"
-              parent="helpdesk_dashboard_menu_root_it_itl_bd"/>
-<!--    <menuitem id="it_itl_bd_helpdesk_categories_menu"-->
-<!--              name="Categories"-->
-<!--              action="it_itl_bd_helpdesk_categories_action"-->
-<!--              parent="helpdesk_configuration_menu"-->
-<!--              sequence="10"/>-->
-    <!--              groups="itl_it_ticketing.group_show_category"-->
+              parent="helpdesk_menu_root_it_itl_bd"/>
 
-<!--    Hiding settings of IT Ticketing-->
-<!--    <menuitem id="res_config_settings_menu"-->
-<!--              name="Settings"-->
-<!--              action="helpdesk_config_settings_action"-->
-<!--              parent="helpdesk_configuration_menu"-->
-<!--              sequence="1"/>-->
-<!--    <menuitem id="it_itl_bd_help_team_menu"-->
-<!--              name="Teams"-->
-<!--              action="it_itl_bd_help_team_action"-->
-<!--              parent="helpdesk_configuration_menu"-->
-<!--              sequence="3"/>-->
     <menuitem id="it_itl_bd_helpdesk_tag_menu"
               name="Tags"
               action="it_itl_bd_helpdesk_tag_action"
               parent="helpdesk_configuration_menu_it_itl_bd"
               sequence="4"/>
-<!--    <menuitem id="it_itl_bd_ticket_stage_menu"-->
-<!--              name="Stages"-->
-<!--              groups="itl_it_ticketing.it_ticketing_manager"-->
-<!--              action="it_itl_bd_ticket_stage_action"-->
-<!--              parent="helpdesk_configuration_menu"-->
-<!--              sequence="5"/>-->
+
     <menuitem id="it_itl_bd_helpdesk_types_menu"
               name="Types"
               action="it_itl_bd_helpdesk_types_action"
@@ -77,17 +69,10 @@
               sequence="6"/>
     <menuitem id="help_ticket_menu_report_it_itl_bd"
               name="Report"
-              parent="helpdesk_dashboard_menu_root_it_itl_bd"
+              parent="helpdesk_menu_root_it_itl_bd"
               groups="itl_it_ticketing.it_ticketing_team_member"
               sequence="30"
               action="it_itl_bd_help_ticket_report_action"/>
-
-<!--    This is required for On Hold ticketing module-->
-<!--    <menuitem id="it_itl_bd_helpdesk_chain_menu"-->
-<!--              name="Order Chain"-->
-<!--              action="action_helpdesk_it_itl_bd_chain_conf"-->
-<!--              parent="helpdesk_configuration_menu"-->
-<!--              sequence="7"/>-->
 
     <menuitem id="import_report_menus_it_itl_bd" name="Import Ticket Wizard"
                   action="it_itl_bd_import_help_ticket_wizard_action" parent="helpdesk_configuration_menu_it_itl_bd" sequence="09"/>

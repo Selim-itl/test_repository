@@ -52,7 +52,7 @@ class HelpTicket(models.Model):
 
     # Taking ticket issuer id and passing it to employee_id
     ticket_issuer = fields.Many2one('res.users',
-                                    string='Ticket Issuer (new)',
+                                    string='Ticket Issuer',
                                     help="Select the employee name if the issue is related to someone else. If the issue is yours, there's no need to select anyone",
                                     tracking=True,
                                     required=True,
