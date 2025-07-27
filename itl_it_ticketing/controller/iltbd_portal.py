@@ -77,7 +77,7 @@ class TicketPortal(portal.CustomerPortal):
 
 class WebsiteDesk(http.Controller):
     """Control for handling the helpdesk tickets form and its submission."""
-    @http.route(['/helpdesk_ticket'], type='http', auth="public",
+    @http.route(['/it_itl_bd_ticket'], type='http', auth="public",
                 website=True, sitemap=True)
     def helpdesk_ticket(self):
         """Render the helpdesk ticket form."""
