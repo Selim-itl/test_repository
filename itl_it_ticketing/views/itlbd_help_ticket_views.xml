@@ -8,19 +8,19 @@
     </record>
 
     <!--    My ticket view action for team members and manager-->
-    <record id="it_itl_bd_help_ticket_my_ticket_action" model="ir.actions.act_window">
-        <field name="name">My tickets (Team)</field>
-        <field name="res_model">it.itl.bd.help.ticket</field>
-        <field name="domain">['|', '|','|',('assigned_user','=',uid), ('ticket_issuer','=',uid), ('invited_user_ids','=',uid), ('ticket_creator_id','=',uid)]</field>
-        <field name="view_mode">kanban,tree,form,calendar,activity,graph</field>
-    </record>
+<!--    <record id="it_itl_bd_help_ticket_my_ticket_action" model="ir.actions.act_window">-->
+<!--        <field name="name">My tickets (Team)</field>-->
+<!--        <field name="res_model">it.itl.bd.help.ticket</field>-->
+<!--        <field name="domain">['|', '|','|',('assigned_user','=',uid), ('ticket_issuer','=',uid), ('invited_user_ids','=',uid), ('ticket_creator_id','=',uid)]</field>-->
+<!--        <field name="view_mode">kanban,tree,form,calendar,activity,graph</field>-->
+<!--    </record>-->
 
     <!--    My tickets action for user group -->
     <record id="it_itl_bd_help_ticket_my_ticket_action_non_team" model="ir.actions.act_window">
-        <field name="name">My tickets (Employee)</field>
+        <field name="name">My tickets</field>
         <field name="res_model">it.itl.bd.help.ticket</field>
         <field name="domain">['|', '|','|',('assigned_user','=',uid), ('ticket_issuer','=',uid), ('invited_user_ids','=',uid), ('ticket_creator_id','=',uid)]</field>
-        <field name="view_mode">tree,kanban,form,calendar</field>
+        <field name="view_mode">kanban,tree,form,calendar</field>
     </record>
 
     <!--&lt;!&ndash;    Connect custom kanban with action which is for non-team group&ndash;&gt;-->
@@ -283,10 +283,10 @@
             <form>
                 <group>
                     <field name="ticket_creator_id"/>
-                    <field name="employee_id"/>
+                    <field name="is_manager_assigned_creator" invisible="1"/>
+                    <field name="ticket_issuer" attrs="{'readonly': [('is_manager_assigned_creator', '=', False),('id', '!=', False)]}"/>
                     <field name="subject" string="Subject"/>
                     <field name="description" string="Description"/>
-                    <field name="it_team" string="Select Team"/>
                     <field name="ticket_type" options="{'no_create': 1}"/>
                 </group>
             </form>
