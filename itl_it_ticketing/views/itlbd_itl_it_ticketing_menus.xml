@@ -21,13 +21,6 @@
               groups="itl_it_ticketing.it_ticketing_team_member"
     />
 
-    <menuitem id="helpdesk_menu_root_it_itl_bd"
-              name="IT Ticketing"
-              action="it_itl_bd_help_ticket_my_ticket_action_non_team"
-              sequence="10"
-    />
-
-
     <menuitem id="help_ticket_menu_it_itl_bd"
               parent="helpdesk_menu_root_it_itl_bd"
               name="IT Tickets"
@@ -47,7 +40,7 @@
               sequence="2"/>
     <menuitem id="help_ticket_menu_my_ticket_non_team"
               parent="help_ticket_menu_it_itl_bd"
-              name="My Tickets (Employee)"
+              name="My Tickets"
               action="it_itl_bd_help_ticket_my_ticket_action_non_team"
               sequence="3"/>
     <menuitem id="helpdesk_configuration_menu_it_itl_bd"

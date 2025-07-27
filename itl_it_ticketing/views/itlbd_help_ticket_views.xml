@@ -4,7 +4,7 @@
     <record id="it_itl_bd_help_ticket_action" model="ir.actions.act_window">
         <field name="name">All Tickets</field>
         <field name="res_model">it.itl.bd.help.ticket</field>
-        <field name="view_mode">kanban,tree,form,calendar,activity,pivot,graph</field>
+        <field name="view_mode">kanban,tree,form,calendar,activity,graph</field>
     </record>
 
     <!--    My ticket view action for team members and manager-->
@@ -12,7 +12,7 @@
         <field name="name">My tickets (Team)</field>
         <field name="res_model">it.itl.bd.help.ticket</field>
         <field name="domain">['|', '|','|',('assigned_user','=',uid), ('ticket_issuer','=',uid), ('invited_user_ids','=',uid), ('ticket_creator_id','=',uid)]</field>
-        <field name="view_mode">kanban,tree,form,calendar,activity,pivot,graph</field>
+        <field name="view_mode">kanban,tree,form,calendar,activity,graph</field>
     </record>
 
     <!--    My tickets action for user group -->
