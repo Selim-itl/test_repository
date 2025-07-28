@@ -12,16 +12,21 @@
             <field name="body_html" type="html">
                 <div>
                     <h2>Ticket Stage Changed</h2>
-                    <p>Hello,</p>
-                    <p>The stage of your ticket <t t-if="object.name">
+                    <p>Dear <t t-if="object.ticket_issuer">
+                        <t t-out="object.ticket_issuer.name"> </t>
+                    </t>,</p>
+                    <p>The stage of your ticket <strong><t t-if="object.name">
                         <t t-out="object.name or ''"> </t>
-                    </t></p>
+                    </t></strong> has been changed.</p>
                     <p><strong>New Stage:</strong><t t-if="object.stage_id.name">
                         <t t-out="object.stage_id.name"> </t>
                     </t></p>
-                    <p>Please take necessary action if required.</p>
                     <br/>
-                    <p>Best regards,<br/>IT Support Team</p>
+                    <p>Best regards,<br/>
+                        <t t-if="user.name">
+                            <t t-out="user.name"> </t>
+                        </t>
+                        <br/>IT Support Team</p>
                 </div>
             </field>
             <field name="auto_delete" eval="True"/>
