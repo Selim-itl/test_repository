@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate="1">
+        <!--Email template -->
+        <record id="ticket_stage_change_mail_template" model="mail.template">
+            <field name="name">IT Ticket Stage got changed</field>
+            <field name="model_id" ref="itl_it_ticketing.model_it_itl_bd_help_ticket"/>
+            <field name="email_from">{{ ('support@it-itlbd.com') }}</field>
+            <field name="partner_to">{{ object.ticket_issuer.partner_id.id }}</field>
+            <field name="subject">[Ticket Update] {{object.name or 'No Subject'}} moved to {{object.stage_id.name}}</field>
+            <field name="description">Sent to employee of ticket stage update</field>
+            <field name="body_html" type="html">
+                <div>
+                    <h2>Ticket Stage Changed</h2>
+                    <p>Hello,</p>
+                    <p>The stage of your ticket <t t-if="object.name">
+                        <t t-out="object.name or ''"> </t>
+                    </t></p>
+                    <p><strong>New Stage:</strong><t t-if="object.stage_id.name">
+                        <t t-out="object.stage_id.name"> </t>
+                    </t></p>
+                    <p>Please take necessary action if required.</p>
+                    <br/>
+                    <p>Best regards,<br/>IT Support Team</p>
+                </div>
+            </field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

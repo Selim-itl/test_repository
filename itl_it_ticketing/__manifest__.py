@@ -24,6 +24,7 @@
         'data/itlbd_product_chain_data.xml',
         'data/itlbd_ir_cron_data.xml',
         'data/itlbd_mail_template_data.xml',
+        'data/status_change_mail_template.xml',
         'wizard/itlbd_ticket_stage_update_wizard_form.xml',
         'wizard/itlbd_import_help_ticket_wizard_view.xml',
 

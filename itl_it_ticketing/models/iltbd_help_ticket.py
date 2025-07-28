@@ -621,10 +621,21 @@ class HelpTicket(models.Model):
         # if 'subject' in vals and self.search([('subject', '=', vals['subject']), ('id', '!=', self.id)]):
         #     raise ValidationError("The ticket subject must be unique.")
 
+        result = super().write(vals)
         # Handle stage-based datetime updates
         if 'stage_id' in vals:
+            old_stages = {rec.id: rec.stage_id for rec in self}
             new_stage = self.env['it.itl.bd.ticket.stage'].browse(vals['stage_id'])
             current_time = fields.Datetime.now()
+            if 'stage_id' in vals:
+                for record in self:
+                    old_stage = old_stages.get(record.id)
+                    new_stage = record.stage_id
+                    if record.ticket_issuer and record.ticket_issuer.partner_id.email:
+                        template = self.env.ref('itl_it_ticketing.ticket_stage_change_mail_template',
+                                                raise_if_not_found=False)
+                        if template:
+                            template.send_mail(record.id, force_send=True)
 
             for record in self:
                 if new_stage.name == 'MIS':
@@ -653,7 +664,7 @@ class HelpTicket(models.Model):
                 if not self.env.context.get('bypass_correction_notification', False):
                     raise ValidationError("Please click the Correction button to convert to the Correction stage.")
 
-        return super(HelpTicket, self).write(vals)
+        return result
 
     def btn_assign_me_action(self):
         """
