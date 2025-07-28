@@ -7,39 +7,22 @@
         <field name="view_mode">kanban,tree,form,calendar,activity,graph</field>
     </record>
 
-    <!--    My ticket view action for team members and manager-->
-<!--    <record id="it_itl_bd_help_ticket_my_ticket_action" model="ir.actions.act_window">-->
-<!--        <field name="name">My tickets (Team)</field>-->
-<!--        <field name="res_model">it.itl.bd.help.ticket</field>-->
-<!--        <field name="domain">['|', '|','|',('assigned_user','=',uid), ('ticket_issuer','=',uid), ('invited_user_ids','=',uid), ('ticket_creator_id','=',uid)]</field>-->
-<!--        <field name="view_mode">kanban,tree,form,calendar,activity,graph</field>-->
-<!--    </record>-->
 
     <!--    My tickets action for user group -->
     <record id="it_itl_bd_help_ticket_my_ticket_action_non_team" model="ir.actions.act_window">
         <field name="name">My tickets</field>
         <field name="res_model">it.itl.bd.help.ticket</field>
-        <field name="domain">['|', '|','|',('assigned_user','=',uid), ('ticket_issuer','=',uid), ('invited_user_ids','=',uid), ('ticket_creator_id','=',uid)]</field>
+        <field name="domain">['|', '|', ('assigned_user','=',uid), ('ticket_issuer','=',uid), ('ticket_creator_id','=',uid)]</field>
         <field name="view_mode">kanban,tree,form,calendar</field>
     </record>
 
-    <!--&lt;!&ndash;    Connect custom kanban with action which is for non-team group&ndash;&gt;-->
-    <!--    <record id="it_itl_bd_help_ticket_my_ticket_action_non_team_kanban_view" model="ir.actions.act_window.view">-->
-    <!--&lt;!&ndash;        <field name="sequence" eval="200"/>&ndash;&gt;-->
-    <!--        <field name="view_mode">kanban</field>-->
-    <!--        <field name="view_id" ref="itl_it_ticketing.it_itl_bd_help_ticket_view_kanban_for_non_team"/>-->
-    <!--        <field name="act_window_id" ref="itl_it_ticketing.it_itl_bd_help_ticket_my_ticket_action_non_team"/>-->
-    <!--    </record>-->
-
-
-
-    <!--&lt;!&ndash;    Connect editable kanban to enable team member and manager&ndash;&gt;-->
-    <!--    <record id="it_itl_bd_help_ticket_my_ticket_action_for_team_kanban_view" model="ir.actions.act_window.view">-->
-    <!--&lt;!&ndash;        <field name="sequence" eval="10"/>&ndash;&gt;-->
-    <!--        <field name="view_mode">kanban</field>-->
-    <!--        <field name="view_id" ref="itl_it_ticketing.it_itl_bd_help_ticket_view_kanban"/>-->
-    <!--        <field name="act_window_id" ref="itl_it_ticketing.it_itl_bd_help_ticket_my_ticket_action"/>-->
-    <!--    </record>-->
+<!--    Invited tickets-->
+    <record id="it_itl_bd_help_ticket_invited_ticket_action_non_team" model="ir.actions.act_window">
+        <field name="name">Invited tickets</field>
+        <field name="res_model">it.itl.bd.help.ticket</field>
+        <field name="domain">[('invited_user_ids','=',uid)]</field>
+        <field name="view_mode">kanban,form</field>
+    </record>
 
     <!--    Ticket report action-->
     <record id="it_itl_bd_help_ticket_report_action" model="ir.actions.act_window">

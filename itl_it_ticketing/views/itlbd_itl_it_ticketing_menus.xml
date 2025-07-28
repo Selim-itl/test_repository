@@ -43,6 +43,11 @@
               name="My Tickets"
               action="it_itl_bd_help_ticket_my_ticket_action_non_team"
               sequence="2"/>
+    <menuitem id="help_ticket_menu_invited_ticket_non_team"
+              parent="help_ticket_menu_it_itl_bd"
+              name="Invited Tickets"
+              action="it_itl_bd_help_ticket_invited_ticket_action_non_team"
+              sequence="4"/>
     <menuitem id="helpdesk_configuration_menu_it_itl_bd"
               groups="itl_it_ticketing.it_ticketing_team_member"
               name="Configuration"
